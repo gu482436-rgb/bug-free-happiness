@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520" role="img" aria-labelledby="title desc">
+  <title id="title">CoFe2O4@PDA@Ir-HCR GII.4 norovirus colorimetric detection scheme</title>
+  <desc id="desc">Schematic showing CoFe2O4 magnetic core, PDA layer, Ir nanoparticles, amino-modified ssDNA capture probe, GII.4 RNA target, assistant probe, HCR hairpins, magnetic separation, and TMB/H2O2 A652 readout.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#285f86"/>
+    </marker>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1f2933" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1180" height="520" fill="#ffffff"/>
+
+  <text x="44" y="46" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="700" fill="#183b56">CoFe₂O₄@PDA@Ir 三层磁性纳米酶-HCR 比色检测原理</text>
+  <text x="44" y="78" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="16" fill="#667085">检测对象：HuNoV GII.4；分子靶点：GII.4 病毒基因组 RNA 特异序列；读出：TMB/H₂O₂ A652</text>
+
+  <g transform="translate(70,132)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="260" height="300" rx="18" fill="#f5f7fa" stroke="#d9dee7"/>
+    <text x="24" y="38" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#0f3d5c">1. 三层材料构建</text>
+    <circle cx="130" cy="150" r="62" fill="#263238"/>
+    <circle cx="130" cy="150" r="78" fill="none" stroke="#8b5e3c" stroke-width="13"/>
+    <g fill="#6d7f8f">
+      <circle cx="75" cy="105" r="8"/>
+      <circle cx="103" cy="75" r="7"/>
+      <circle cx="155" cy="76" r="8"/>
+      <circle cx="190" cy="105" r="7"/>
+      <circle cx="213" cy="151" r="8"/>
+      <circle cx="190" cy="197" r="7"/>
+      <circle cx="151" cy="223" r="8"/>
+      <circle cx="103" cy="221" r="7"/>
+      <circle cx="70" cy="184" r="8"/>
+      <circle cx="51" cy="142" r="7"/>
+    </g>
+    <text x="64" y="252" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="15" fill="#1f2933">CoFe₂O₄ 磁核</text>
+    <text x="64" y="276" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="15" fill="#1f2933">PDA 中间层 + Ir 纳米颗粒</text>
+  </g>
+
+  <line x1="352" y1="282" x2="445" y2="282" stroke="#285f86" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(465,132)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="300" height="300" rx="18" fill="#f5f7fa" stroke="#d9dee7"/>
+    <text x="24" y="38" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#0f3d5c">2. 表面核酸识别</text>
+    <circle cx="95" cy="150" r="46" fill="#263238"/>
+    <circle cx="95" cy="150" r="57" fill="none" stroke="#8b5e3c" stroke-width="10"/>
+    <g fill="#6d7f8f">
+      <circle cx="52" cy="108" r="6"/>
+      <circle cx="91" cy="88" r="6"/>
+      <circle cx="142" cy="112" r="6"/>
+      <circle cx="149" cy="177" r="6"/>
+      <circle cx="84" cy="210" r="6"/>
+      <circle cx="39" cy="164" r="6"/>
+    </g>
+    <path d="M142 118 C184 86, 220 91, 251 124" fill="none" stroke="#2f7d68" stroke-width="4"/>
+    <path d="M145 145 C185 120, 217 137, 251 164" fill="none" stroke="#cf6f49" stroke-width="4"/>
+    <path d="M152 174 C191 171, 219 191, 252 224" fill="none" stroke="#285f86" stroke-width="4"/>
+    <text x="166" y="80" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="14" fill="#1f2933">capture ssDNA</text>
+    <text x="182" y="120" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="14" fill="#1f2933">GII.4 RNA</text>
+    <text x="178" y="204" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="14" fill="#1f2933">assistant + initiator</text>
+  </g>
+
+  <line x1="788" y1="282" x2="880" y2="282" stroke="#285f86" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(900,132)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="230" height="300" rx="18" fill="#f5f7fa" stroke="#d9dee7"/>
+    <text x="24" y="38" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#0f3d5c">3. HCR 与读出</text>
+    <path d="M42 94 C78 71, 105 112, 139 90 S200 99, 202 62" fill="none" stroke="#2f7d68" stroke-width="5"/>
+    <path d="M42 132 C78 109, 105 150, 139 128 S200 137, 202 100" fill="none" stroke="#cf6f49" stroke-width="5"/>
+    <path d="M42 170 C78 147, 105 188, 139 166 S200 175, 202 138" fill="none" stroke="#285f86" stroke-width="5"/>
+    <text x="42" y="215" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="15" fill="#1f2933">表面 HCR 核酸层</text>
+    <rect x="44" y="232" width="142" height="42" rx="8" fill="#dbeafe" stroke="#93c5fd"/>
+    <text x="60" y="259" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="16" font-weight="700" fill="#0f3d5c">TMB/H₂O₂</text>
+  </g>
+
+  <g transform="translate(295,444)">
+    <rect x="0" y="0" width="590" height="58" rx="12" fill="#eef8f4" stroke="#b7ddcf"/>
+    <text x="295" y="24" text-anchor="middle" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="16" fill="#1f2933">磁分离洗涤后读取 A652</text>
+    <text x="295" y="46" text-anchor="middle" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="16" fill="#1f2933">以 ΔA652 建立 GII.4 RNA 靶标标准曲线</text>
+  </g>
+</svg>

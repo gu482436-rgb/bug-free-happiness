@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoFe₂O₄@PDA@Ir-HCR 三层纳米酶 GII.4 诺如病毒检测方案</title>
+  <style>
+    :root { --ink:#1f2933; --muted:#667085; --line:#d9dee7; --soft:#f5f7fa; --blue:#1f5f8b; --green:#2f7d68; --amber:#8a5a00; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif; color:var(--ink); background:#fff; line-height:1.68; }
+    header { padding:48px 7vw 34px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#f8fafc 0,#fff 100%); }
+    h1 { margin:0 0 12px; font-size:30px; line-height:1.25; }
+    .system-name { margin:0 0 10px; color:#0f3d5c; font-size:17px; font-weight:700; }
+    .subtitle { color:var(--muted); max-width:980px; font-size:16px; }
+    main { padding:28px 7vw 60px; }
+    nav { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 34px; }
+    nav a, .button-link { text-decoration:none; color:var(--blue); border:1px solid var(--line); padding:7px 10px; border-radius:8px; background:#fff; }
+    .button-link { display:inline-block; margin:8px 8px 0 0; }
+    .step { margin:28px 0 34px; padding:22px; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 8px 24px rgba(31,41,51,.05); }
+    .step-head { display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--line); padding-bottom:12px; }
+    .badge { width:42px; height:42px; border-radius:50%; background:#e8f2fb; color:var(--blue); display:inline-flex; align-items:center; justify-content:center; font-weight:700; }
+    h2 { margin:0; font-size:22px; }
+    h3 { margin:16px 0 6px; font-size:15px; color:#0f3d5c; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:14px 0; }
+    .card { border:1px solid var(--line); background:var(--soft); border-radius:10px; padding:13px 15px; }
+    .card ul, .card ol { margin:8px 0 0 20px; padding:0; }
+    .card li { margin:4px 0; }
+    table { border-collapse:collapse; width:100%; font-size:14px; margin:12px 0; }
+    th,td { border:1px solid var(--line); padding:9px 10px; vertical-align:top; }
+    th { background:#eef3f8; text-align:left; }
+    .tag { display:inline-block; padding:2px 7px; background:#eef8f4; color:var(--green); border-radius:999px; font-size:12px; }
+    .warn { border-left:4px solid var(--amber); background:#fff8e8; padding:12px 14px; }
+    a { color:#135ba1; }
+    .pdf-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; margin-left:6px; border-radius:6px; background:#b42318; color:#fff !important; font-size:11px; font-weight:700; text-decoration:none; vertical-align:middle; letter-spacing:.2px; }
+    .pdf-icon:hover { background:#7a271a; }
+    .abstract-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; margin-left:6px; border-radius:6px; background:#1f5f8b; color:#fff !important; font-size:11px; font-weight:700; text-decoration:none; vertical-align:middle; letter-spacing:.2px; }
+    .abstract-icon:hover { background:#123f62; }
+    figure.scheme { margin:18px 0; border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+    figure.scheme img { display:block; width:100%; height:auto; }
+    figure.scheme figcaption { padding:10px 14px; font-size:14px; color:var(--muted); border-top:1px solid var(--line); background:#f8fafc; }
+    @media (max-width:900px) { .grid { grid-template-columns:1fr; } header, main { padding-left:20px; padding-right:20px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CoFe₂O₄@PDA@Ir 三层磁性纳米酶-HCR 放大用于 HuNoV GII.4 比色检测方案</h1>
+    <div class="system-name">中文名称：商品化四氧二铁酸钴@聚多巴胺@铱三层磁性纳米酶-诺如病毒 GII.4 基因组 RNA 触发表面 HCR 放大比色检测体系</div>
+    <div class="subtitle">检测对象为 HuNoV GII.4；分子靶点为 GII.4 病毒基因组 RNA 中的特异序列；识别元件为氨基修饰 ssDNA 捕获探针。CoFe₂O₄ 采用商品化纳米颗粒，PDA 作为中间黏附层和界面连接层，Ir 作为外层类过氧化物酶活性组分；目标 RNA 通过 ssDNA 互补识别引入 HCR initiator，触发表面 HCR 形成厚核酸层，从而调控 TMB/H₂O₂ 的 A652 信号。</div>
+    <a class="button-link" href="gii4-protocol.html">查看三层纳米酶-HCR 详细实验流程</a>
+    <a class="button-link" href="execution-checklist.html">查看完整执行清单</a>
+    <a class="button-link" href="abstracts.html">查看文献中文摘要</a>
+  </header>
+  <main>
+    <nav>
+      <a href="#decision">方案判断</a>
+      <a href="#definitions">对象定义</a>
+      <a href="#principle">检测原理</a>
+      <a href="#evidence">证据链</a>
+      <a href="#workflow">实验流程</a>
+      <a href="#materials">材料与仪器</a>
+      <a href="#controls">对照设计</a>
+      <a href="#decision-tree">判定路线</a>
+      <a href="#timeline">推进安排</a>
+      <a href="#risk">关键问题与优化</a>
+      <a href="#refs">关键文献</a>
+    </nav>
+
+    <section class="step" id="decision">
+      <div class="step-head"><span class="badge">1</span><h2>方案判断</h2></div>
+      <p>本方案采用 CoFe₂O₄@PDA@Ir 三层磁性纳米酶作为核心功能材料，并以 HuNoV GII.4 病毒基因组 RNA 触发表面 HCR 放大检测。HCR 指杂交链式反应（hybridization chain reaction），是一种等温核酸放大策略。材料层级由商品化 CoFe₂O₄ 磁性核心、PDA 中间层和 Ir 外层纳米酶组成；识别与放大层由氨基修饰 ssDNA capture probe、GII.4 病毒 RNA、assistant probe 和 H1/H2 发夹探针共同完成。</p>
+      <p>在该体系中，GII.4 病毒 RNA 的序列识别事件被转化为颗粒表面的长链核酸聚合层。HCR 放大可在 CoFe₂O₄@PDA@Ir 表面形成更长、更厚的核酸层，更容易稳定影响 TMB/H₂O₂ 与 Ir 活性位点的接触效率，从而获得更可重复的 ΔA652。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>保留的课题层级</h3>
+          <ul>
+            <li>核心材料仍为 CoFe₂O₄@PDA@Ir 三层磁性纳米酶。</li>
+            <li>CoFe₂O₄ 提供磁响应和分离富集能力。</li>
+            <li>PDA 提供金属负载和核酸探针连接界面。</li>
+            <li>Ir 提供 TMB/H₂O₂ 比色催化活性。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>需要重点验证的部分</h3>
+          <ul>
+            <li>Ir 必须为分散颗粒状负载，不能形成完全致密壳层。</li>
+            <li>Ir 负载后仍需保留可连接核酸探针的 PDA 暴露位点。</li>
+            <li>探针固定后 Ir 类过氧化物酶活性应保持可测。</li>
+            <li>assistant probe 和 H1/H2 发夹探针的无靶标泄漏应保持较低水平。</li>
+            <li>GII.4 RNA 触发表面 HCR 后 ΔA652 需稳定、可重复并可区分错配 RNA。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="definitions">
+      <div class="step-head"><span class="badge">2</span><h2>检测对象、分子靶点与识别元件</h2></div>
+      <p>本方案中三个概念需要严格区分：检测对象是 HuNoV GII.4，分子靶点是其基因组 RNA 中的特异序列，识别元件是 ssDNA 探针。ssDNA 不直接识别完整病毒衣壳，而是通过 DNA-RNA 互补杂交识别病毒释放或提取得到的 RNA。</p>
+      <table>
+        <thead><tr><th>概念</th><th>本方案中的定义</th><th>实验体现</th><th>注意事项</th></tr></thead>
+        <tbody>
+          <tr><td>检测对象</td><td>Human norovirus GII.4，简称 HuNoV GII.4 或 GII.4 诺如病毒</td><td>方法最终服务于 GII.4 病毒污染或模型样品检测</td><td>最终结果按 GII.4 病毒相关核酸检测表述</td></tr>
+          <tr><td>分子靶点</td><td>GII.4 病毒基因组 RNA 的特异序列</td><td>预实验使用 synthetic GII.4 RNA fragment，后续可扩展到提取病毒 RNA</td><td>完整病毒样品需先裂解或提取 RNA</td></tr>
+          <tr><td>识别元件</td><td>5'-NH₂-C6 修饰 ssDNA capture probe</td><td>固定于 CoFe₂O₄@PDA@Ir 表面，与 GII.4 RNA 互补杂交</td><td>推荐使用 C6 spacer 提高杂交空间自由度</td></tr>
+          <tr><td>信号放大元件</td><td>assistant ssDNA probe + H1/H2 ssDNA hairpins</td><td>靶 RNA 将 HCR initiator 锚定到材料表面，触发表面 HCR</td><td>需控制 H1/H2 无靶标泄漏</td></tr>
+        </tbody>
+      </table>
+      <div class="grid">
+        <div class="card">
+          <h3>样品形式</h3>
+          <ul>
+            <li>方法建立：synthetic GII.4 RNA fragment。</li>
+            <li>后续验证：提取的 GII.4 病毒 RNA。</li>
+            <li>潜在应用：经裂解和 RNA 提取处理后的食品或环境样品。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>检测链条</h3>
+          <ul>
+            <li>HuNoV GII.4 经裂解或提取得到病毒 RNA。</li>
+            <li>capture ssDNA 与 assistant probe 同时识别 GII.4 RNA 靶序列。</li>
+            <li>assistant probe 引入 HCR initiator，触发表面 HCR。</li>
+            <li>HCR 核酸层调控 CoFe₂O₄@PDA@Ir 对 TMB/H₂O₂ 的 A652 显色。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="evidence">
+      <div class="step-head"><span class="badge">3</span><h2>文献证据链与本方案定位</h2></div>
+      <p>本方案的可行性由材料构建、表面连接、纳米酶显色、HuNoV GII.4 RNA 核酸识别和 HCR 核酸放大五条证据链共同支撑。证据强度较高的部分包括 PDA 通用包覆、PDA 锚定贵金属、Ir 类过氧化物酶活性和 Norovirus RNA 核酸检测；本实验重点验证表面 HCR 层对 CoFe₂O₄@PDA@Ir 催化显色的调控幅度。</p>
+      <table>
+        <thead><tr><th>论证问题</th><th>已有文献能支撑什么</th><th>本实验需要证明什么</th><th>证据强度</th></tr></thead>
+        <tbody>
+          <tr><td>CoFe₂O₄ 能否作为磁性核心</td><td>磁性铁氧体纳米颗粒可用于磁分离和 TMB/H₂O₂ 纳米酶体系。</td><td>商品化 CoFe₂O₄ 的分散性、磁响应和洗涤损失。</td><td><span class="tag">强</span></td></tr>
+          <tr><td>PDA 能否包覆 CoFe₂O₄</td><td>PDA 可在弱碱条件下沉积在多种材料表面；PDA-coated CoFe₂O₄ 负载 Pd 的文献提供了直接材料类比。</td><td>本批次 CoFe₂O₄ 的 PDA 包覆厚度和磁响应保留。</td><td><span class="tag">强</span></td></tr>
+          <tr><td>PDA 能否锚定 Ir</td><td>PDA 可通过 N/O 位点配位金属离子并稳定金属纳米颗粒；PDA-金属纳米颗粒和 PDA-coated CoFe₂O₄@贵金属已有文献基础。</td><td>Ir 在 CoFe₂O₄@PDA 表面的负载量、分散性和洗涤稳定性。</td><td><span class="tag">中强</span></td></tr>
+          <tr><td>Ir 能否提供比色信号</td><td>Ir 纳米颗粒具有类过氧化物酶活性，可催化 TMB/H₂O₂ 产生 A652 信号。</td><td>负载到 CoFe₂O₄@PDA 后活性是否保留，最优 pH、TMB、H₂O₂ 和材料浓度。</td><td><span class="tag">强</span></td></tr>
+          <tr><td>核酸探针能否固定</td><td>PDA 表面可与氨基/巯基 DNA 发生固定，Mg²⁺可促进 PDA-DNA 偶联。</td><td>Ir 分散负载后 PDA 位点是否仍可连接 FAM-capture DNA。</td><td><span class="tag">中强</span></td></tr>
+          <tr><td>GII.4 RNA-HCR 能否稳定改变 A652</td><td>Norovirus RNA 可通过核酸杂交、HCR/CHA 类等温核酸反应和磁分离策略检测；DNA/核酸层可调控金属纳米酶类过氧化物酶活性。</td><td>GII.4 病毒 RNA 触发表面 HCR 后，ΔA652 是否足够稳定、可重复并可区分错配 RNA。</td><td><span class="tag">中强</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="principle">
+      <div class="step-head"><span class="badge">4</span><h2>检测原理</h2></div>
+      <p>本方案采用单颗粒三层纳米酶-HCR 放大检测模式。商品化 CoFe₂O₄ 作为磁性核心，PDA 包覆后原位负载分散 Ir 纳米颗粒，形成 CoFe₂O₄@PDA@Ir。随后在仍暴露的 PDA/金属界面上固定 NH₂-C6 修饰的 ssDNA capture probe。GII.4 病毒 RNA 同时与 surface capture ssDNA 和 assistant ssDNA 杂交，使 assistant probe 携带的 HCR initiator 锚定在颗粒表面。加入 H1/H2 发夹探针后，表面 initiator 触发 HCR，形成厚核酸层，进而影响 TMB/H₂O₂ 与 Ir 表面的接触效率，表现为 A652 信号下降或稳定变化。</p>
+      <figure class="scheme">
+        <img src="assets/gii4_hcr_scheme.svg" alt="CoFe₂O₄@PDA@Ir-HCR GII.4 检测原理图">
+        <figcaption>图示说明：CoFe₂O₄ 提供磁分离，PDA 提供 Ir 锚定和核酸连接界面，Ir 提供 TMB/H₂O₂ A652 显色；GII.4 RNA 靶序列通过 capture DNA 和 assistant probe 被锚定到材料表面，并触发 HCR 形成核酸层。</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th>模块</th><th>组成</th><th>作用</th><th>选择理由</th></tr></thead>
+        <tbody>
+          <tr><td>第一层</td><td>商品化 CoFe₂O₄</td><td>磁响应、磁分离和载体核心</td><td>降低磁核制备环节对批次稳定性的影响</td></tr>
+          <tr><td>第二层</td><td>PDA</td><td>包覆、黏附、Ir 锚定和核酸探针连接</td><td>PDA 可在弱碱条件下沉积，并可与氨基/巯基修饰核酸发生界面固定</td></tr>
+          <tr><td>第三层</td><td>分散 Ir 纳米颗粒</td><td>催化 TMB/H₂O₂ 生成 oxTMB</td><td>Ir 具有类过氧化物酶活性，是比色信号核心</td></tr>
+          <tr><td>识别层</td><td>NH₂-ssDNA capture probe + GII.4 RNA + assistant probe</td><td>通过双位点互补识别 GII.4 病毒 RNA，并将 HCR initiator 锚定在材料表面</td><td>双位点识别有利于降低非特异背景</td></tr>
+          <tr><td>放大层</td><td>H1/H2 发夹探针</td><td>在目标 RNA 触发下进行表面 HCR，形成厚核酸层</td><td>增强对 Ir 活性位点的空间屏蔽和扩散限制，提高 ΔA652 稳定性</td></tr>
+        </tbody>
+      </table>
+      <p class="warn">本路线的关键验证内容包括：Ir 分散负载后是否仍保留足够 PDA 暴露区域，以及 HCR 层是否能在低背景条件下稳定调控 A652。该问题通过 Ir 负载梯度、FAM-探针固定量、H1/H2 泄漏对照和 HCR 前后纳米酶活性对比实验解决。</p>
+    </section>
+
+    <section class="step" id="workflow">
+      <div class="step-head"><span class="badge">5</span><h2>实验流程总览</h2></div>
+      <ol>
+        <li>购买商品化 CoFe₂O₄ 纳米颗粒，进行分散性、磁响应和粒径确认。</li>
+        <li>在 pH 8.5 Tris 条件下包覆 PDA，得到 CoFe₂O₄@PDA。</li>
+        <li>采用低、中、高 Ir 前驱体浓度梯度原位还原，得到 CoFe₂O₄@PDA@Ir。</li>
+        <li>比较三层材料的磁响应、Ir 分散状态、A652 活性和 PDA 暴露位点。</li>
+        <li>将 5'-NH₂-C6-ssDNA capture probe 固定到 CoFe₂O₄@PDA@Ir 表面。</li>
+        <li>设计 GII.4 病毒 RNA 靶区、assistant probe 和 H1/H2 发夹探针。</li>
+        <li>探针化三层纳米酶与 GII.4 RNA、assistant probe 在 37-45 °C 杂交 30-60 min，磁分离洗涤。</li>
+        <li>加入 H1/H2 发夹探针，在 25-37 °C 进行表面 HCR 30-90 min，再次磁分离洗涤。</li>
+        <li>加入 TMB/H₂O₂ 显色液，读取 A652，以 ΔA652 建立标准曲线。</li>
+        <li>设置错配 RNA、random RNA、无 assistant、无 H1/H2、无探针、无靶标、无 Ir 和 RNase 处理对照。</li>
+      </ol>
+      <a class="button-link" href="gii4-protocol.html">进入详细步骤</a>
+    </section>
+
+    <section class="step" id="materials">
+      <div class="step-head"><span class="badge">6</span><h2>材料、试剂与仪器</h2></div>
+      <div class="grid">
+        <div class="card">
+          <h3>主要材料</h3>
+          <ul>
+            <li>商品化 CoFe₂O₄ 纳米颗粒，作为磁性核心。</li>
+            <li>多巴胺盐酸盐，形成 PDA 包覆层。</li>
+            <li>IrCl₃ 或 H₂IrCl₆、NaBH₄，用于 Ir 原位负载。</li>
+            <li>5'-NH₂-C6-ssDNA capture probe，固定于 CoFe₂O₄@PDA@Ir 表面。</li>
+            <li>assistant probe，包含靶 RNA 互补区和 HCR initiator 区。</li>
+            <li>H1/H2 发夹 DNA 探针，用于表面 HCR 放大。</li>
+            <li>GII.4 synthetic RNA fragment 或提取病毒 RNA。</li>
+            <li>TMB、H₂O₂ 和乙酸-乙酸钠缓冲液。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>关键仪器与条件</h3>
+          <ul>
+            <li>磁力架、超声清洗器、恒温振荡器、pH 计。</li>
+            <li>酶标仪或 UV-Vis，用于 652 nm 读数。</li>
+            <li>RNase-free 离心管、枪头、水和操作区。</li>
+            <li>DLS/Zeta、TEM/SEM-EDS、XPS 用于材料验证。</li>
+          </ul>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>采购/准备项</th><th>建议规格</th><th>用途</th><th>优先级</th></tr></thead>
+        <tbody>
+          <tr><td>CoFe₂O₄ 纳米颗粒</td><td>商品化，约 40 nm 或供应商可提供粒径证明</td><td>磁性核心</td><td>必需</td></tr>
+          <tr><td>多巴胺盐酸盐</td><td>分析纯或生化级</td><td>PDA 包覆</td><td>必需</td></tr>
+          <tr><td>IrCl₃ 或 H₂IrCl₆</td><td>贵金属前驱体</td><td>Ir 负载</td><td>必需</td></tr>
+          <tr><td>NaBH₄</td><td>新鲜现配</td><td>还原 Ir 前驱体</td><td>必需</td></tr>
+          <tr><td>FAM-NH₂-C6-ssDNA</td><td>一端 FAM，一端 NH₂-C6 或等效设计</td><td>定量验证探针固定</td><td>强烈建议</td></tr>
+          <tr><td>NH₂-C6-ssDNA capture probe</td><td>20-30 nt，靶向 GII.4 RNA</td><td>正式识别探针</td><td>必需</td></tr>
+          <tr><td>assistant ssDNA probe</td><td>靶 RNA 互补区 + HCR initiator</td><td>桥接目标 RNA 与 HCR</td><td>必需</td></tr>
+          <tr><td>H1/H2 hairpin ssDNA</td><td>40-60 nt，按 initiator 设计</td><td>HCR 放大</td><td>必需</td></tr>
+          <tr><td>synthetic GII.4 RNA fragment</td><td>80-150 nt，覆盖 capture/assistant 位点</td><td>方法建立</td><td>必需</td></tr>
+          <tr><td>mismatch/random RNA</td><td>同长度或相近长度</td><td>特异性对照</td><td>必需</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="controls">
+      <div class="step-head"><span class="badge">7</span><h2>对照设计</h2></div>
+      <table>
+        <thead><tr><th>目的</th><th>对照</th><th>判断标准</th></tr></thead>
+        <tbody>
+          <tr><td>证明三层材料必要性</td><td>CoFe₂O₄、CoFe₂O₄@PDA、CoFe₂O₄@PDA@Ir</td><td>Ir 负载后 A652 催化信号增强或反应速率提高</td></tr>
+          <tr><td>证明探针可固定</td><td>FAM-capture DNA 固定于 CoFe₂O₄@PDA 与 CoFe₂O₄@PDA@Ir</td><td>三层材料上仍可检测到探针固定量</td></tr>
+          <tr><td>证明 HCR 触发特异性</td><td>完全互补 GII.4 RNA、单碱基错配 RNA、多碱基错配 RNA、random RNA</td><td>完全互补靶标引起的 ΔA652 大于错配和 random 对照</td></tr>
+          <tr><td>证明放大反应必要性</td><td>无 assistant probe、无 H1/H2、H1/H2 自发泄漏空白</td><td>缺少 assistant 或 H1/H2 时 ΔA652 明显降低，泄漏空白可控</td></tr>
+          <tr><td>证明 RNA 依赖性</td><td>RNase 处理靶标、未处理靶标</td><td>RNase 处理后信号变化减弱或消失</td></tr>
+          <tr><td>证明背景可控</td><td>无探针、无靶标、TMB/H₂O₂ 空白、无 Ir 对照</td><td>背景信号低且重复性可接受</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="decision-tree">
+      <div class="step-head"><span class="badge">8</span><h2>关键预实验判定路线</h2></div>
+      <p>本方案能否顺利推进，取决于五个连续判定点。每一阶段均设置明确放行标准，便于判断问题出在材料、探针固定还是核酸信号转导。</p>
+      <table>
+        <thead><tr><th>阶段</th><th>核心实验</th><th>通过表现</th><th>未通过时的调整</th></tr></thead>
+        <tbody>
+          <tr><td>材料第一关</td><td>CoFe₂O₄@PDA 包覆验证</td><td>粒径/Zeta 改变，N 1s 或 PDA 特征信号出现，磁响应保留</td><td>调整多巴胺浓度、pH 8.5 缓冲液和包覆时间</td></tr>
+          <tr><td>材料第二关</td><td>CoFe₂O₄@PDA@Ir 负载验证</td><td>EDS/XPS 检出 Ir，A652 高于 CoFe₂O₄@PDA，磁分离后活性保留</td><td>降低 Ir 前驱体和 NaBH₄ 强度，延长吸附时间，避免团聚</td></tr>
+          <tr><td>界面连接关</td><td>FAM-capture DNA 固定量</td><td>CoFe₂O₄@PDA@Ir 的固定量达到可测水平，random DNA 背景低</td><td>比较 NH₂-C6 与 SH-C6 探针，降低 Ir 负载，增加 Mg²⁺</td></tr>
+          <tr><td>活性保留关</td><td>探针固定前后 TMB/H₂O₂ 显色</td><td>固定后 A652 仍有稳定读数，孔间重复性可接受</td><td>降低探针密度，加入 spacer，缩短固定时间</td></tr>
+          <tr><td>检测成立关</td><td>完全互补 GII.4 RNA 触发表面 HCR，并与错配 RNA 对比</td><td>完全互补 GII.4 RNA 产生可重复 ΔA652，错配、random、无 assistant 和无 H1/H2 变化较小</td><td>重新设计 assistant/H1/H2，降低发夹泄漏，优化 Mg²⁺、温度和反应时间</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="timeline">
+      <div class="step-head"><span class="badge">9</span><h2>实验推进安排</h2></div>
+      <p>整个体系建议分阶段推进，先验证材料和界面连接，再进入核酸识别和比色检测，避免同时改变多个变量导致问题来源不清。</p>
+      <table>
+        <thead><tr><th>阶段</th><th>主要任务</th><th>输出结果</th><th>是否进入下一阶段</th></tr></thead>
+        <tbody>
+          <tr><td>第 1 阶段</td><td>CoFe₂O₄ 分散、PDA 包覆、Ir 负载梯度</td><td>材料照片、磁分离记录、A652 活性、基础表征</td><td>选择 1 个最优 Ir 负载条件</td></tr>
+          <tr><td>第 2 阶段</td><td>FAM-NH₂-ssDNA 固定量与活性保留</td><td>固定效率、洗涤稳定性、A652 保留率</td><td>确定 capture probe 浓度和固定时间</td></tr>
+          <tr><td>第 3 阶段</td><td>GII.4 RNA + assistant + H1/H2 的 HCR 可行性</td><td>完全互补与无靶标、无 assistant、无 H1/H2 对照的 ΔA652 差异</td><td>确定 HCR 是否可用于主检测</td></tr>
+          <tr><td>第 4 阶段</td><td>参数优化和标准曲线</td><td>最优 pH、TMB/H₂O₂、H1/H2 浓度、标准曲线和重复性</td><td>进入特异性和样品验证</td></tr>
+          <tr><td>第 5 阶段</td><td>错配、random RNA、基质加标和真实样品扩展</td><td>特异性、抗干扰、加标回收和方法适用性</td><td>形成论文数据框架</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="risk">
+      <div class="step-head"><span class="badge">10</span><h2>关键问题与优化策略</h2></div>
+      <table>
+        <thead><tr><th>关键问题</th><th>可能原因</th><th>优化策略</th></tr></thead>
+        <tbody>
+          <tr><td>HCR 泄漏背景高</td><td>H1/H2 发夹稳定性不足或 assistant probe 非特异吸附</td><td>重新设计发夹茎长和互补区，降低 H1/H2 浓度，增加洗涤和封闭</td></tr>
+          <tr><td>HCR 后信号变化不足</td><td>表面 HCR 层不够厚或距离 Ir 活性位点过远</td><td>提高 H1/H2 浓度，延长 HCR 时间，优化 Mg²⁺，调整 capture/assistant 位置</td></tr>
+          <tr><td>RNA 降解</td><td>RNase 污染</td><td>使用 RNase-free 耗材和水，设置 RNase 处理对照</td></tr>
+          <tr><td>Ir 覆盖过密</td><td>高金属负载造成 PDA 位点被遮挡</td><td>降低 Ir 前驱体浓度和还原剂用量，筛选分散颗粒状负载条件</td></tr>
+          <tr><td>探针固定后活性下降</td><td>核酸层遮挡 Ir 活性位点</td><td>降低探针密度，加入间隔臂，比较 NH₂-C6 与 SH-C6 固定方式</td></tr>
+          <tr><td>非特异吸附背景高</td><td>RNA 或蛋白残留吸附到颗粒表面</td><td>BSA/ssDNA 封闭，增加盐浓度和洗涤强度，优化杂交缓冲液</td></tr>
+          <tr><td>靶标设计不佳</td><td>RNA 二级结构强或序列保守性不足</td><td>选择 ORF1-ORF2 junction、RdRp 或 VP1 保守区域，进行 BLAST 和 Tm 评价</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="step" id="refs">
+      <div class="step-head"><span class="badge">11</span><h2>关键文献</h2></div>
+      <table>
+        <thead><tr><th>文献</th><th>DOI/链接</th><th>支撑内容</th></tr></thead>
+        <tbody>
+          <tr><td>Molecular Diagnostic Methods for Detection and Characterization of Human Noroviruses</td><td><a href="https://doi.org/10.2174/1874285801610010078" target="_blank">10.2174/1874285801610010078</a><a class="abstract-icon" href="abstracts.html#abs-10-2174-1874285801610010078" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 HuNoV 为正链 ssRNA 病毒，以及诺如病毒分子检测路线。</td></tr>
+          <tr><td>Detection of Norovirus RNA based on catalytic hairpin assembly and magnetic separation of DNA AgNCs</td><td><a href="https://doi.org/10.1016/j.molliq.2021.117870" target="_blank">10.1016/j.molliq.2021.117870</a><a class="abstract-icon" href="abstracts.html#abs-10-1016-j-molliq-2021-117870" target="_blank" title="查看中文摘要">摘</a></td><td>直接支撑 Norovirus RNA、磁分离和核酸放大检测路线。</td></tr>
+          <tr><td>DNA-mediated inhibition of peroxidase-like activities on platinum nanoparticles for colorimetric detection of nucleic acids</td><td><a href="https://doi.org/10.1016/j.bios.2017.02.025" target="_blank">10.1016/j.bios.2017.02.025</a><a class="abstract-icon" href="abstracts.html#abs-10-1016-j-bios-2017-02-025" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 DNA/核酸层可调控金属纳米酶 TMB/H₂O₂ 活性，为 HCR 核酸层引起 A652 变化提供相邻机制证据。</td></tr>
+          <tr><td>Facile synthesis of iridium nanoparticles with superior peroxidase-like activity</td><td><a href="https://doi.org/10.1016/j.snb.2016.11.145" target="_blank">10.1016/j.snb.2016.11.145</a><a class="pdf-icon" href="pdfs/Facile_synthesis_of_iridium_nanoparticles_with_superior_peroxidase_like_activity_for_colorimetric_determination_of_H2O2_and_xanthine.pdf" target="_blank" title="打开本地 PDF">PDF</a><a class="abstract-icon" href="abstracts.html#abs-10-1016-j-snb-2016-11-145" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 Ir 纳米酶催化 TMB/H₂O₂ 显色。</td></tr>
+          <tr><td>Mg²⁺-promoted high-efficiency DNA conjugation on polydopamine surfaces</td><td><a href="https://doi.org/10.1016/j.aca.2024.342382" target="_blank">10.1016/j.aca.2024.342382</a><a class="pdf-icon" href="pdfs/Mg2__promoted_high_efficiency_DNA_conjugation_on_polydopamine_surfaces_for_aptamer_based_ochratoxin_A_detection.pdf" target="_blank" title="打开本地 PDF">PDF</a><a class="abstract-icon" href="abstracts.html#abs-10-1016-j-aca-2024-342382" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 DNA probe 固定到 PDA 表面。</td></tr>
+          <tr><td>Palladium(0) nanoparticles supported on polydopamine coated CoFe₂O₄</td><td><a href="https://doi.org/10.1016/j.apcatb.2017.02.037" target="_blank">10.1016/j.apcatb.2017.02.037</a><a class="pdf-icon" href="pdfs/j.apcatb.2017.02.037.pdf" target="_blank" title="打开本地 PDF">PDF</a><a class="abstract-icon" href="abstracts.html#abs-10-1016-j-apcatb-2017-02-037" target="_blank" title="查看中文摘要">摘</a></td><td>直接支撑 CoFe₂O₄@PDA@贵金属三层材料构建和磁分离稳定性。</td></tr>
+          <tr><td>Synthesis and catalytic performance of polydopamine supported metal nanoparticles</td><td><a href="https://doi.org/10.1038/s41598-020-67458-9" target="_blank">10.1038/s41598-020-67458-9</a><a class="abstract-icon" href="abstracts.html#abs-10-1038-s41598-020-67458-9" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 PDA 对多种金属纳米颗粒的配位、还原和稳定作用。</td></tr>
+          <tr><td>Mussel-Inspired Surface Chemistry for Multifunctional Coatings</td><td><a href="https://doi.org/10.1126/science.1147241" target="_blank">10.1126/science.1147241</a><a class="pdf-icon" href="pdfs/science_1147241_pdf.pdf" target="_blank" title="打开本地 PDF">PDF</a><a class="abstract-icon" href="abstracts.html#abs-10-1126-science-1147241" target="_blank" title="查看中文摘要">摘</a></td><td>支撑 PDA 包覆商品化 CoFe₂O₄ 的界面改性基础。</td></tr>
+          <tr><td>Intrinsic peroxidase-like activity of ferromagnetic nanoparticles</td><td><a href="https://doi.org/10.1038/nnano.2007.260" target="_blank">10.1038/nnano.2007.260</a><a class="pdf-icon" href="pdfs/Intrinsic_peroxidase_like_activity_of_ferromagnetic_nanoparticles.pdf" target="_blank" title="打开本地 PDF">PDF</a><a class="abstract-icon" href="abstracts.html#abs-10-1038-nnano-2007-260" target="_blank" title="查看中文摘要">摘</a></td><td>支撑磁性纳米酶、磁分离和 TMB/H₂O₂ 比色读出基础。</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
