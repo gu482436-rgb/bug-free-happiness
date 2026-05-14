@@ -153,6 +153,7 @@
 
     <section class="step" id="probe-fix">
       <div class="step-head"><span class="badge">6</span><h2>氨基 ssDNA 固定验证</h2></div>
+      <p>氨基 ssDNA 固定的核心是 PDA 表面反应位点，而不是 CoFe₂O₄ 磁核本身。NH₂-C6-capture DNA 末端氨基可与 PDA 表面的醌结构发生 Schiff base 反应和 Michael 加成；C6 spacer 用于把识别序列从材料表面支撑出来。Ir 负载必须保持分散颗粒状，使 PDA 暴露区域仍可参与 ssDNA 固定。</p>
       <ol>
         <li>准备 CoFe₂O₄@PDA 和低/中/高 Ir 负载 CoFe₂O₄@PDA@Ir，材料浓度 0.2-0.5 mg/mL。</li>
         <li>分别加入 FAM-NH₂-C6-ssDNA，终浓度设置 50、100、200 nM。</li>
@@ -168,6 +169,16 @@
           <tr><td>固定量高，A652 下降严重</td><td>核酸层或过高探针密度遮挡 Ir 活性位点</td><td>降低探针浓度，加入更长 spacer，缩短固定时间</td></tr>
           <tr><td>固定量低，A652 高</td><td>Ir 覆盖过密或 PDA 暴露位点不足</td><td>降低 Ir 前驱体浓度，比较 SH-C6 探针</td></tr>
           <tr><td>random DNA 背景高</td><td>非特异吸附强</td><td>加强封闭，加入盐离子或优化 PBST 洗涤</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>验证项目</th><th>说明</th><th>判断方式</th></tr></thead>
+        <tbody>
+          <tr><td>FAM 固定量</td><td>直接证明 ssDNA 是否保留在材料表面</td><td>上清荧光降低，洗涤后颗粒荧光仍可测</td></tr>
+          <tr><td>Zeta 电位</td><td>DNA 磷酸骨架带负电，固定后表面电性应发生变化</td><td>与固定前 CoFe₂O₄@PDA@Ir 对比</td></tr>
+          <tr><td>XPS P 2p</td><td>DNA 中磷酸基团可作为表面元素证据</td><td>样品量充足时作为辅助证据</td></tr>
+          <tr><td>A652 活性保留</td><td>证明固定探针后 Ir 仍能催化 TMB/H₂O₂</td><td>固定前后 A652 对比，选择活性保留较好的条件</td></tr>
+          <tr><td>random DNA / 无 PDA 对照</td><td>排除单纯非特异吸附</td><td>对照固定量应低于 PDA-capture DNA 体系</td></tr>
         </tbody>
       </table>
     </section>

@@ -31,6 +31,9 @@
     a { color:#135ba1; }
     .pdf-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; margin-left:6px; border-radius:6px; background:#b42318; color:#fff !important; font-size:11px; font-weight:700; text-decoration:none; vertical-align:middle; letter-spacing:.2px; }
     .abstract-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; margin-left:6px; border-radius:6px; background:#1f5f8b; color:#fff !important; font-size:11px; font-weight:700; text-decoration:none; vertical-align:middle; letter-spacing:.2px; }
+    figure.scheme { margin:18px 0; border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+    figure.scheme img { display:block; width:100%; height:auto; }
+    figure.scheme figcaption { padding:10px 14px; font-size:14px; color:var(--muted); border-top:1px solid var(--line); background:#f8fafc; }
     @media (max-width:900px) { .grid { grid-template-columns:1fr; } header, main { padding-left:20px; padding-right:20px; } }
   </style>
 </head>
@@ -47,6 +50,7 @@
       <a href="#commercial">商品化 CoFe₂O₄</a>
       <a href="#pda">PDA 包覆</a>
       <a href="#ir-loading">Ir 负载</a>
+      <a href="#connection-mechanism">ssDNA 连接机制</a>
       <a href="#probe">探针固定</a>
       <a href="#hybridization">GII.4 RNA-HCR 检测</a>
       <a href="#readout">TMB/H₂O₂ 读数</a>
@@ -148,9 +152,37 @@
       </div>
     </section>
 
+    <section class="step" id="connection-mechanism">
+      <div class="step-head"><span class="badge">5</span><h2>NH₂-C6-ssDNA 与三层纳米酶的连接机制</h2></div>
+      <p>CoFe₂O₄@PDA@Ir 完成后，ssDNA 的固定重点不是依赖 CoFe₂O₄ 本身，而是依赖 PDA 中间层。PDA 表面含有醌、儿茶酚、胺/亚胺等活性结构，5'-NH₂-C6 修饰的 capture DNA 末端氨基可与 PDA 表面的醌结构发生 Schiff base 反应和 Michael 加成。C6 spacer 把 DNA 识别序列从材料表面支撑出来，减少表面空间位阻，有利于后续 GII.4 RNA 靶序列杂交。</p>
+      <figure class="scheme">
+        <img src="assets/ssdna_pda_ir_connection.svg" alt="NH₂-C6-ssDNA 与 CoFe₂O₄@PDA@Ir 连接机制图">
+        <figcaption>连接逻辑：Ir 需要控制为分散纳米颗粒负载，避免形成致密连续壳层；PDA 暴露位点与 NH₂-C6-ssDNA 反应完成探针固定，Ir 颗粒保留 TMB/H₂O₂ 催化读出能力。</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th>问题</th><th>解释</th><th>实验验证</th></tr></thead>
+        <tbody>
+          <tr><td>ssDNA 接在哪里</td><td>主要接在 CoFe₂O₄@PDA@Ir 表面仍暴露的 PDA 位点上，也可能存在少量非共价吸附或金属界面辅助吸附</td><td>比较 CoFe₂O₄、CoFe₂O₄@PDA、CoFe₂O₄@PDA@Ir 的 FAM-ssDNA 固定量</td></tr>
+          <tr><td>Ir 会不会挡住 PDA</td><td>如果 Ir 为分散颗粒状负载，PDA 仍有暴露区域；如果 Ir 形成致密连续层，则 ssDNA 固定会明显下降</td><td>低/中/高 Ir 负载梯度 + FAM-ssDNA 固定量 + A652 活性保留</td></tr>
+          <tr><td>Mg²⁺ 为什么有用</td><td>DNA 磷酸骨架带负电，Mg²⁺可屏蔽电荷排斥并促进 DNA 靠近 PDA 表面</td><td>设置有 Mg²⁺和无 Mg²⁺固定对照</td></tr>
+          <tr><td>固定后是否还能检测</td><td>探针层不能把 Ir 活性位点完全遮挡，否则 TMB/H₂O₂ 显色会变弱或不稳定</td><td>比较固定前后 A652 和重复性</td></tr>
+        </tbody>
+      </table>
+      <div class="card">
+        <h3>推荐验证流程</h3>
+        <ol>
+          <li>分别准备 CoFe₂O₄、CoFe₂O₄@PDA、低 Ir-CoFe₂O₄@PDA@Ir、中 Ir-CoFe₂O₄@PDA@Ir 和高 Ir-CoFe₂O₄@PDA@Ir。</li>
+          <li>加入 FAM-NH₂-C6-ssDNA，设置 50、100、200 nM 梯度；加入 MgCl₂ 至 5-20 mM。</li>
+          <li>室温避光振荡 1-4 h 后磁分离，测定上清荧光下降量和洗涤液荧光。</li>
+          <li>固定后重新测试 TMB/H₂O₂ A652，筛选“固定量足够、洗脱少、A652 仍稳定”的 Ir 负载条件。</li>
+          <li>用 random DNA、无 Mg²⁺、无 PDA 材料作为对照，排除单纯非特异吸附。</li>
+        </ol>
+      </div>
+    </section>
+
     <section class="step" id="probe">
-      <div class="step-head"><span class="badge">5</span><h2>capture DNA probe 固定到 CoFe₂O₄@PDA@Ir</h2></div>
-      <p>Ir 负载层应控制为分散颗粒状，使 PDA 仍有暴露区域。探针固定优先比较 NH₂-C6-capture DNA 与 SH-C6-capture DNA 两种方式，并用 FAM 标记探针定量固定量。</p>
+      <div class="step-head"><span class="badge">6</span><h2>capture DNA probe 固定到 CoFe₂O₄@PDA@Ir</h2></div>
+      <p>Ir 负载层应控制为分散颗粒状，使 PDA 仍有暴露区域。主路线优先采用 NH₂-C6-capture DNA，通过 PDA 表面醌结构相关的 Schiff base/Michael 加成完成固定；SH-C6-capture DNA 可作为备选连接方式。固定量必须用 FAM 标记探针定量验证。</p>
       <div class="card">
         <ol>
           <li>取 CoFe₂O₄@PDA@Ir 1 mL，0.2-0.5 mg/mL。</li>
@@ -170,7 +202,7 @@
     </section>
 
     <section class="step" id="hybridization">
-      <div class="step-head"><span class="badge">6</span><h2>HuNoV GII.4 RNA 靶序列触发表面 HCR 检测流程</h2></div>
+      <div class="step-head"><span class="badge">7</span><h2>HuNoV GII.4 RNA 靶序列触发表面 HCR 检测流程</h2></div>
       <div class="card">
         <ol>
           <li>取 CoFe₂O₄@PDA@Ir-capture probe 100 μL，材料浓度 0.1-0.2 mg/mL。</li>
@@ -193,7 +225,7 @@
     </section>
 
     <section class="step" id="readout">
-      <div class="step-head"><span class="badge">7</span><h2>TMB/H₂O₂ 显色读出</h2></div>
+      <div class="step-head"><span class="badge">8</span><h2>TMB/H₂O₂ 显色读出</h2></div>
       <div class="card">
         <ol>
           <li>配制乙酸-乙酸钠缓冲液，pH 3.5-5.5 梯度优化。</li>
@@ -207,7 +239,7 @@
     </section>
 
     <section class="step" id="controls">
-      <div class="step-head"><span class="badge">8</span><h2>必须设置的对照</h2></div>
+      <div class="step-head"><span class="badge">9</span><h2>必须设置的对照</h2></div>
       <table>
         <thead><tr><th>对照</th><th>组成</th><th>用途</th></tr></thead>
         <tbody>
@@ -224,7 +256,7 @@
     </section>
 
     <section class="step" id="rna">
-      <div class="step-head"><span class="badge">9</span><h2>RNA 操作要求</h2></div>
+      <div class="step-head"><span class="badge">10</span><h2>RNA 操作要求</h2></div>
       <ul>
         <li>所有 RNA 溶液、离心管和枪头采用 RNase-free 条件。</li>
         <li>RNA 分装保存，避免反复冻融。</li>
@@ -235,7 +267,7 @@
     </section>
 
     <section class="step" id="data">
-      <div class="step-head"><span class="badge">10</span><h2>数据处理</h2></div>
+      <div class="step-head"><span class="badge">11</span><h2>数据处理</h2></div>
       <ul>
         <li>主方案预期 HCR 层导致 A652 降低，使用 ΔA652 = A652,blank - A652,sample；若预实验显示 A652 升高，则改用 ΔA652 = A652,sample - A652,blank。</li>
         <li>以 synthetic GII.4 RNA fragment 浓度为横坐标，ΔA652 为纵坐标建立标准曲线。</li>
@@ -246,7 +278,7 @@
     </section>
 
     <section class="step" id="upgrade">
-      <div class="step-head"><span class="badge">11</span><h2>方法拓展路线</h2></div>
+      <div class="step-head"><span class="badge">12</span><h2>方法拓展路线</h2></div>
       <p>HCR 作为主检测放大策略。后续可在不改变 CoFe₂O₄@PDA@Ir 三层材料主线的前提下，进一步比较 CHA、HCR-CHA 联用，或在前端加入 RT-RPA/RT-LAMP 扩增，以适配更低拷贝数或复杂样品检测需求。</p>
       <table>
         <thead><tr><th>增强方式</th><th>操作思路</th><th>适用情况</th><th>注意事项</th></tr></thead>
@@ -260,7 +292,7 @@
     </section>
 
     <section class="step" id="safety">
-      <div class="step-head"><span class="badge">12</span><h2>安全与废液处理注意事项</h2></div>
+      <div class="step-head"><span class="badge">13</span><h2>安全与废液处理注意事项</h2></div>
       <table>
         <thead><tr><th>材料/过程</th><th>主要风险</th><th>操作要求</th></tr></thead>
         <tbody>

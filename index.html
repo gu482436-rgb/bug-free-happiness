@@ -53,6 +53,7 @@
     <nav>
       <a href="#decision">方案判断</a>
       <a href="#definitions">对象定义</a>
+      <a href="#immobilization">ssDNA连接</a>
       <a href="#principle">检测原理</a>
       <a href="#evidence">证据链</a>
       <a href="#workflow">实验流程</a>
@@ -124,8 +125,42 @@
       </div>
     </section>
 
+    <section class="step" id="immobilization">
+      <div class="step-head"><span class="badge">3</span><h2>ssDNA 与 CoFe₂O₄@PDA@Ir 的连接机制</h2></div>
+      <p>本体系中的 ssDNA 不是直接接到 CoFe₂O₄ 磁核上，也不是要求全部接到 Ir 纳米颗粒上，而是主要利用 PDA 层提供的表面反应位点进行固定。PDA 表面含有儿茶酚、醌、胺/亚胺等官能团；在弱碱或 Mg²⁺辅助条件下，5'-NH₂-C6 修饰的 ssDNA 末端氨基可与 PDA 表面的醌结构发生 Schiff base 反应和 Michael 加成，从而把捕获探针固定在三层纳米酶表面。</p>
+      <figure class="scheme">
+        <img src="assets/ssdna_pda_ir_connection.svg" alt="NH₂-C6-ssDNA 固定到 CoFe₂O₄@PDA@Ir 的机制图">
+        <figcaption>图示说明：PDA 是 ssDNA 固定的主要界面，Ir 应控制为分散颗粒状负载，使 PDA 暴露位点仍可与 NH₂-C6-ssDNA 连接；固定是否成功需用 FAM-ssDNA、Zeta/XPS 和 A652 活性保留共同验证。</figcaption>
+      </figure>
+      <table>
+        <thead><tr><th>结构/试剂</th><th>在连接过程中的作用</th><th>为什么重要</th></tr></thead>
+        <tbody>
+          <tr><td>CoFe₂O₄</td><td>提供磁响应和固相载体</td><td>使探针固定、杂交、HCR 和洗涤都可以通过磁分离完成</td></tr>
+          <tr><td>PDA</td><td>提供醌/儿茶酚等反应位点，与氨基 ssDNA 形成稳定界面连接</td><td>是 ssDNA 固定的核心层，也是 Ir 负载的锚定层</td></tr>
+          <tr><td>分散 Ir 纳米颗粒</td><td>提供 TMB/H₂O₂ 类过氧化物酶活性</td><td>必须避免形成完全致密壳层，否则会遮挡 PDA 位点并降低 ssDNA 固定量</td></tr>
+          <tr><td>NH₂-C6-ssDNA</td><td>末端 NH₂ 与 PDA 反应，C6 spacer 把识别序列从材料表面支撑出来</td><td>减少空间位阻，有利于后续与 GII.4 RNA 杂交</td></tr>
+          <tr><td>Mg²⁺</td><td>屏蔽 DNA 磷酸骨架负电荷，降低 DNA 与 PDA 表面的静电排斥</td><td>可提高 PDA 表面的 DNA 固定效率</td></tr>
+        </tbody>
+      </table>
+      <div class="grid">
+        <div class="card">
+          <h3>为什么 Ir 不一定阻挡 ssDNA 连接</h3>
+          <p>只要 Ir 是分散颗粒状负载，PDA 表面仍会保留可接触区域。ssDNA 固定发生在这些暴露的 PDA 区域及部分 Ir/PDA 交界区域，因此本方案要求先做低、中、高 Ir 负载梯度，而不是直接追求最高 Ir 含量。</p>
+        </div>
+        <div class="card">
+          <h3>必须证明的实验现象</h3>
+          <ul>
+            <li>FAM-NH₂-C6-ssDNA 孵育后，上清荧光降低，洗涤后颗粒仍保留荧光。</li>
+            <li>固定 ssDNA 后，Zeta 电位向更负方向变化，XPS 可尝试观察 P 2p 信号。</li>
+            <li>固定 ssDNA 后，CoFe₂O₄@PDA@Ir 的 TMB/H₂O₂ A652 活性仍可测。</li>
+            <li>random DNA 和无 PDA 对照的固定量应低于 capture ssDNA-PDA 体系。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="step" id="evidence">
-      <div class="step-head"><span class="badge">3</span><h2>文献证据链与本方案定位</h2></div>
+      <div class="step-head"><span class="badge">4</span><h2>文献证据链与本方案定位</h2></div>
       <p>本方案的可行性由材料构建、表面连接、纳米酶显色、HuNoV GII.4 RNA 核酸识别和 HCR 核酸放大五条证据链共同支撑。证据强度较高的部分包括 PDA 通用包覆、PDA 锚定贵金属、Ir 类过氧化物酶活性和 Norovirus RNA 核酸检测；本实验重点验证表面 HCR 层对 CoFe₂O₄@PDA@Ir 催化显色的调控幅度。</p>
       <table>
         <thead><tr><th>论证问题</th><th>已有文献能支撑什么</th><th>本实验需要证明什么</th><th>证据强度</th></tr></thead>
@@ -141,7 +176,7 @@
     </section>
 
     <section class="step" id="principle">
-      <div class="step-head"><span class="badge">4</span><h2>检测原理</h2></div>
+      <div class="step-head"><span class="badge">5</span><h2>检测原理</h2></div>
       <p>本方案采用单颗粒三层纳米酶-HCR 放大检测模式。商品化 CoFe₂O₄ 作为磁性核心，PDA 包覆后原位负载分散 Ir 纳米颗粒，形成 CoFe₂O₄@PDA@Ir。随后在仍暴露的 PDA/金属界面上固定 NH₂-C6 修饰的 ssDNA capture probe。GII.4 病毒 RNA 同时与 surface capture ssDNA 和 assistant ssDNA 杂交，使 assistant probe 携带的 HCR initiator 锚定在颗粒表面。加入 H1/H2 发夹探针后，表面 initiator 触发 HCR，形成厚核酸层，进而影响 TMB/H₂O₂ 与 Ir 表面的接触效率，表现为 A652 信号下降或稳定变化。</p>
       <figure class="scheme">
         <img src="assets/gii4_hcr_scheme.svg" alt="CoFe₂O₄@PDA@Ir-HCR GII.4 检测原理图">
@@ -161,7 +196,7 @@
     </section>
 
     <section class="step" id="workflow">
-      <div class="step-head"><span class="badge">5</span><h2>实验流程总览</h2></div>
+      <div class="step-head"><span class="badge">6</span><h2>实验流程总览</h2></div>
       <ol>
         <li>购买商品化 CoFe₂O₄ 纳米颗粒，进行分散性、磁响应和粒径确认。</li>
         <li>在 pH 8.5 Tris 条件下包覆 PDA，得到 CoFe₂O₄@PDA。</li>
@@ -178,7 +213,7 @@
     </section>
 
     <section class="step" id="materials">
-      <div class="step-head"><span class="badge">6</span><h2>材料、试剂与仪器</h2></div>
+      <div class="step-head"><span class="badge">7</span><h2>材料、试剂与仪器</h2></div>
       <div class="grid">
         <div class="card">
           <h3>主要材料</h3>
@@ -221,7 +256,7 @@
     </section>
 
     <section class="step" id="controls">
-      <div class="step-head"><span class="badge">7</span><h2>对照设计</h2></div>
+      <div class="step-head"><span class="badge">8</span><h2>对照设计</h2></div>
       <table>
         <thead><tr><th>目的</th><th>对照</th><th>判断标准</th></tr></thead>
         <tbody>
@@ -236,7 +271,7 @@
     </section>
 
     <section class="step" id="decision-tree">
-      <div class="step-head"><span class="badge">8</span><h2>关键预实验判定路线</h2></div>
+      <div class="step-head"><span class="badge">9</span><h2>关键预实验判定路线</h2></div>
       <p>本方案能否顺利推进，取决于五个连续判定点。每一阶段均设置明确放行标准，便于判断问题出在材料、探针固定还是核酸信号转导。</p>
       <table>
         <thead><tr><th>阶段</th><th>核心实验</th><th>通过表现</th><th>未通过时的调整</th></tr></thead>
@@ -251,7 +286,7 @@
     </section>
 
     <section class="step" id="timeline">
-      <div class="step-head"><span class="badge">9</span><h2>实验推进安排</h2></div>
+      <div class="step-head"><span class="badge">10</span><h2>实验推进安排</h2></div>
       <p>整个体系建议分阶段推进，先验证材料和界面连接，再进入核酸识别和比色检测，避免同时改变多个变量导致问题来源不清。</p>
       <table>
         <thead><tr><th>阶段</th><th>主要任务</th><th>输出结果</th><th>是否进入下一阶段</th></tr></thead>
@@ -266,7 +301,7 @@
     </section>
 
     <section class="step" id="risk">
-      <div class="step-head"><span class="badge">10</span><h2>关键问题与优化策略</h2></div>
+      <div class="step-head"><span class="badge">11</span><h2>关键问题与优化策略</h2></div>
       <table>
         <thead><tr><th>关键问题</th><th>可能原因</th><th>优化策略</th></tr></thead>
         <tbody>
@@ -282,7 +317,7 @@
     </section>
 
     <section class="step" id="refs">
-      <div class="step-head"><span class="badge">11</span><h2>关键文献</h2></div>
+      <div class="step-head"><span class="badge">12</span><h2>关键文献</h2></div>
       <table>
         <thead><tr><th>文献</th><th>DOI/链接</th><th>支撑内容</th></tr></thead>
         <tbody>
