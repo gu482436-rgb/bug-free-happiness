@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鱼骨源候选抗病毒肽 AI 筛选结果说明</title>
+  <style>
+    :root {
+      --ink: #17324d; --muted: #637589; --blue: #176b87;
+      --teal: #159895; --light: #f4f8fb; --line: #d9e5ee;
+      --green: #167d52; --green-bg: #eaf7f0; --amber: #a96800;
+      --amber-bg: #fff5df; --red: #a43838; --red-bg: #fff0f0;
+      --shadow: 0 10px 30px rgba(30, 69, 95, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: #eaf1f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    .page { max-width: 1180px; margin: 0 auto; background: white; }
+    header {
+      padding: 58px 7% 42px; color: white;
+      background: linear-gradient(135deg, #124e66, #16879a 65%, #27a8a0);
+    }
+    header h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 52px); }
+    .subtitle { font-size: 18px; opacity: .9; }
+    .tagline { margin-top: 24px; max-width: 820px; font-size: 16px; }
+    main { padding: 34px 6% 70px; }
+    section { margin: 42px 0 58px; scroll-margin-top: 20px; }
+    h2 { font-size: 29px; line-height: 1.3; margin: 0 0 18px; }
+    h2::after {
+      content: ""; display: block; width: 58px; height: 4px;
+      margin-top: 9px; border-radius: 4px; background: var(--teal);
+    }
+    h3 { margin: 0 0 9px; font-size: 20px; }
+    p { margin: 10px 0 16px; }
+    .executive-summary { margin-top: 0; }
+    .conclusion-card {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+      padding: 26px; border-radius: 18px; background: white;
+      box-shadow: var(--shadow); border: 1px solid var(--line);
+    }
+    .conclusion-side { padding: 18px 20px; border-radius: 14px; }
+    .completed { background: var(--green-bg); border-left: 6px solid var(--green); }
+    .pending { background: var(--amber-bg); border-left: 6px solid #e69b22; }
+    .conclusion-side h3 { font-size: 22px; }
+    .important-warning {
+      margin-top: 22px; padding: 20px 24px; border-radius: 14px;
+      background: var(--red-bg); border: 2px solid #edb7b7;
+      color: #762d2d; font-size: 18px; font-weight: 700;
+    }
+    .workflow {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 28px 18px; border-radius: 18px; background: var(--light);
+      border: 1px solid var(--line);
+    }
+    .flow-step {
+      position: relative; width: min(690px, 100%); text-align: center;
+      padding: 16px 20px 16px 62px; background: white; border-radius: 14px;
+      border: 1px solid #cfe0e9; box-shadow: 0 4px 12px rgba(20, 80, 100, .05);
+    }
+    .flow-step strong { display: block; font-size: 19px; }
+    .flow-step span { display: block; color: var(--muted); font-size: 14px; }
+    .flow-number {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      width: 34px; height: 34px; display: grid; place-items: center;
+      color: white; background: var(--teal); border-radius: 50%; font-weight: 800;
+    }
+    .flow-arrow { color: var(--teal); font-size: 28px; line-height: 1.3; }
+    .metric-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px; margin: 22px 0;
+    }
+    .metric {
+      padding: 19px 16px; border-radius: 14px; background: var(--light);
+      border: 1px solid var(--line); text-align: center;
+    }
+    .metric b { display: block; font-size: 30px; color: var(--blue); line-height: 1.2; }
+    .metric span { color: var(--muted); font-size: 14px; }
+    .module-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .module-card {
+      position: relative; padding: 25px; border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: 0 5px 18px rgba(35, 80, 100, .06);
+    }
+    .module-number {
+      position: absolute; right: 18px; top: 14px; color: #dce9ef;
+      font-size: 42px; font-weight: 900; line-height: 1;
+    }
+    .plain-box {
+      padding: 12px 14px; border-radius: 10px; background: #eef8f7;
+      color: #235c5a;
+    }
+    .table-wrap {
+      overflow-x: auto; border: 1px solid var(--line);
+      border-radius: 14px; background: white;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th {
+      position: sticky; top: 0; padding: 12px 11px; text-align: left;
+      white-space: nowrap; color: white; background: #176b87;
+    }
+    td { padding: 11px; border-bottom: 1px solid #e4edf2; vertical-align: top; }
+    tr:nth-child(even) td { background: #f8fbfd; }
+    tr:hover td { background: #eef8fa; }
+    code.sequence {
+      color: #0e6172; font-size: 14px; font-weight: 800;
+      letter-spacing: .5px; white-space: nowrap;
+    }
+    .level { padding: 3px 8px; border-radius: 999px; font-weight: 700; }
+    .level-high { color: #0d7047; background: #dff4e9; }
+    .level-medium { color: #8a5b00; background: #fff0cb; }
+    .level-low { color: #785d5d; background: #eee8e8; }
+    .explain-box {
+      margin-top: 16px; padding: 18px 20px; border-radius: 13px;
+      background: #fff8e8; border-left: 5px solid #e7a62b;
+    }
+    .file-table td:nth-child(3) { min-width: 340px; }
+    .path-note { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .file-link { color: #096b81; font-weight: 700; }
+    .status { display: inline-block; padding: 3px 9px; border-radius: 999px; }
+    .status-found { color: var(--green); background: var(--green-bg); }
+    .status-missing { color: var(--red); background: var(--red-bg); }
+    .muted { color: var(--muted); }
+    .missing-block { padding: 18px; color: var(--red); background: var(--red-bg); }
+    .two-column {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .check-card { padding: 22px; border-radius: 15px; border: 1px solid var(--line); }
+    .check-card.done { background: var(--green-bg); }
+    .check-card.not-done { background: var(--red-bg); }
+    .peptide-list { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0; }
+    .peptide-chip {
+      padding: 8px 12px; border-radius: 9px; color: white;
+      background: #176b87; font-family: ui-monospace, SFMono-Regular, monospace;
+      font-weight: 800; letter-spacing: .5px;
+    }
+    .next-step {
+      padding: 27px; border-radius: 18px;
+      background: linear-gradient(135deg, #edf8f6, #eef5fb);
+      border: 1px solid #c8e2e0;
+    }
+    .experiment-flow {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin-top: 18px;
+    }
+    .experiment-flow span {
+      padding: 9px 11px; border-radius: 9px; background: white;
+      border: 1px solid #cee0e6;
+    }
+    .experiment-flow b { color: var(--teal); }
+    footer {
+      padding: 28px 6%; color: #dcecf2; background: #173f52;
+      font-size: 13px;
+    }
+    @media (max-width: 800px) {
+      .conclusion-card, .module-grid, .two-column { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      header { padding: 42px 6% 32px; }
+      main { padding: 25px 4% 55px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { max-width: none; }
+      .file-link { color: black; text-decoration: none; }
+      section { break-inside: avoid; }
+    }
+    </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>鱼骨源候选抗病毒肽 AI 筛选结果说明</h1>
+    <div class="subtitle">In silico screening of fish bone-derived candidate antiviral peptides</div>
+    <p class="tagline">这份网页用尽量直白的语言说明：电脑已经筛出了哪些值得继续研究的肽序列，以及为什么这些结果还不能等同于“已经获得真实抗病毒肽”。</p>
+  </header>
+  <main>
+    <section class="executive-summary">
+      <h2>Executive Summary｜先看结论</h2>
+      <div class="conclusion-card">
+        <div class="conclusion-side completed">
+          <h3>目前已完成</h3>
+          <ol>
+            <li>大宗鱼种鱼骨胶原蛋白虚拟酶解肽库构建；</li>
+            <li>RF/XGBoost机器学习预测及AI4AVP外部验证初筛。</li>
+          </ol>
+        </div>
+        <div class="conclusion-side pending">
+          <h3>但尚未完成</h3>
+          <ul>
+            <li>真实抗病毒肽实物制备；</li>
+            <li>真实抗诺如病毒活性实验验证；</li>
+            <li>海藻酸钠涂层实验。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="important-warning">
+        关键提醒：尚未制备出真实抗病毒肽实物。当前结果为计算筛选候选肽，后续需要实验验证。现在得到的是候选肽序列，不是肽粉实物，也不能表述为“已经验证具有真实抗诺如病毒活性”。
+      </div>
+    </section>
+
+    <section>
+      <h2>整个筛选过程是怎样一步步缩小范围的？</h2>
+      <p><strong>核心思路：</strong>先用电脑把很长的胶原蛋白“切”成很多短肽，再用机器学习和外部预测工具逐层筛选，最后把最值得花钱做实验的候选肽数量降下来。</p>
+      <div class="workflow"><div class="flow-step"><div class="flow-number">1</div><strong>鱼骨胶原蛋白序列</strong><span>罗非鱼、鳕鱼、三文鱼</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">2</div><strong>虚拟酶解</strong><span>电脑模拟3种酶切割</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">3</div><strong>1408条候选肽</strong><span>去重并通过长度、分子量等过滤</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">4</div><strong>RF / XGBoost初筛</strong><span>判断每条肽像不像已知抗病毒肽</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">5</div><strong>Top100候选肽</strong><span>机器学习优先级较高的100条</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">6</div><strong>AI4AVP + ToxinPred + AllerCatPro</strong><span>抗病毒可能性、毒性、过敏原性外部筛查</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">7</div><strong>8条High级别候选肽</strong><span>同时满足较严格的综合条件</span></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-number">8</div><strong>推荐Top5用于后续实验</strong><span>先合成或制备，再做真实验证</span></div></div>
+    </section>
+
+    <section>
+      <h2>核心结果汇总</h2>
+      <p>下面数字来自项目中已经生成的CSV文件。它们表示计算筛选结果，不表示已经做出了相同数量的真实肽样品。</p>
+      <div class="metric-grid">
+        <div class="metric"><b>1408</b><span>虚拟酶解非重复候选肽</span></div>
+        <div class="metric"><b>32</b><span>Top100中AI4AVP Positive</span></div>
+        <div class="metric"><b>100</b><span>ToxinPred预测为Non-Toxin</span></div>
+        <div class="metric"><b>45</b><span>AllerCatPro无过敏原证据</span></div>
+        <div class="metric"><b>8</b><span>High级别候选肽</span></div>
+        <div class="metric"><b>61</b><span>Medium级别候选肽</span></div>
+        <div class="metric"><b>31</b><span>Low级别候选肽</span></div>
+        <div class="metric"><b>5</b><span>最终优先推荐候选肽</span></div>
+      </div>
+      <p><strong>如何理解：</strong>1408条只是“初始候选库”。Top100是机器学习认为更值得继续看的100条；8条High是同时满足较严格抗病毒潜力和安全筛查条件的候选；Top5是为了控制后续合成与实验成本而进一步优先推荐的5条。RandomForest测试集 ROC-AUC=0.939，F1=0.860；XGBoost测试集 ROC-AUC=0.914，F1=0.848。</p>
+    </section>
+
+    <section>
+      <h2>前两部分到底做了什么？</h2>
+      <div class="module-grid">
+        <article class="module-card"><div class="module-number">01</div><h3>蛋白序列准备</h3><p>项目使用了罗非鱼（Oreochromis niloticus）、鳕鱼（Gadus morhua）和三文鱼（Salmo salar）的胶原蛋白序列。胶原蛋白是鱼骨中重要的结构蛋白，也是后续虚拟切割的起点。</p><div class="plain-box"><strong>一句话理解：</strong> 先准备3类常见鱼的胶原蛋白“原材料序列”。</div></article>
+        <article class="module-card"><div class="module-number">02</div><h3>虚拟酶解肽库</h3><p>虚拟酶解不是在实验室真正加酶，而是让电脑按照Trypsin、Chymotrypsin和Pepsin的切割规律，模拟把长胶原蛋白切成短肽。经过长度、分子量、非法氨基酸和重复序列过滤后，得到1408条非重复候选肽。</p><div class="plain-box"><strong>一句话理解：</strong> 电脑先模拟切割，生成一份可供筛选的“短肽名单”。</div></article>
+        <article class="module-card"><div class="module-number">03</div><h3>RF与XGBoost机器学习预测</h3><p>Random Forest（随机森林，RF）和XGBoost是两种机器学习分类模型。它们先从2350条带有0/1标签的抗病毒肽训练数据中学习“抗病毒肽在序列组成上通常长什么样”，再给1408条鱼骨来源候选肽打分。两个模型的平均概率用于初步排序。</p><div class="plain-box"><strong>一句话理解：</strong> 像让两个不同的计算机评委分别打分，再取综合意见。</div></article>
+        <article class="module-card"><div class="module-number">04</div><h3>外部验证与安全筛查</h3><p>AI4AVP用于再次判断候选序列是否可能是抗病毒肽；ToxinPred用于预测潜在毒性；AllerCatPro用于检查是否存在过敏原性证据；PeptideRanker因网页/API不可用，本阶段统一标记为NA，不影响已经完成的综合筛选。</p><div class="plain-box"><strong>一句话理解：</strong> 不仅要“可能有效”，还要优先避开可能有毒或有过敏风险的序列。</div></article>
+        <article class="module-card"><div class="module-number">05</div><h3>最终候选肽</h3><p>综合机器学习概率、AI4AVP结果、ToxinPred结果和AllerCatPro结果后，100条候选中有8条达到High级别，并进一步优先推荐5条较适合进入后续实验的候选肽。</p><div class="plain-box"><strong>一句话理解：</strong> 把有限实验经费优先投入最值得验证的少数序列。</div></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Top5：最优先进入后续实验的5条候选肽</h2>
+      <div class="peptide-list"><span class="peptide-chip">EVDSTLKSL</span><span class="peptide-chip">NSQIENL</span><span class="peptide-chip">VENIR</span><span class="peptide-chip">NTQIENL</span><span class="peptide-chip">TLTQTVENIR</span></div>
+      <div class="table-wrap"><table><thead><tr><th>推荐顺序</th><th>原Top100排名</th><th>肽段编号</th><th>候选序列</th><th>长度/aa</th><th>分子量/Da</th><th>机器学习平均概率</th><th>AI4AVP分数</th><th>毒性预测</th><th>过敏原性证据</th><th>推荐级别</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>65</td><td>PEP000204</td><td><code class="sequence">EVDSTLKSL</code></td><td>9</td><td>991.0937</td><td>0.8938</td><td>0.8342</td><td>Non-Toxin</td><td>no evidence</td><td><span class="level level-high">High</span></td></tr><tr><td><strong>2</strong></td><td>46</td><td>PEP001031</td><td><code class="sequence">NSQIENL</code></td><td>7</td><td>816.8562</td><td>0.9014</td><td>0.8228</td><td>Non-Toxin</td><td>no evidence</td><td><span class="level level-high">High</span></td></tr><tr><td><strong>3</strong></td><td>64</td><td>PEP001363</td><td><code class="sequence">VENIR</code></td><td>5</td><td>629.7062</td><td>0.8939</td><td>0.8220</td><td>Non-Toxin</td><td>no evidence</td><td><span class="level level-high">High</span></td></tr><tr><td><strong>4</strong></td><td>7</td><td>PEP001045</td><td><code class="sequence">NTQIENL</code></td><td>7</td><td>830.8828</td><td>0.9335</td><td>0.8098</td><td>Non-Toxin</td><td>no evidence</td><td><span class="level level-high">High</span></td></tr><tr><td><strong>5</strong></td><td>10</td><td>PEP001321</td><td><code class="sequence">TLTQTVENIR</code></td><td>10</td><td>1174.3047</td><td>0.9287</td><td>0.6427</td><td>Non-Toxin</td><td>no evidence</td><td><span class="level level-high">High</span></td></tr></tbody></table></div>
+      <div class="explain-box">
+        <strong>通俗解释：</strong>这5条肽不是已经做出来的肽粉，而是通过计算筛选得到的候选序列。后续需要送公司合成，或从鱼骨酶解产物中制备和鉴定，才能进入真实实验。表中的“推荐顺序”是当前Top5文件中的展示顺序；“原Top100排名”是它们在更早一步Top100名单中的编号，两者不是同一个概念。
+      </div>
+    </section>
+
+    <section>
+      <h2>Top20：用于扩大验证范围的优先候选集</h2>
+      <p>Top20包含8条High候选，并用下一优先级的Medium候选补足到20条。这个表适合在Top5验证不理想、或经费允许扩大合成数量时使用。表格可以横向滚动。</p>
+      <div class="table-wrap"><table><thead><tr><th>原Top100排名</th><th>肽段编号</th><th>候选序列</th><th>长度/aa</th><th>分子量/Da</th><th>机器学习平均概率</th><th>AI4AVP结果</th><th>AI4AVP分数</th><th>毒性预测</th><th>过敏原性证据</th><th>综合分数</th><th>推荐级别</th></tr></thead><tbody><tr><td>96</td><td>PEP000291</td><td><code class="sequence">GATGAAGPRGPPGDAGR</code></td><td>17</td><td>1464.5430</td><td>0.8773</td><td>Positive</td><td>0.9977</td><td>Non-Toxin</td><td>no evidence</td><td>0.9441</td><td><span class="level level-high">High</span></td></tr><tr><td>43</td><td>PEP001322</td><td><code class="sequence">TLTQTVENIREPEGSQK</code></td><td>17</td><td>1930.0780</td><td>0.9021</td><td>Positive</td><td>0.8895</td><td>Non-Toxin</td><td>no evidence</td><td>0.9228</td><td><span class="level level-high">High</span></td></tr><tr><td>7</td><td>PEP001045</td><td><code class="sequence">NTQIENL</code></td><td>7</td><td>830.8828</td><td>0.9335</td><td>Positive</td><td>0.8098</td><td>Non-Toxin</td><td>no evidence</td><td>0.9130</td><td><span class="level level-high">High</span></td></tr><tr><td>65</td><td>PEP000204</td><td><code class="sequence">EVDSTLKSL</code></td><td>9</td><td>991.0937</td><td>0.8938</td><td>Positive</td><td>0.8342</td><td>Non-Toxin</td><td>no evidence</td><td>0.9025</td><td><span class="level level-high">High</span></td></tr><tr><td>46</td><td>PEP001031</td><td><code class="sequence">NSQIENL</code></td><td>7</td><td>816.8562</td><td>0.9014</td><td>Positive</td><td>0.8228</td><td>Non-Toxin</td><td>no evidence</td><td>0.9025</td><td><span class="level level-high">High</span></td></tr><tr><td>64</td><td>PEP001363</td><td><code class="sequence">VENIR</code></td><td>5</td><td>629.7062</td><td>0.8939</td><td>Positive</td><td>0.8220</td><td>Non-Toxin</td><td>no evidence</td><td>0.8989</td><td><span class="level level-high">High</span></td></tr><tr><td>1</td><td>PEP000989</td><td><code class="sequence">MNDRDNEVDATLKTL</code></td><td>15</td><td>1734.8826</td><td>0.9525</td><td>Positive</td><td>0.6562</td><td>Non-Toxin</td><td>no evidence</td><td>0.8755</td><td><span class="level level-high">High</span></td></tr><tr><td>10</td><td>PEP001321</td><td><code class="sequence">TLTQTVENIR</code></td><td>10</td><td>1174.3047</td><td>0.9287</td><td>Positive</td><td>0.6427</td><td>Non-Toxin</td><td>no evidence</td><td>0.8608</td><td><span class="level level-high">High</span></td></tr><tr><td>40</td><td>PEP000202</td><td><code class="sequence">EVDATIKSLNTQIENL</code></td><td>16</td><td>1787.9618</td><td>0.9032</td><td>Positive</td><td>0.9999</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8064</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>98</td><td>PEP000201</td><td><code class="sequence">EVDATIKSLNSQIENL</code></td><td>16</td><td>1773.9352</td><td>0.8762</td><td>Positive</td><td>0.9999</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7943</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>41</td><td>PEP001170</td><td><code class="sequence">RAKDYEVDATIKSL</code></td><td>14</td><td>1608.7908</td><td>0.9031</td><td>Positive</td><td>0.9530</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7923</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>28</td><td>PEP000073</td><td><code class="sequence">AVLLQGSNDVELR</code></td><td>13</td><td>1413.5755</td><td>0.9114</td><td>Positive</td><td>0.9257</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7879</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>26</td><td>PEP000079</td><td><code class="sequence">AVVLQGSNDVELR</code></td><td>13</td><td>1399.5489</td><td>0.9135</td><td>Positive</td><td>0.9056</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7828</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>33</td><td>PEP001249</td><td><code class="sequence">SLNTQIENLLSPEGSR</code></td><td>16</td><td>1757.8961</td><td>0.9088</td><td>Positive</td><td>0.8953</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7776</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>71</td><td>PEP001250</td><td><code class="sequence">SLNTQIENLLSPEGSRK</code></td><td>17</td><td>1886.0684</td><td>0.8911</td><td>Positive</td><td>0.9017</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7715</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>11</td><td>PEP001251</td><td><code class="sequence">SLNTQIENLLTPEGSR</code></td><td>16</td><td>1771.9227</td><td>0.9284</td><td>Positive</td><td>0.8451</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7713</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>29</td><td>PEP001049</td><td><code class="sequence">NVLEDGCTSHTGEW</code></td><td>14</td><td>1547.6017</td><td>0.9105</td><td>Positive</td><td>0.8453</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7633</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>49</td><td>PEP001120</td><td><code class="sequence">PIIDIAPMDVGAADQEF</code></td><td>17</td><td>1802.0097</td><td>0.9003</td><td>Positive</td><td>0.8579</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7625</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>36</td><td>PEP001252</td><td><code class="sequence">SLNTQIENLLTPEGSRK</code></td><td>17</td><td>1900.0950</td><td>0.9054</td><td>Positive</td><td>0.8437</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7605</td><td><span class="level level-medium">Medium</span></td></tr><tr><td>80</td><td>PEP001288</td><td><code class="sequence">SVLEDGCTSHTGTW</code></td><td>14</td><td>1492.5663</td><td>0.8840</td><td>Positive</td><td>0.8500</td><td>Non-Toxin</td><td>strong evidence</td><td>0.7528</td><td><span class="level level-medium">Medium</span></td></tr></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>Top100、Top20、Top5分别是什么意思？</h2>
+      <div class="module-grid">
+        <article class="module-card"><h3>Top100</h3><p>从1408条虚拟酶解肽中，根据RF和XGBoost预测结果优先挑出的100条。它们进入AI4AVP、ToxinPred和AllerCatPro进一步筛查。</p></article>
+        <article class="module-card"><h3>Top20</h3><p>综合机器学习、外部抗病毒预测和安全性预测后，优先级更高的一组候选。适合做扩展实验名单。</p></article>
+        <article class="module-card"><h3>Top5</h3><p>在High候选中进一步考虑序列长度、分子量、AI4AVP、安全性和来源等因素后，优先推荐进入合成与实验验证的5条。</p></article>
+        <article class="module-card"><h3>不是“最终证明”</h3><p>“Top”只表示计算排序靠前，不表示真实活性一定更强。真实效果必须通过合成、纯度确认、剂量实验和病毒模型验证。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>关键文件一览：点击即可查看原始结果</h2>
+      <p>所有链接均为相对于本HTML文件的本地路径。只要整个项目文件夹结构不变，双击HTML后即可点击打开这些文件。缺失文件会明确标记为“未找到”。</p>
+      <div class="table-wrap"><table class="file-table"><thead><tr><th>模块</th><th>文件名</th><th>用途解释</th><th>是否存在</th><th>点击打开</th></tr></thead><tbody><tr><td>模块1：蛋白序列准备</td><td><code>protein_sequences_checked.fasta</code><div class="path-note">01_protein_sequences/protein_sequences_checked.fasta</div></td><td>用于虚拟酶解的6条鱼类胶原蛋白序列，包含罗非鱼、鳕鱼和三文鱼。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="01_protein_sequences/protein_sequences_checked.fasta" target="_blank">点击打开</a></td></tr><tr><td>模块1：蛋白序列准备</td><td><code>protein_sources_checked.csv</code><div class="path-note">01_protein_sequences/protein_sources_checked.csv</div></td><td>蛋白序列来源和数据库信息的核对表。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="01_protein_sequences/protein_sources_checked.csv" target="_blank">点击打开</a></td></tr><tr><td>模块1：蛋白序列准备</td><td><code>sequence_check_summary.csv</code><div class="path-note">01_protein_sequences/sequence_check_summary.csv</div></td><td>蛋白序列格式、长度和完整性检查汇总。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="01_protein_sequences/sequence_check_summary.csv" target="_blank">点击打开</a></td></tr><tr><td>模块2：虚拟酶解</td><td><code>peptide_library.csv</code><div class="path-note">02_virtual_digestion/peptide_library.csv</div></td><td>1408条虚拟酶解候选肽的完整肽库，包含序列、来源和理化性质。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="02_virtual_digestion/peptide_library.csv" target="_blank">点击打开</a></td></tr><tr><td>模块2：虚拟酶解</td><td><code>peptide_library.fasta</code><div class="path-note">02_virtual_digestion/peptide_library.fasta</div></td><td>以FASTA格式保存的1408条候选肽，适合序列软件读取。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="02_virtual_digestion/peptide_library.fasta" target="_blank">点击打开</a></td></tr><tr><td>模块2：虚拟酶解</td><td><code>digestion_summary.csv</code><div class="path-note">02_virtual_digestion/digestion_summary.csv</div></td><td>按鱼种、胶原蛋白基因和酶统计虚拟酶解产生及过滤后的肽段数量。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="02_virtual_digestion/digestion_summary.csv" target="_blank">点击打开</a></td></tr><tr><td>模块2：虚拟酶解</td><td><code>run_log.txt</code><div class="path-note">02_virtual_digestion/run_log.txt</div></td><td>虚拟酶解运行日志，记录输入蛋白、酶切数量和最终肽库数量。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="02_virtual_digestion/run_log.txt" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>avp_training_dataset_checked.csv</code><div class="path-note">03_avp_model/avp_training_dataset_checked.csv</div></td><td>用于训练抗病毒肽二分类模型的2350条已标注序列。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/avp_training_dataset_checked.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>model_metrics.csv</code><div class="path-note">03_avp_model/model_metrics.csv</div></td><td>RF和XGBoost模型在独立测试集上的准确率、F1、ROC-AUC和MCC等性能。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/model_metrics.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>cross_validation_results.csv</code><div class="path-note">03_avp_model/cross_validation_results.csv</div></td><td>5折交叉验证结果，用于检查模型在不同数据划分下是否稳定。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/cross_validation_results.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>feature_importance.csv</code><div class="path-note">03_avp_model/feature_importance.csv</div></td><td>RF和XGBoost认为较重要的氨基酸组成、二肽组成和基础序列特征。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/feature_importance.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>avp_prediction_results.csv</code><div class="path-note">03_avp_model/avp_prediction_results.csv</div></td><td>1408条鱼骨来源候选肽的RF、XGBoost和平均抗病毒肽概率。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/avp_prediction_results.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>top_candidate_peptides.csv</code><div class="path-note">03_avp_model/top_candidate_peptides.csv</div></td><td>从1408条候选肽中优先整理出的Top100机器学习候选肽。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/top_candidate_peptides.csv" target="_blank">点击打开</a></td></tr><tr><td>模块3：机器学习预测</td><td><code>training_run_log.txt</code><div class="path-note">03_avp_model/training_run_log.txt</div></td><td>模型训练、交叉验证、预测和输出文件的完整运行记录。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="03_avp_model/training_run_log.txt" target="_blank">点击打开</a></td></tr><tr><td>模块4：外部验证与安全筛查</td><td><code>top100_for_avp_validation.csv</code><div class="path-note">04_external_prediction/top100_for_avp_validation.csv</div></td><td>送入外部预测工具的Top100候选肽及其机器学习结果。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/top100_for_avp_validation.csv" target="_blank">点击打开</a></td></tr><tr><td>模块4：外部验证与安全筛查</td><td><code>external_prediction_template.csv</code><div class="path-note">04_external_prediction/external_prediction_template.csv</div></td><td>AI4AVP、毒性和过敏原性结果的回填模板。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/external_prediction_template.csv" target="_blank">点击打开</a></td></tr><tr><td>模块4：外部验证与安全筛查</td><td><code>AI4AVP_results.csv</code><div class="path-note">04_external_prediction/AI4AVP_results.csv</div></td><td>AI4AVP对Top100是否可能为抗病毒肽的外部预测结果。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/AI4AVP_results.csv" target="_blank">点击打开</a></td></tr><tr><td>模块4：外部验证与安全筛查</td><td><code>ToxinPred_results.csv</code><div class="path-note">04_external_prediction/ToxinPred_results.csv</div></td><td>ToxinPred对Top100潜在毒性的预测结果。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/ToxinPred_results.csv" target="_blank">点击打开</a></td></tr><tr><td>模块4：外部验证与安全筛查</td><td><code>AllerCatPro_results.csv</code><div class="path-note">04_external_prediction/AllerCatPro_results.csv</div></td><td>AllerCatPro对Top100是否存在过敏原性证据的预测结果。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/AllerCatPro_results.csv" target="_blank">点击打开</a></td></tr><tr><td>模块5：最终候选肽</td><td><code>final_integrated_candidates.csv</code><div class="path-note">04_external_prediction/final_integrated_candidates.csv</div></td><td>机器学习、AI4AVP、毒性和过敏原性结果的100条完整整合表。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/final_integrated_candidates.csv" target="_blank">点击打开</a></td></tr><tr><td>模块5：最终候选肽</td><td><code>final_selection_summary.csv</code><div class="path-note">04_external_prediction/final_selection_summary.csv</div></td><td>Top100外部验证、分级和安全性筛查的数量汇总。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/final_selection_summary.csv" target="_blank">点击打开</a></td></tr><tr><td>模块5：最终候选肽</td><td><code>final_top20_candidates.csv</code><div class="path-note">04_external_prediction/final_top20_candidates.csv</div></td><td>综合抗病毒潜力与安全性后整理的20条优先候选肽。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/final_top20_candidates.csv" target="_blank">点击打开</a></td></tr><tr><td>模块5：最终候选肽</td><td><code>final_top5_candidates.csv</code><div class="path-note">04_external_prediction/final_top5_candidates.csv</div></td><td>优先推荐进入合成和实验验证的5条候选肽。</td><td><span class="status status-found">已找到</span></td><td><a class="file-link" href="04_external_prediction/final_top5_candidates.csv" target="_blank">点击打开</a></td></tr></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>哪些工作已经完成，哪些还没有完成？</h2>
+      <div class="two-column">
+        <div class="check-card done"><h3>✓ 已完成</h3><ul><li>虚拟酶解肽库构建</li><li>RF/XGBoost模型训练</li><li>Top100候选肽筛选</li><li>AI4AVP外部验证</li><li>ToxinPred毒性预测</li><li>AllerCatPro过敏原性预测</li><li>Top20和Top5候选肽整理</li></ul></div>
+        <div class="check-card not-done"><h3>✗ 未完成</h3><ul><li>真实肽粉合成</li><li>鱼骨真实酶解制备</li><li>LC-MS/MS鉴定</li><li>NoV-VLP或MNV抗病毒验证</li><li>海藻酸钠涂层实验</li><li>三文鱼品质评价</li></ul></div>
+      </div>
+      <div class="important-warning">
+        因此，目前不能写成“已获得具有抗诺如病毒活性的鱼骨肽”。更准确的说法是：“通过计算筛选获得了值得进一步合成与实验验证的鱼骨来源候选抗病毒肽序列。”
+      </div>
+    </section>
+
+    <section>
+      <h2>下一步怎么做最稳妥？</h2>
+      <div class="next-step">
+        <h3>优先方案：先合成Top3</h3>
+        <div class="peptide-list">
+          <span class="peptide-chip">NTQIENL</span>
+          <span class="peptide-chip">EVDSTLKSL</span>
+          <span class="peptide-chip">NSQIENL</span>
+        </div>
+        <p>这是控制成本、尽快获得真实实验信号的稳妥方案。</p>
+        <h3>经费允许：合成Top5</h3>
+        <div class="peptide-list">
+          <span class="peptide-chip">NTQIENL</span>
+          <span class="peptide-chip">EVDSTLKSL</span>
+          <span class="peptide-chip">NSQIENL</span>
+          <span class="peptide-chip">VENIR</span>
+          <span class="peptide-chip">TLTQTVENIR</span>
+        </div>
+        <p>另一条路线是进行鱼骨真实酶解，制备肽混合物，再通过LC-MS/MS确认混合物中是否含有这些目标序列。</p>
+        <div class="experiment-flow">
+          <span>肽溶液制备</span><b>→</b>
+          <span>海藻酸钠/Ca²⁺涂层构建</span><b>→</b>
+          <span>三文鱼刺身表面处理</span><b>→</b>
+          <span>NoV-VLP或MNV模型验证</span><b>→</b>
+          <span>色差、质构、持水力、TVB-N和菌落总数评价</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>阅读本报告时需要记住的限制</h2>
+      <ul>
+        <li>机器学习和外部预测工具只能用于缩小实验范围，不能替代湿实验。</li>
+        <li>“Non-Toxin”或“no evidence”是计算预测，不等于已经完成动物或人体安全评价。</li>
+        <li>AI4AVP Positive表示序列更像潜在抗病毒肽，不代表已经证实能抑制诺如病毒。</li>
+        <li>PeptideRanker当前不可用并标记为NA；现有综合结果没有使用该分数。</li>
+        <li>候选肽在真实食品体系中的稳定性、溶解度、味道和涂层相容性仍需实验确认。</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    本报告由项目现有本地文件自动生成，未联网、未重新训练模型、未重新计算预测结果。报告文件与项目目录保持在一起时，文件导航链接可直接使用。
+  </footer>
+</div>
+</body>
+</html>
