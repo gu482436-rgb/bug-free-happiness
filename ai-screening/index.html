@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="./">
+<title>鱼骨源候选抗病毒肽 AI 筛选汇报</title>
+<style>
+    :root{--ink:#1f2937;--muted:#6b7280;--line:#d8dee8;--blue:#1f4f82;--pale:#f5f8fc;--green:#0f766e;--amber:#92400e;--red:#991b1b}
+    *{box-sizing:border-box} body{margin:0;background:#eef3f8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+    .page{max-width:1180px;margin:0 auto;background:white;min-height:100vh;padding:34px 42px 60px;box-shadow:0 10px 35px rgba(15,23,42,.08)}
+    h1{font-size:34px;line-height:1.25;margin:0;color:#12355b} h2{font-size:24px;margin:34px 0 14px;color:#12355b;border-left:6px solid var(--blue);padding-left:12px}
+    h3{font-size:18px;margin:20px 0 8px;color:#12355b}.subtitle{color:var(--muted);font-size:17px;margin-top:6px}.meta{color:var(--muted);font-size:14px;margin-top:10px}
+    .card{border:1px solid var(--line);background:#fff;border-radius:14px;padding:18px;margin:16px 0}.hero{background:linear-gradient(135deg,#e8f1fb,#f8fbff);border-color:#c9d9ed}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.metric{background:var(--pale);border:1px solid var(--line);border-radius:12px;padding:14px}.metric .num{font-size:28px;font-weight:750;color:var(--blue)}
+    .ok{border-left:6px solid var(--green)}.warn{border-left:6px solid var(--amber)}.limit{border-left:6px solid var(--red);background:#fff7f7}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}.step{padding:10px 12px;border:1px solid #cbd5e1;border-radius:999px;background:#f8fafc}.arrow{color:var(--muted);font-weight:700}
+    table{border-collapse:collapse;width:100%;font-size:14px} th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top} th{background:#eef4fb;color:#12355b;text-align:left}.table-wrap{overflow-x:auto;margin:12px 0} code{background:#eef2f7;padding:2px 5px;border-radius:5px}
+    .note{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}.missing{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px}.muted{color:var(--muted)} a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+    @media(max-width:800px){.page{padding:22px}.grid,.grid2{grid-template-columns:1fr}.flow{display:block}.arrow{display:block;margin:5px 0}}
+    </style>
+</head>
+<body>
+<main class="page">
+<h1>鱼骨源候选抗病毒肽 AI 筛选汇报</h1>
+<div class="subtitle">Fish bone-derived candidate antiviral peptide screening by virtual digestion and machine learning</div>
+<div class="meta">本报告根据项目中已保存的 V1 与 V2-A 结果自动生成；未重新训练模型、未重新酶解、未重新访问外部预测网页。</div>
+
+<section class="card hero">
+<h2>一页看懂结论</h2>
+<div class="grid2">
+<div class="card ok"><h3>目前已经完成</h3>
+<ol><li>V1 初始虚拟酶解肽库构建</li><li>V1 RF/XGBoost 机器学习预测</li><li>V1 AI4AVP、ToxinPred、AllerCatPro 外部验证</li><li>V1 Top20 / Top5 候选肽筛选</li><li>V2-A 扩展肽库构建</li><li>V2-A RF/XGBoost prediction-only 预测</li><li>V2-A AI4AVP、ToxinPred、AllerCatPro 外部验证</li><li>V2-A 实验优先 Top5 候选肽筛选</li></ol></div>
+<div class="card warn"><h3>目前尚未完成</h3>
+<ol><li>真实抗病毒肽实物制备</li><li>鱼骨真实酶解制备</li><li>肽粉合成</li><li>NoV-VLP 或 MNV 抗病毒实验</li><li>海藻酸钠涂层实验</li><li>三文鱼刺身品质评价</li></ol></div>
+</div>
+<div class="card limit"><strong>必须强调：</strong>当前结果为计算筛选得到的候选肽序列，不代表已经证明其具有真实抗诺如病毒活性。尚未制备出真实抗病毒肽实物，尚未完成真实抗诺如病毒实验验证。</div>
+</section>
+
+<section>
+<h2>课题背景：这件事到底在做什么？</h2>
+<p>本课题想解决的问题是：是否可以从鱼骨胶原蛋白中筛选出潜在抗病毒肽，并把这些候选肽加入海藻酸钠可食用涂层，用于三文鱼刺身表面的诺如病毒污染控制。</p>
+<div class="flow"><span class="step">鱼骨胶原蛋白</span><span class="arrow">→</span><span class="step">电脑模拟酶解</span><span class="arrow">→</span><span class="step">得到很多小肽</span><span class="arrow">→</span><span class="step">AI判断像不像抗病毒肽</span><span class="arrow">→</span><span class="step">安全性筛查</span><span class="arrow">→</span><span class="step">选出实验候选肽</span></div>
+<p>通俗地说，现在做的是“先在电脑里筛一遍”，把最值得花钱合成、最值得做实验的候选序列挑出来。</p>
+</section>
+
+<section>
+<h2>V1 和 V2-A 的区别</h2>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>V1 初始版本</th><th>V2-A 扩展版本</th></tr></thead><tbody>
+<tr><td>鱼种</td><td>3种</td><td>8种</td></tr>
+<tr><td>蛋白序列</td><td>6条</td><td>15条</td></tr>
+<tr><td>虚拟酶</td><td>3种</td><td>8种</td></tr>
+<tr><td>非重复肽段</td><td>1408条</td><td>4515条</td></tr>
+<tr><td>与V1共享</td><td>-</td><td>1408条</td></tr>
+<tr><td>V2新增</td><td>-</td><td>3107条</td></tr>
+<tr><td>V1独有</td><td>-</td><td>0条</td></tr>
+<tr><td>外部验证</td><td>Top100</td><td>Top100</td></tr>
+</tbody></table></div>
+<p>V2不是推翻V1，而是在V1基础上扩大鱼种、蛋白和酶切规则覆盖范围。V1的1408条肽都被V2覆盖，V2额外增加了3107条候选肽。</p>
+</section>
+
+<section>
+<h2>V1 筛选结果</h2>
+<div class="grid">
+<div class="metric"><div class="num">1408</div><div>V1非重复候选肽</div></div>
+<div class="metric"><div class="num">32/100</div><div>AI4AVP Positive</div></div>
+<div class="metric"><div class="num">100/100</div><div>ToxinPred Non-Toxin</div></div>
+<div class="metric"><div class="num">45/100</div><div>AllerCatPro no evidence</div></div>
+<div class="metric"><div class="num">8</div><div>High候选</div></div>
+</div>
+<h3>V1最终Top5</h3><ol><li><code>EVDSTLKSL</code></li><li><code>NSQIENL</code></li><li><code>VENIR</code></li><li><code>NTQIENL</code></li><li><code>TLTQTVENIR</code></li></ol>
+</section>
+
+<section>
+<h2>V2-A 筛选结果</h2>
+<div class="grid">
+<div class="metric"><div class="num">15</div><div>输入蛋白</div></div>
+<div class="metric"><div class="num">8</div><div>输入鱼种</div></div>
+<div class="metric"><div class="num">8</div><div>虚拟酶</div></div>
+<div class="metric"><div class="num">4515</div><div>非重复候选肽</div></div>
+<div class="metric"><div class="num">3107</div><div>V2新增候选肽</div></div>
+<div class="metric"><div class="num">0</div><div>V1独有肽</div></div>
+<div class="metric"><div class="num">41/100</div><div>AI4AVP Positive</div></div>
+<div class="metric"><div class="num">100/100</div><div>ToxinPred Non-Toxin</div></div>
+<div class="metric"><div class="num">40/100</div><div>AllerCatPro no evidence</div></div>
+<div class="metric"><div class="num">12</div><div>High候选</div></div>
+<div class="metric"><div class="num">57</div><div>Medium候选</div></div>
+<div class="metric"><div class="num">31</div><div>Low候选</div></div>
+</div>
+</section>
+
+<section>
+<h2>V2实验优先Top5</h2>
+<div class="table-wrap"><table><thead><tr><th>序列</th><th>长度</th><th>分子量</th><th>来源鱼种</th><th>ML平均概率</th><th>AI4AVP分数</th><th>ToxinPred</th><th>AllerCatPro</th><th>最终分数</th><th>入选理由</th></tr></thead><tbody><tr><td><code>NTQIENL</code></td><td>7</td><td>830.8828</td><td>Ctenopharyngodon_idella;Cyprinus_carpio;Gadus_morhua;Hypophthalmichthys_molitrix;Oreochromis_niloticus</td><td>0.9335</td><td>0.8098</td><td>Non-Toxin</td><td>no evidence</td><td>0.9130</td><td>High recommendation; length 5-15 aa; MW &lt;1500 Da; ToxinPred Non-Toxin; AllerCatPro no evidence; AI4AVP Positive; 5 species sources; also present in V1 Top5</td></tr><tr><td><code>EVDATVKSL</code></td><td>9</td><td>961.0677</td><td>Ctenopharyngodon_idella;Hypophthalmichthys_molitrix</td><td>0.9096</td><td>0.7112</td><td>Non-Toxin</td><td>no evidence</td><td>0.8727</td><td>High recommendation; length 5-15 aa; MW &lt;1500 Da; ToxinPred Non-Toxin; AllerCatPro no evidence; AI4AVP Positive; 2 species sources</td></tr><tr><td><code>TLTQTVENIR</code></td><td>10</td><td>1174.3047</td><td>Gadus_morhua</td><td>0.9287</td><td>0.6427</td><td>Non-Toxin</td><td>no evidence</td><td>0.8608</td><td>High recommendation; length 5-15 aa; MW &lt;1500 Da; ToxinPred Non-Toxin; AllerCatPro no evidence; AI4AVP Positive; also present in V1 Top5</td></tr><tr><td><code>NTQIDNL</code></td><td>7</td><td>816.8562</td><td>Ictalurus_punctatus</td><td>0.9378</td><td>0.6919</td><td>Non-Toxin</td><td>no evidence</td><td>0.8796</td><td>High recommendation; length 5-15 aa; MW &lt;1500 Da; ToxinPred Non-Toxin; AllerCatPro no evidence; AI4AVP Positive</td></tr><tr><td><code>MNDRDNEVDATLKTL</code></td><td>15</td><td>1734.8826</td><td>Gadus_morhua</td><td>0.9525</td><td>0.6562</td><td>Non-Toxin</td><td>no evidence</td><td>0.8755</td><td>High recommendation; length 5-15 aa; ToxinPred Non-Toxin; AllerCatPro no evidence; AI4AVP Positive</td></tr></tbody></table></div>
+<div class="note">这5条不是单纯“模型分数最高”的长肽，而是更适合后续实验的候选肽，因为它们更短、更容易合成、分子量更低，也更适合加入海藻酸钠涂层。</div>
+</section>
+
+<section>
+<h2>推荐进入实验验证的肽段</h2>
+<div class="grid2">
+<div class="card ok"><h3>经费有限：优先合成3条</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>TLTQTVENIR</code></li></ol></div>
+<div class="card"><h3>老师更看重短肽和低成本</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>NTQIDNL</code></li></ol></div>
+</div>
+<div class="card"><h3>经费允许：合成实验优先Top5</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>TLTQTVENIR</code></li><li><code>NTQIDNL</code></li><li><code>MNDRDNEVDATLKTL</code></li></ol></div>
+<ul><li><code>NTQIENL</code>：V1/V2均支持，7 aa，多鱼种来源，安全性好。</li><li><code>EVDATVKSL</code>：V2新增，9 aa，安全性好。</li><li><code>TLTQTVENIR</code>：V1/V2均支持，10 aa，适合保留。</li><li><code>NTQIDNL</code>：V2新增短肽，7 aa。</li><li><code>MNDRDNEVDATLKTL</code>：15 aa，综合评分较高，但比前几条长。</li></ul>
+</section>
+
+<section>
+<h2>为什么不用V2长肽Top5直接做实验？</h2>
+<p>V2中部分AI4AVP得分最高的候选肽长度为17–21 aa。虽然模型分数高，但合成成本、涂层体系应用便利性和后续实验操作性不如短肽。因此本报告区分两类候选：</p>
+<ol><li>模型高分候选肽：更强调计算分数。</li><li>实验优先候选肽：更强调短肽、低分子量、安全性、V1/V2共同支持和多鱼种来源。</li></ol>
+<h3>V2最终Top20候选肽</h3>
+<div class="table-wrap"><table><thead><tr><th>原Top100排序</th><th>肽ID</th><th>序列</th><th>长度</th><th>分子量</th><th>ML平均概率</th><th>AI4AVP</th><th>AI4AVP分数</th><th>毒性</th><th>过敏原性</th><th>最终分数</th><th>分级</th></tr></thead><tbody><tr><td>2</td><td>V2PEP000650</td><td><code>DNEVDATLKTLTQTVENIR</code></td><td>19</td><td>2160.3388</td><td>0.9547</td><td>Positive</td><td>0.9990</td><td>Non-Toxin</td><td>no evidence</td><td>0.9793</td><td>High</td></tr><tr><td>13</td><td>V2PEP004333</td><td><code>VDATLKTLTQTVENIRE</code></td><td>17</td><td>1931.1488</td><td>0.9366</td><td>Positive</td><td>0.9995</td><td>Non-Toxin</td><td>no evidence</td><td>0.9713</td><td>High</td></tr><tr><td>43</td><td>V2PEP000621</td><td><code>DLEVDSTLKSLSQQIEQIR</code></td><td>19</td><td>2202.4185</td><td>0.9208</td><td>Positive</td><td>1.0000</td><td>Non-Toxin</td><td>no evidence</td><td>0.9644</td><td>High</td></tr><tr><td>47</td><td>V2PEP000622</td><td><code>DLEVDSTLKSLSQQIEQIRSP</code></td><td>21</td><td>2386.6110</td><td>0.9201</td><td>Positive</td><td>0.9992</td><td>Non-Toxin</td><td>no evidence</td><td>0.9638</td><td>High</td></tr><tr><td>74</td><td>V2PEP003098</td><td><code>LALLLSAAVLLVRAQGEDDR</code></td><td>20</td><td>2123.4525</td><td>0.9140</td><td>Positive</td><td>0.8815</td><td>Non-Toxin</td><td>no evidence</td><td>0.9257</td><td>High</td></tr><tr><td>17</td><td>V2PEP003380</td><td><code>NTQIENL</code></td><td>7</td><td>830.8828</td><td>0.9335</td><td>Positive</td><td>0.8098</td><td>Non-Toxin</td><td>no evidence</td><td>0.9130</td><td>High</td></tr><tr><td>60</td><td>V2PEP000002</td><td><code>AAAVLVVRGQGEDDISF</code></td><td>17</td><td>1746.9146</td><td>0.9171</td><td>Positive</td><td>0.7337</td><td>Non-Toxin</td><td>no evidence</td><td>0.8828</td><td>High</td></tr><tr><td>12</td><td>V2PEP003378</td><td><code>NTQIDNL</code></td><td>7</td><td>816.8562</td><td>0.9378</td><td>Positive</td><td>0.6919</td><td>Non-Toxin</td><td>no evidence</td><td>0.8796</td><td>High</td></tr><tr><td>23</td><td>V2PEP003786</td><td><code>RADDASVRDRDTEVDTNL</code></td><td>18</td><td>2048.0865</td><td>0.9289</td><td>Positive</td><td>0.6988</td><td>Non-Toxin</td><td>no evidence</td><td>0.8776</td><td>High</td></tr><tr><td>3</td><td>V2PEP003247</td><td><code>MNDRDNEVDATLKTL</code></td><td>15</td><td>1734.8826</td><td>0.9525</td><td>Positive</td><td>0.6562</td><td>Non-Toxin</td><td>no evidence</td><td>0.8755</td><td>High</td></tr><tr><td>95</td><td>V2PEP000987</td><td><code>EVDATVKSL</code></td><td>9</td><td>961.0677</td><td>0.9096</td><td>Positive</td><td>0.7112</td><td>Non-Toxin</td><td>no evidence</td><td>0.8727</td><td>High</td></tr><tr><td>25</td><td>V2PEP004281</td><td><code>TLTQTVENIR</code></td><td>10</td><td>1174.3047</td><td>0.9287</td><td>Positive</td><td>0.6427</td><td>Non-Toxin</td><td>no evidence</td><td>0.8608</td><td>High</td></tr><tr><td>6</td><td>V2PEP004335</td><td><code>VDATVKSLNTQIENLLSPE</code></td><td>19</td><td>2071.2853</td><td>0.9413</td><td>Positive</td><td>0.9997</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8235</td><td>Medium</td></tr><tr><td>9</td><td>V2PEP000644</td><td><code>DMEVDTTLKSLSQKVENIR</code></td><td>19</td><td>2206.4734</td><td>0.9408</td><td>Positive</td><td>0.9999</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8233</td><td>Medium</td></tr><tr><td>15</td><td>V2PEP000988</td><td><code>EVDATVKSLNTQIENL</code></td><td>16</td><td>1773.9352</td><td>0.9348</td><td>Positive</td><td>0.9998</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8206</td><td>Medium</td></tr><tr><td>19</td><td>V2PEP000625</td><td><code>DLEVDTTLKSLSQQIENIHSP</code></td><td>21</td><td>2367.5646</td><td>0.9309</td><td>Positive</td><td>0.9983</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8184</td><td>Medium</td></tr><tr><td>18</td><td>V2PEP000889</td><td><code>DYEVDATIKSLNTQI</code></td><td>15</td><td>1709.8482</td><td>0.9314</td><td>Positive</td><td>0.9969</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8182</td><td>Medium</td></tr><tr><td>28</td><td>V2PEP000738</td><td><code>DRDLEVDSTLKSLSQQIEQIR</code></td><td>21</td><td>2473.6916</td><td>0.9269</td><td>Positive</td><td>0.9995</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8170</td><td>Medium</td></tr><tr><td>21</td><td>V2PEP000205</td><td><code>AVLLQGSNDVELRAEGNSR</code></td><td>19</td><td>2028.1843</td><td>0.9300</td><td>Positive</td><td>0.9874</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8147</td><td>Medium</td></tr><tr><td>62</td><td>V2PEP000646</td><td><code>DMEVDTTLKTLTQKVEKIR</code></td><td>19</td><td>2248.5963</td><td>0.9168</td><td>Positive</td><td>0.9996</td><td>Non-Toxin</td><td>strong evidence</td><td>0.8125</td><td>Medium</td></tr></tbody></table></div>
+</section>
+
+<section>
+<h2>这些工具是什么意思？</h2>
+<div class="grid2">
+<div class="card"><h3>虚拟酶解</h3><p>电脑模拟蛋白酶把胶原蛋白切成很多小肽。</p></div>
+<div class="card"><h3>RF / XGBoost</h3><p>两种机器学习模型，用公开抗病毒肽数据训练后，判断候选肽像不像抗病毒肽。</p></div>
+<div class="card"><h3>AI4AVP</h3><p>专门预测抗病毒肽的外部工具，用来从另一个角度验证候选肽。</p></div>
+<div class="card"><h3>ToxinPred</h3><p>预测候选肽是否可能有毒性。</p></div>
+<div class="card"><h3>AllerCatPro</h3><p>预测候选肽是否存在过敏原性证据。</p></div>
+<div class="card"><h3>PeptideRanker</h3><p>一般生物活性评分工具，但当前网页/API不可用，因此未纳入最终评分。</p></div>
+</div>
+</section>
+
+<section>
+<h2>为什么现在还不能说“已经制备出抗病毒肽”？</h2>
+<div class="card limit"><p>现在得到的是氨基酸序列，例如 <code>NTQIENL</code>。它只是候选肽序列，不是肽粉实物，也不是已经被实验证明有真实抗诺如病毒活性的材料。</p></div>
+<p>真实实验前还需要：送公司合成肽粉，或从鱼骨真实酶解物中制备和鉴定肽段；然后进行涂层负载、NoV-VLP或MNV抗病毒验证、三文鱼刺身品质评价。</p>
+</section>
+
+<section>
+<h2>下一步实验建议</h2>
+<div class="grid">
+<div class="card ok"><h3>路线A：最稳</h3><p>合成Top3：<code>NTQIENL</code>、<code>EVDATVKSL</code>、<code>TLTQTVENIR</code>，分别加入海藻酸钠/Ca²⁺涂层，比较抗病毒效果和品质影响。</p></div>
+<div class="card"><h3>路线B：成本更低</h3><p>合成短肽Top3：<code>NTQIENL</code>、<code>EVDATVKSL</code>、<code>NTQIDNL</code>。</p></div>
+<div class="card"><h3>路线C：经费充足</h3><p>合成实验优先Top5，覆盖V1/V2共同支持肽和V2新增短肽。</p></div>
+</div>
+<p>后续实验包括：肽溶液制备；海藻酸钠/Ca²⁺涂层；三文鱼刺身表面处理；NoV-VLP或MNV模型验证；色差、质构、持水力、TVB-N、菌落总数评价。</p>
+</section>
+
+<section>
+<h2>关键文件导航</h2>
+<p>下表中的链接全部使用相对路径。本地打开本HTML后，可以直接点击查看对应文件；如果文件不存在，则标注“未找到”。</p>
+<div class="table-wrap"><table><thead><tr><th>模块</th><th>文件名</th><th>用途</th><th>是否存在</th><th>点击打开</th></tr></thead><tbody><tr><td>V1序列</td><td><code>01_protein_sequences/protein_sequences_checked.fasta</code></td><td>V1用于虚拟酶解的鱼类胶原蛋白FASTA序列。</td><td>存在</td><td><a href="01_protein_sequences/protein_sequences_checked.fasta">打开</a></td></tr><tr><td>V1序列</td><td><code>01_protein_sequences/protein_sources_checked.csv</code></td><td>V1蛋白序列来源、数据库和核对信息。</td><td>存在</td><td><a href="01_protein_sequences/protein_sources_checked.csv">打开</a></td></tr><tr><td>V1序列</td><td><code>01_protein_sequences/sequence_check_summary.csv</code></td><td>V1蛋白序列质量检查汇总。</td><td>存在</td><td><a href="01_protein_sequences/sequence_check_summary.csv">打开</a></td></tr><tr><td>V1肽库</td><td><code>02_virtual_digestion/peptide_library.csv</code></td><td>V1虚拟酶解得到的1408条非重复候选肽完整表。</td><td>存在</td><td><a href="02_virtual_digestion/peptide_library.csv">打开</a></td></tr><tr><td>V1肽库</td><td><code>02_virtual_digestion/peptide_library.fasta</code></td><td>V1候选肽FASTA文件。</td><td>存在</td><td><a href="02_virtual_digestion/peptide_library.fasta">打开</a></td></tr><tr><td>V1肽库</td><td><code>02_virtual_digestion/digestion_summary.csv</code></td><td>V1按鱼种、基因和酶统计的酶解汇总。</td><td>存在</td><td><a href="02_virtual_digestion/digestion_summary.csv">打开</a></td></tr><tr><td>V1模型</td><td><code>03_avp_model/model_metrics.csv</code></td><td>RF和XGBoost测试集性能指标。</td><td>存在</td><td><a href="03_avp_model/model_metrics.csv">打开</a></td></tr><tr><td>V1模型</td><td><code>03_avp_model/cross_validation_results.csv</code></td><td>5折交叉验证结果。</td><td>存在</td><td><a href="03_avp_model/cross_validation_results.csv">打开</a></td></tr><tr><td>V1模型</td><td><code>03_avp_model/feature_importance.csv</code></td><td>模型特征重要性结果。</td><td>存在</td><td><a href="03_avp_model/feature_importance.csv">打开</a></td></tr><tr><td>V1模型</td><td><code>03_avp_model/avp_prediction_results.csv</code></td><td>V1肽库的机器学习抗病毒潜力预测结果。</td><td>存在</td><td><a href="03_avp_model/avp_prediction_results.csv">打开</a></td></tr><tr><td>V1模型</td><td><code>03_avp_model/top_candidate_peptides.csv</code></td><td>V1机器学习筛选出的Top候选肽。</td><td>存在</td><td><a href="03_avp_model/top_candidate_peptides.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/AI4AVP_results.csv</code></td><td>V1 Top100的AI4AVP抗病毒肽预测结果。</td><td>存在</td><td><a href="04_external_prediction/AI4AVP_results.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/ToxinPred_results.csv</code></td><td>V1 Top100的ToxinPred毒性预测结果。</td><td>存在</td><td><a href="04_external_prediction/ToxinPred_results.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/AllerCatPro_results.csv</code></td><td>V1 Top100的AllerCatPro过敏原性预测结果。</td><td>存在</td><td><a href="04_external_prediction/AllerCatPro_results.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/final_integrated_candidates.csv</code></td><td>V1外部验证与机器学习结果整合表。</td><td>存在</td><td><a href="04_external_prediction/final_integrated_candidates.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/final_selection_summary.csv</code></td><td>V1外部验证分级和安全性汇总。</td><td>存在</td><td><a href="04_external_prediction/final_selection_summary.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/final_top20_candidates.csv</code></td><td>V1最终Top20候选肽。</td><td>存在</td><td><a href="04_external_prediction/final_top20_candidates.csv">打开</a></td></tr><tr><td>V1外部验证</td><td><code>04_external_prediction/final_top5_candidates.csv</code></td><td>V1最终Top5候选肽。</td><td>存在</td><td><a href="04_external_prediction/final_top5_candidates.csv">打开</a></td></tr><tr><td>V2序列</td><td><code>05_expanded_library_v2/01_protein_sequences_v2/fish_species_list_v2.csv</code></td><td>V2-A纳入的鱼种清单。</td><td>存在</td><td><a href="05_expanded_library_v2/01_protein_sequences_v2/fish_species_list_v2.csv">打开</a></td></tr><tr><td>V2序列</td><td><code>05_expanded_library_v2/01_protein_sequences_v2/protein_sources_v2_checked.csv</code></td><td>V2-A蛋白来源核对表。</td><td>存在</td><td><a href="05_expanded_library_v2/01_protein_sequences_v2/protein_sources_v2_checked.csv">打开</a></td></tr><tr><td>V2序列</td><td><code>05_expanded_library_v2/01_protein_sequences_v2/protein_sequences_v2_checked.fasta</code></td><td>V2-A用于虚拟酶解的15条蛋白FASTA序列。</td><td>存在</td><td><a href="05_expanded_library_v2/01_protein_sequences_v2/protein_sequences_v2_checked.fasta">打开</a></td></tr><tr><td>V2序列</td><td><code>05_expanded_library_v2/01_protein_sequences_v2/sequence_check_summary_v2.csv</code></td><td>V2-A蛋白序列质量检查汇总。</td><td>存在</td><td><a href="05_expanded_library_v2/01_protein_sequences_v2/sequence_check_summary_v2.csv">打开</a></td></tr><tr><td>V2序列</td><td><code>05_expanded_library_v2/01_protein_sequences_v2/enzyme_rules_v2.csv</code></td><td>V2-A使用的8种虚拟酶切规则。</td><td>存在</td><td><a href="05_expanded_library_v2/01_protein_sequences_v2/enzyme_rules_v2.csv">打开</a></td></tr><tr><td>V2肽库</td><td><code>05_expanded_library_v2/02_virtual_digestion_v2/peptide_library_v2.csv</code></td><td>V2-A虚拟酶解得到的4515条非重复候选肽完整表。</td><td>存在</td><td><a href="05_expanded_library_v2/02_virtual_digestion_v2/peptide_library_v2.csv">打开</a></td></tr><tr><td>V2肽库</td><td><code>05_expanded_library_v2/02_virtual_digestion_v2/peptide_library_v2.fasta</code></td><td>V2-A候选肽FASTA文件。</td><td>存在</td><td><a href="05_expanded_library_v2/02_virtual_digestion_v2/peptide_library_v2.fasta">打开</a></td></tr><tr><td>V2肽库</td><td><code>05_expanded_library_v2/02_virtual_digestion_v2/digestion_summary_v2.csv</code></td><td>V2-A按蛋白和酶统计的酶解汇总。</td><td>存在</td><td><a href="05_expanded_library_v2/02_virtual_digestion_v2/digestion_summary_v2.csv">打开</a></td></tr><tr><td>V2肽库</td><td><code>05_expanded_library_v2/02_virtual_digestion_v2/v1_v2_peptide_comparison.csv</code></td><td>V1和V2肽段按序列比较表。</td><td>存在</td><td><a href="05_expanded_library_v2/02_virtual_digestion_v2/v1_v2_peptide_comparison.csv">打开</a></td></tr><tr><td>V2预测</td><td><code>05_expanded_library_v2/03_avp_prediction_v2/avp_prediction_results_v2.csv</code></td><td>V2-A肽库用V1模型进行prediction-only预测的结果。</td><td>存在</td><td><a href="05_expanded_library_v2/03_avp_prediction_v2/avp_prediction_results_v2.csv">打开</a></td></tr><tr><td>V2预测</td><td><code>05_expanded_library_v2/03_avp_prediction_v2/prediction_summary_v2.csv</code></td><td>V2-A机器学习预测概率汇总。</td><td>存在</td><td><a href="05_expanded_library_v2/03_avp_prediction_v2/prediction_summary_v2.csv">打开</a></td></tr><tr><td>V2预测</td><td><code>05_expanded_library_v2/03_avp_prediction_v2/top_candidate_peptides_v2.csv</code></td><td>V2-A机器学习Top候选肽。</td><td>存在</td><td><a href="05_expanded_library_v2/03_avp_prediction_v2/top_candidate_peptides_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/top100_for_avp_validation_v2.csv</code></td><td>V2-A送外部工具验证的Top100候选肽。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/top100_for_avp_validation_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/top100_for_avp_validation_v2.fasta</code></td><td>V2-A Top100外部验证FASTA输入。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/top100_for_avp_validation_v2.fasta">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/external_prediction_template_v2.csv</code></td><td>V2-A外部预测结果回填模板。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/external_prediction_template_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/AI4AVP_results_v2.csv</code></td><td>V2-A AI4AVP外部验证结果。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/AI4AVP_results_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/ToxinPred_results_v2.csv</code></td><td>V2-A ToxinPred毒性预测结果。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/ToxinPred_results_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/AllerCatPro_results_v2.csv</code></td><td>V2-A AllerCatPro过敏原性预测结果。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/AllerCatPro_results_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/final_integrated_candidates_v2.csv</code></td><td>V2-A最终100条候选肽整合结果。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/final_integrated_candidates_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/final_selection_summary_v2.csv</code></td><td>V2-A High/Medium/Low分级和安全性汇总。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/final_selection_summary_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/final_top20_candidates_v2.csv</code></td><td>V2-A最终Top20候选肽。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/final_top20_candidates_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/final_top5_candidates_v2.csv</code></td><td>V2-A模型综合排序Top5候选肽。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/final_top5_candidates_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/final_top5_experiment_priority_v2.csv</code></td><td>V2-A更适合后续实验的短肽优先Top5。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/final_top5_experiment_priority_v2.csv">打开</a></td></tr><tr><td>V2外部验证</td><td><code>05_expanded_library_v2/04_external_prediction_v2/v1_v2_final_top5_comparison.csv</code></td><td>V1和V2最终Top5候选肽比较表。</td><td>存在</td><td><a href="05_expanded_library_v2/04_external_prediction_v2/v1_v2_final_top5_comparison.csv">打开</a></td></tr><tr><td>V2报告</td><td><code>05_expanded_library_v2/reports/v2_run_summary.md</code></td><td>V2-A运行摘要和完整性检查记录。</td><td>存在</td><td><a href="05_expanded_library_v2/reports/v2_run_summary.md">打开</a></td></tr></tbody></table></div>
+</section>
+</main>
+</body>
+</html>
