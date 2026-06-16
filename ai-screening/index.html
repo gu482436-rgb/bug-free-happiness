@@ -63,7 +63,44 @@
 
 <section><h2>V2-A 筛选结果</h2>
 <div class="grid"><div class="metric"><div class="num">4515</div><div>V2非重复候选肽</div></div><div class="metric"><div class="num">100</div><div>V2 Top100候选肽</div></div><div class="metric"><div class="num">41</div><div>AI4AVP Positive</div></div><div class="metric"><div class="num">100</div><div>ToxinPred Non-Toxin</div></div><div class="metric"><div class="num">40</div><div>AllerCatPro no evidence</div></div><div class="metric"><div class="num">12/57/31</div><div>High / Medium / Low</div></div></div>
-<figure><figcaption><strong>图3  V2候选肽筛选漏斗图</strong></figcaption><svg viewBox="0 0 760 395" role="img" aria-label="V2筛选漏斗图"><rect x="40.0" y="20" width="680" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="47" text-anchor="middle" font-size="15">V2非重复候选肽：4515条</text><rect x="100.0" y="72" width="560" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="99" text-anchor="middle" font-size="15">V2 Top100候选肽：100条</text><rect x="145.0" y="124" width="470" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="151" text-anchor="middle" font-size="15">AI4AVP Positive：41条</text><rect x="185.0" y="176" width="390" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="203" text-anchor="middle" font-size="15">ToxinPred Non-Toxin：100条</text><rect x="225.0" y="228" width="310" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="255" text-anchor="middle" font-size="15">AllerCatPro no evidence：40条</text><rect x="265.0" y="280" width="230" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="307" text-anchor="middle" font-size="15">High候选肽：12条</text><rect x="300.0" y="332" width="160" height="42" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="380" y="359" text-anchor="middle" font-size="15">实验优先Top5：5条</text></svg><p class="fig-note">每一步筛选是为了从大量候选序列中逐步缩小到适合后续实验验证的候选肽。</p></figure>
+	<figure><figcaption><strong>图3  V2候选肽多维筛选结果示意图</strong></figcaption><svg viewBox="0 0 980 560" role="img" aria-label="V2候选肽多维筛选结果示意图">
+<defs><marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#64748b"/></marker></defs>
+<rect x="340" y="20" width="300" height="42" rx="12" fill="#e0f2fe" stroke="#0284c7"/><text x="490" y="47" text-anchor="middle" font-size="15">V2非重复候选肽：4515条</text>
+<line x1="490" y1="62" x2="490" y2="94" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<rect x="330" y="95" width="320" height="42" rx="12" fill="#dbeafe" stroke="#2563eb"/><text x="490" y="122" text-anchor="middle" font-size="15">RF/XGBoost综合预测筛选</text>
+<line x1="490" y1="137" x2="490" y2="169" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<rect x="350" y="170" width="280" height="42" rx="12" fill="#dcfce7" stroke="#16a34a"/><text x="490" y="197" text-anchor="middle" font-size="15">V2 Top100候选肽：100条</text>
+
+<path d="M490 212 L190 252" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<path d="M490 212 L490 252" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<path d="M490 212 L790 252" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+
+<rect x="55" y="255" width="270" height="86" rx="14" fill="#fff7ed" stroke="#f97316"/>
+<text x="190" y="286" text-anchor="middle" font-size="14">AI4AVP外部抗病毒肽预测</text>
+<text x="190" y="318" text-anchor="middle" font-size="18" font-weight="700">41条 Positive</text>
+
+<rect x="355" y="255" width="270" height="86" rx="14" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="490" y="286" text-anchor="middle" font-size="14">ToxinPred毒性预测</text>
+<text x="490" y="318" text-anchor="middle" font-size="18" font-weight="700">100条 Non-Toxin</text>
+
+<rect x="655" y="255" width="270" height="86" rx="14" fill="#f5f3ff" stroke="#7c3aed"/>
+<text x="790" y="286" text-anchor="middle" font-size="14">AllerCatPro过敏原性预测</text>
+<text x="790" y="318" text-anchor="middle" font-size="18" font-weight="700">40条 no evidence</text>
+
+<path d="M190 341 C190 375 395 372 420 392" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<path d="M490 341 L490 388" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<path d="M790 341 C790 375 585 372 560 392" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+
+<rect x="300" y="390" width="380" height="82" rx="16" fill="#f8fafc" stroke="#475569"/>
+<text x="490" y="416" text-anchor="middle" font-size="15" font-weight="700">综合交集筛选</text>
+<text x="490" y="442" text-anchor="middle" font-size="13">机器学习预测分数较高 + AI4AVP Positive</text>
+<text x="490" y="463" text-anchor="middle" font-size="13">ToxinPred Non-Toxin + AllerCatPro no evidence</text>
+
+<line x1="490" y1="472" x2="490" y2="501" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+<rect x="330" y="502" width="150" height="38" rx="12" fill="#fee2e2" stroke="#dc2626"/><text x="405" y="526" text-anchor="middle" font-size="14">High候选肽：12条</text>
+<rect x="510" y="502" width="150" height="38" rx="12" fill="#e0f2fe" stroke="#0284c7"/><text x="585" y="526" text-anchor="middle" font-size="14">实验优先Top5：5条</text>
+<line x1="480" y1="521" x2="510" y2="521" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+</svg><p class="fig-note">AI4AVP、ToxinPred和AllerCatPro分别从抗病毒肽特征、毒性风险和过敏原性证据三个角度评价同一批V2 Top100候选肽。其中，ToxinPred Non-Toxin：100条表示Top100候选肽均被预测为Non-Toxin，并不是从41条AI4AVP Positive候选肽中继续筛选得到。最终High候选肽为综合机器学习预测、AI4AVP阳性、Non-Toxin和AllerCatPro no evidence等条件后得到的12条候选肽。该图展示的是Top100候选肽在三个外部平台上的并行评价结果，以及多指标综合交集筛选过程。</p></figure>
 </section>
 
 <section><h2>V2实验优先Top5</h2>
@@ -74,7 +111,7 @@
 <section><h2>后续实验验证候选肽建议</h2>
 <div class="grid">
 <div class="card ok"><h3>情况1：综合优先方案</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>TLTQTVENIR</code></li></ol><p>该方案兼顾V1/V2一致性、候选肽长度、安全性预测结果和后续涂层应用便利性。</p></div>
-<div class="card"><h3>情况2：低成本短肽优先方案</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>NTQIDNL</code></li></ol><p>该方案优先选择7–9 aa短肽，理论合成成本较低，适合预算有限时进行初步验证。</p></div>
+	<div class="card"><h3>情况2：短肽优先验证方案</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>NTQIDNL</code></li></ol><p>该方案优先选择7–9 aa短肽，理论合成成本较低，适合用于初步验证。</p></div>
 <div class="card"><h3>情况3：经费允许的扩展验证方案</h3><ol><li><code>NTQIENL</code></li><li><code>EVDATVKSL</code></li><li><code>TLTQTVENIR</code></li><li><code>NTQIDNL</code></li><li><code>MNDRDNEVDATLKTL</code></li></ol><p>该方案覆盖V2实验优先Top5，有助于比较不同长度、来源和综合评分候选肽的后续表现。</p></div>
 </div></section>
 
