@@ -11,9 +11,11 @@
     table{border-collapse:collapse;width:100%;font-size:14px} th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top} th{background:#eef4fb;color:#12355b;text-align:left}.table-wrap{overflow-x:auto;margin:12px 0} code{background:#eef2f7;padding:2px 5px;border-radius:5px}
     figure{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;margin:18px 0;overflow-x:auto} figure svg{width:100%;min-width:740px;height:auto} figcaption{color:#12355b;margin-bottom:8px}.fig-note{color:var(--muted);font-size:14px;margin:8px 0 0}
     .figure-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0}.image-figure{overflow:hidden}.image-figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}.image-figure.wide{grid-column:1 / -1}
+    .explain-box{border:1px solid #bfdbfe;background:#eff6ff;border-radius:14px;padding:16px;margin:16px 0}.explain-box h3{margin-top:0}.simple-rule{background:#fff;border-left:5px solid #2563eb;border-radius:10px;padding:10px 12px;margin-bottom:0}.final-box{background:#f0fdf4;border-color:#bbf7d0}
+    .docking-figure-card{border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px;margin:24px 0}.docking-figure-card h3{margin-top:0}.docking-figure-card figure{margin:10px 0 14px}.read-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.read-card{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px}.read-card strong{display:block;color:#12355b;margin-bottom:4px}.read-card p{margin:0;color:#334155;font-size:14px}
     .top5-cards{display:grid;grid-template-columns:1fr;gap:12px;margin:12px 0}.top5-card{border:1px solid var(--line);border-radius:14px;background:#fbfdff;padding:14px}.top5-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.top5-rank{width:28px;height:28px;border-radius:50%;background:#1f4f82;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700}.top5-head code{font-size:18px;font-weight:700}.top5-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.top5-grid div{background:#f1f5f9;border-radius:10px;padding:8px}.top5-grid span,.top5-species span,.top5-reason span{display:block;color:var(--muted);font-size:12px}.top5-grid strong{display:block;font-size:13px}.top5-species,.top5-reason{margin-top:8px;font-size:13px}
     .missing{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px}.statement{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:28px} a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
-    @media(max-width:850px){.page{padding:22px}.grid,.grid2,.figure-grid{grid-template-columns:1fr}figure svg{min-width:680px}.top5-grid{grid-template-columns:repeat(2,1fr)}.image-figure.wide{grid-column:auto}}
+    @media(max-width:850px){.page{padding:22px}.grid,.grid2,.figure-grid,.read-grid{grid-template-columns:1fr}figure svg{min-width:680px}.top5-grid{grid-template-columns:repeat(2,1fr)}.image-figure.wide{grid-column:auto}}
     </style></head>
 <body><main class="page">
 <h1>鱼骨源预测抗病毒肽候选序列 AI 筛选汇报</h1>
@@ -149,15 +151,57 @@
 
 
 <section><h2>诺如病毒 VP1 P domain docking 深度解析</h2>
-<p>为进一步补充候选肽与诺如病毒应用目标之间的关联，本研究对实验优先候选肽、备选肽及 scrambled control 与诺如病毒 VP1 P domain 进行了 HDOCK 分子对接及深度解析。VP1 P domain 与病毒颗粒识别、结合和吸附过程相关，因此该分析可作为后续 NoV-VLP 或 MNV 实验验证的计算层面参考。</p>
+<div class="explain-box"><h3>这一部分在说明什么？</h3><p>前面的 RF/XGBoost 和 AI4AVP 主要用于筛选具有广义抗病毒肽特征的候选序列，并不是诺如病毒专一性预测。为了进一步增强候选肽与诺如病毒应用目标之间的关联，本研究补充进行了候选肽与诺如病毒 VP1 P domain 的 HDOCK 分子对接分析。VP1 P domain 可理解为诺如病毒衣壳蛋白表面与识别、结合和吸附过程相关的重要区域。本部分的目的不是证明候选肽已经具有抗诺如病毒活性，而是从计算层面观察这些候选肽是否可能与诺如病毒相关结构发生潜在相互作用，为后续 NoV-VLP 或 MNV 实验验证提供优先级参考。</p></div>
+<div class="explain-box"><h3>HDOCK score 怎么理解？</h3><p>HDOCK score 是分子对接软件给出的计算评分。一般情况下，score 越低，尤其越负，表示计算层面的结合趋势越强。但 score 不能直接等同于真实抗病毒活性；docking 结果只能说明“可能结合”，不能说明“已经抗病毒”。还需要结合对照肽、Top10模型稳定性、多证据矩阵和后续实验综合判断。</p><p class="simple-rule"><strong>简单理解：</strong>HDOCK score 越负，表示计算机预测越可能结合；但它不是抗诺如病毒实验结果。</p></div>
+
+<h3>术语解释小字典</h3>
+<div class="table-wrap"><table><thead><tr><th>术语</th><th>简单解释</th></tr></thead><tbody><tr><td>VP1 P domain</td><td>诺如病毒衣壳蛋白表面的重要结构区域，与病毒识别、结合和吸附过程相关。</td></tr><tr><td>Docking / 分子对接</td><td>用计算方法模拟两个分子是否可能结合以及可能如何结合。</td></tr><tr><td>HDOCK score</td><td>docking软件给出的计算评分，一般越负表示结合趋势越强。</td></tr><tr><td>Scrambled control</td><td>将候选肽氨基酸顺序打乱得到的对照肽，用于判断结果是否具有一定序列特异性。</td></tr><tr><td>Top10 mean score</td><td>前10个docking模型分数的平均值，用于观察结果稳定性。</td></tr><tr><td>多证据矩阵</td><td>同时整合AI筛选、安全性、来源、应用场景和docking等信息的综合判断表。</td></tr></tbody></table></div>
+
+<h3>Top HDOCK score 汇总</h3>
 <div class="table-wrap"><table><thead><tr><th>肽ID</th><th>序列</th><th>分组</th><th>Top HDOCK score</th><th>解释</th></tr></thead><tbody><tr><td>P06</td><td>MNDRDNEVDATLKTL</td><td>备选肽</td><td>-187.52</td><td>docking score最低，计算结合趋势较强，但肽长较长，建议作为扩展验证备选</td></tr><tr><td>P03</td><td>TLTQTVENIR</td><td>Top5候选肽</td><td>-174.72</td><td>Top5中docking表现最好，可作为docking支持较强候选</td></tr><tr><td>C02</td><td>NIELSQN</td><td>scrambled control</td><td>-171.39</td><td>对照肽也表现较强，提示结果需谨慎解释</td></tr><tr><td>P04</td><td>NTQIDNL</td><td>Top5候选肽</td><td>-161.69</td><td>Top5中docking表现较好</td></tr><tr><td>P05</td><td>NSQIENL</td><td>Top5候选肽/三文鱼来源</td><td>-144.53</td><td>保留三文鱼来源应用逻辑，但docking不突出</td></tr><tr><td>C01</td><td>NIELTQN</td><td>scrambled control</td><td>-142.13</td><td>对照肽中等水平</td></tr><tr><td>P02</td><td>EVDATVKSL</td><td>Top5候选肽</td><td>-138.24</td><td>docking不突出，但V2筛选、安全性和短肽特征支持</td></tr><tr><td>P01</td><td>NTQIENL</td><td>Top5候选肽</td><td>-137.70</td><td>docking不突出，但原始AI筛选和短肽优势支持</td></tr></tbody></table></div>
 <p>HDOCK score 越低通常提示计算层面的结合趋势越强。结果显示，备选肽 <code>MNDRDNEVDATLKTL</code> 以及候选肽 <code>TLTQTVENIR</code>、<code>NTQIDNL</code> 在 VP1 P domain 上表现较好。然而，scrambled control <code>C02_NIELSQN</code> 也获得较低 score，说明该 docking 结果不能单独证明候选肽相对于随机打乱序列具有明确的序列特异性结合优势。因此，本结果仅作为候选肽优先级判断的计算补充证据，不能作为真实抗诺如病毒活性的直接证据。</p>
-<div class="figure-grid">
-<figure class="image-figure"><figcaption><strong>VP1 P domain HDOCK score比较</strong></figcaption><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_hdock_score_barplot.png" alt="VP1 P domain HDOCK score比较"><p class="fig-note">图：候选肽与诺如病毒 VP1 P domain 的 HDOCK score 比较。该结果用于评估候选肽与 VP1 P domain 的计算结合趋势，不能直接代表真实抗诺如病毒活性。</p></figure>
-<figure class="image-figure"><figcaption><strong>候选肽组与 scrambled control 组比较</strong></figcaption><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_candidate_vs_control_summary.png" alt="候选肽组与scrambled control组docking结果比较"><p class="fig-note">图：候选肽组与 scrambled control 组的 docking 结果比较。由于部分对照肽也表现较好，本结果仅作为候选优先级补充参考。</p></figure>
-<figure class="image-figure wide"><figcaption><strong>多证据整合矩阵</strong></figcaption><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_evidence_matrix_heatmap.png" alt="VP1 docking多证据整合矩阵"><p class="fig-note">图：多证据矩阵整合AI筛选、安全性、来源追溯、应用相关性和VP1 docking支持，用于解释候选肽优先级，不代表真实抗病毒活性。</p></figure>
+
+<div class="docking-figure-card">
+<h3>图：候选肽与 VP1 P domain 的 HDOCK score 比较</h3>
+<figure class="image-figure"><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_hdock_score_barplot.png" alt="候选肽与VP1 P domain的HDOCK score比较"><p class="fig-note">该图比较了实验优先候选肽、备选肽和 scrambled control 与诺如病毒 VP1 P domain 的 top HDOCK score。一般来说，score 越低，表示计算层面的结合趋势越强。</p></figure>
+<div class="read-grid">
+<div class="read-card"><strong>怎么看</strong><p>柱子越低或数值越负，表示该肽在计算模拟中与 VP1 P domain 的结合趋势越强。</p></div>
+<div class="read-card"><strong>说明什么</strong><p>MNDRDNEVDATLKTL、TLTQTVENIR 和 NTQIDNL 的 docking score 较低，提示其具有一定计算结合趋势。</p></div>
+<div class="read-card"><strong>注意什么</strong><p>scrambled control C02_NIELSQN 也获得较低 score，因此不能仅凭该图说明候选肽具有明确序列特异性优势，也不能证明真实抗诺如病毒活性。</p></div>
 </div>
-<div class="card warn"><p>综合原始 RF/XGBoost 与 AI4AVP 预测、安全性预测、过敏原性预测、鱼类I型胶原蛋白来源追溯、三文鱼刺身应用逻辑以及 VP1 docking 结果，本研究不建议因 docking 结果大幅调整实验优先 Top5。当前仍建议保留 <code>NTQIENL</code>、<code>EVDATVKSL</code>、<code>TLTQTVENIR</code>、<code>NTQIDNL</code> 和 <code>NSQIENL</code> 作为实验优先候选肽；<code>MNDRDNEVDATLKTL</code> 可作为扩展验证备选。</p></div>
+</div>
+
+<div class="docking-figure-card">
+<h3>图：前10个 docking 模型平均 score 比较</h3>
+<figure class="image-figure"><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_top10_mean_score_barplot.png" alt="前10个docking模型平均score比较"><p class="fig-note">该图不是只看排名第一的模型，而是比较每条肽前10个 docking 模型的平均表现，用于判断 docking 结果是否相对稳定。</p></figure>
+<div class="read-grid">
+<div class="read-card"><strong>怎么看</strong><p>如果某条肽的 top score 较低，同时前10个模型平均 score 也较低，说明该肽不是只有单个模型表现好，结果相对更稳定。</p></div>
+<div class="read-card"><strong>说明什么</strong><p>Top10 mean score 可用于辅助判断 docking pose 是否具有一定重复性和稳定性。</p></div>
+<div class="read-card"><strong>注意什么</strong><p>即使 Top10 平均表现较好，也仍然属于计算结果，不能替代 NoV-VLP 或 MNV 实验。</p></div>
+</div>
+</div>
+
+<div class="docking-figure-card">
+<h3>图：候选肽组与 scrambled control 组 docking 结果比较</h3>
+<figure class="image-figure"><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_candidate_vs_control_summary.png" alt="候选肽组与scrambled control组docking结果比较"><p class="fig-note">该图用于比较实验候选肽与打乱序列对照肽在 VP1 P domain 上的 docking 表现，帮助判断候选肽组是否呈现更强的计算结合趋势。</p></figure>
+<div class="read-grid">
+<div class="read-card"><strong>怎么看</strong><p>如果候选肽组整体比 scrambled control 组 score 更低，说明候选肽可能具有更好的计算结合趋势。</p></div>
+<div class="read-card"><strong>说明什么</strong><p>当前结果未显示候选肽组相对 scrambled control 组具有清晰优势的强证据。</p></div>
+<div class="read-card"><strong>注意什么</strong><p>C02_NIELSQN 对照肽表现较强，这是本部分解释的重要限制，因此 docking 结果只能作为补充参考。</p></div>
+</div>
+</div>
+
+<div class="docking-figure-card">
+<h3>图：候选肽多证据整合矩阵</h3>
+<figure class="image-figure"><img src="06_norovirus_target_in_silico_validation/VP1_P_domain_docking/figures/vp1_evidence_matrix_heatmap.png" alt="候选肽多证据整合矩阵"><p class="fig-note">该图综合展示各候选肽在 AI 筛选、安全性预测、来源追溯、三文鱼应用相关性和 VP1 docking 等多个维度上的支持情况。</p></figure>
+<div class="read-grid">
+<div class="read-card"><strong>怎么看</strong><p>颜色越深或分值越高，表示该肽在对应证据维度上支持越强。该图不是单独看 docking，而是综合多个筛选指标。</p></div>
+<div class="read-card"><strong>说明什么</strong><p>虽然 MNDRDNEVDATLKTL docking score 最好，但其肽长较长，因此更适合作为扩展验证备选；当前实验优先 Top5 不建议因 docking 结果大幅调整。</p></div>
+<div class="read-card"><strong>注意什么</strong><p>该矩阵用于解释候选肽优先级，不是抗诺如病毒活性结果。</p></div>
+</div>
+</div>
+<div class="explain-box"><h3>为什么不因为 docking 结果大幅调整 Top5？</h3><p>最终实验优先 Top5 不是仅由 docking score 决定，而是综合 RF/XGBoost、AI4AVP、安全性预测、过敏原性预测、肽长与分子量、鱼类I型胶原蛋白来源追溯、三文鱼刺身应用逻辑以及 VP1 docking 结果共同判断。<code>MNDRDNEVDATLKTL</code> 虽然 docking score 最低，但其肽长较长，更适合作为扩展验证备选。<code>TLTQTVENIR</code> 和 <code>NTQIDNL</code> 在 docking 中表现较好，可作为 Top5 中具有 docking 支持的候选肽。<code>NSQIENL</code> 具有三文鱼来源逻辑，仍建议保留。<code>NTQIENL</code> 和 <code>EVDATVKSL</code> 虽然 docking 不突出，但原始 AI 筛选、短肽特征和安全性预测仍支持其作为实验优先候选。</p></div>
+<div class="explain-box final-box"><h3>这一部分的最终结论</h3><p>VP1 P domain docking 结果为候选肽与诺如病毒相关结构之间的潜在相互作用提供了计算层面的补充信息。其中，<code>TLTQTVENIR</code> 和 <code>NTQIDNL</code> 在正式 Top5 中表现出相对较好的 docking 支持，<code>MNDRDNEVDATLKTL</code> 可作为扩展验证备选。然而，由于 scrambled control <code>C02_NIELSQN</code> 也表现较强，本部分不能作为候选肽具有真实抗诺如病毒活性的证据。综合多证据结果，当前仍建议保留 <code>NTQIENL</code>、<code>EVDATVKSL</code>、<code>TLTQTVENIR</code>、<code>NTQIDNL</code> 和 <code>NSQIENL</code> 作为实验优先 Top5，后续仍需通过 NoV-VLP 或 MNV 实验验证。</p></div>
 </section>
 
 <section><h2>后续涂层应用设想</h2>
