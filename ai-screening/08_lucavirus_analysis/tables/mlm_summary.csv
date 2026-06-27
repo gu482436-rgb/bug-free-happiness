@@ -1,0 +1,6 @@
+sequence,rank,avg_prob,min_pos,min_aa,min_prob,max_pos,max_aa,max_prob,note
+NTQIENL,1,0.0000,6,N,0.0000,5,E,0.0000,功能关键
+EVDATVKSL,2,0.0000,9,L,0.0000,4,A,0.0000,功能关键
+TLTQTVENIR,3,0.0000,4,Q,0.0000,7,E,0.0000,功能关键
+NTQIDNL,4,0.0000,6,N,0.0000,2,T,0.0000,功能关键
+NSQIENL,5,0.0000,1,N,0.0000,5,E,0.0000,功能关键

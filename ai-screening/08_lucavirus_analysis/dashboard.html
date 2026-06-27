@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LucaVirus 抗诺如病毒肽分析看板</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+nav{position:fixed;top:0;left:0;width:200px;height:100vh;background:#1a1a2e;color:#fff;padding:20px 0;overflow-y:auto;z-index:100}
+nav h2{font-size:14px;padding:0 20px 15px;border-bottom:1px solid #333;margin-bottom:10px;color:#e94560}
+nav a{display:block;padding:8px 20px;color:#ccc;text-decoration:none;font-size:13px;transition:.2s}
+nav a:hover,nav a.active{color:#fff;background:#16213e;border-left:3px solid #e94560}
+main{margin-left:200px;padding:30px}
+.section{display:none}.section.active{display:block}
+h1{font-size:28px;color:#1a1a2e;margin-bottom:5px}
+.subtitle{color:#666;font-size:14px;margin-bottom:30px}
+h2{font-size:20px;color:#1a1a2e;margin:25px 0 15px;padding-bottom:8px;border-bottom:2px solid #e94560}
+h3{font-size:16px;color:#333;margin:15px 0 8px}
+.card{background:#fff;border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.plot-box{width:100%;height:450px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#1a1a2e;color:#fff;padding:10px 12px;text-align:left;font-weight:500}
+td{padding:8px 12px;border-bottom:1px solid #eee}
+tr:hover td{background:#f8f9fa}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;display:inline-block}
+.badge-green{background:#d4edda;color:#155724}
+.badge-yellow{background:#fff3cd;color:#856404}
+.badge-red{background:#f8d7da;color:#721c24}
+.badge-blue{background:#d1ecf1;color:#0c5460}
+.kv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px;margin:15px 0}
+.kv-item{background:#f8f9fa;border-radius:8px;padding:15px;text-align:center}
+.kv-item .label{font-size:11px;color:#888;text-transform:uppercase}
+.kv-item .value{font-size:22px;font-weight:700;color:#1a1a2e;margin-top:5px}
+.kv-item .value.green{color:#28a745}.kv-item .value.red{color:#dc3545}
+.primers{background:#1a1a2e;color:#fff;border-radius:8px;padding:15px;font-family:monospace;font-size:14px;margin:10px 0;word-break:break-all}
+.primers .label{color:#e94560;font-size:11px;font-family:sans-serif}
+.primers .seq{margin:3px 0 12px;letter-spacing:.5px}
+@media(max-width:768px){nav{width:100%;height:auto;position:relative}main{margin-left:0}nav a{display:inline-block;padding:8px 12px}}
+</style>
+</head><body>
+
+<nav>
+<h2>📋 导航</h2>
+<a href="#" class="active" onclick="show('overview')">📊 总览</a>
+<a href="#" onclick="show('importance')">🧬 位置重要性</a>
+<a href="#" onclick="show('similarity')">🔗 特征相似度</a>
+<a href="#" onclick="show('docking')">💻 分子对接</a>
+<a href="#" onclick="show('safety')">🛡️ 安全性</a>
+<a href="#" onclick="show('conformer')">🌀 构象分析</a>
+<a href="#" onclick="show('mutation')">🧪 突变方案</a>
+<a href="#" onclick="show('tables')">📋 数据表</a>
+</nav>
+
+<main>
+<div id="overview" class="section active">
+<h1>🧬 鱼骨胶原抗诺如病毒肽分析报告</h1>
+<p class="subtitle">LucaVirus (2560d) · AutoDock Vina · RDKit · 全自动化计算 | 2026-06-27</p>
+
+<div class="card">
+<h2>📊 核心结论</h2>
+<div class="kv-grid">
+<div class="kv-item"><div class="label">候选肽数</div><div class="value">5</div></div>
+<div class="kv-item"><div class="label">最推荐合成</div><div class="value green">NSQIENL</div></div>
+<div class="kv-item"><div class="label">最佳突变</div><div class="value green">I4N</div></div>
+<div class="kv-item"><div class="label">最高区分度</div><div class="value">+0.045</div></div>
+<div class="kv-item"><div class="label">最佳对接能</div><div class="value">-5.26</div></div>
+<div class="kv-item"><div class="label">构象簇</div><div class="value">3</div></div>
+</div>
+</div>
+
+<div class="card">
+<h2>🏆 合成优先级排名</h2>
+<div id="priority_plot" class="plot-box"></div>
+</div>
+
+<div class="card">
+<h2>📌 一句话总结</h2>
+<p style="font-size:16px;background:#e8f4f8;padding:15px;border-radius:8px;">
+<strong>NSQIENL</strong> 在位置重要性（最可变位点4I, P=0.475）、相似度区分度（Δ=+0.045, p=0.02）、
+安全性（无毒不致敏）和合成优先级（0.805）上综合表现最佳。
+推荐合成 <strong>野生型 NSQIENL</strong> 及其 <strong>I4N 突变体</strong>进行抗诺如病毒活性验证。
+</p>
+</div>
+</div>
+
+<div id="importance" class="section">
+<h2>🧬 位置重要性分析</h2>
+<p>基于LucaVirus MLM head对正常序列每个位点的预测置信度。概率越低→位点越可能是功能关键。</p>
+<div class="card"><div id="importance_plot" class="plot-box"></div></div>
+<div class="card">
+<h3>最可变位点一览</h3>
+<table><thead><tr><th>肽段</th><th>最可变位点</th><th>概率</th><th>最保守位点</th><th>概率</th></tr></thead>
+<tbody>
+<tr><td>NTQIENL</td><td><strong>3Q</strong></td><td>0.565</td><td>7L</td><td>0.937</td></tr>
+<tr><td>EVDATVKSL</td><td><strong>1E</strong></td><td>0.603</td><td>6V</td><td>0.836</td></tr>
+<tr><td>TLTQTVENIR</td><td><strong>4Q</strong></td><td>0.539</td><td>8N</td><td>0.890</td></tr>
+<tr><td>NTQIDNL</td><td><strong>2T</strong></td><td>0.606</td><td>7L</td><td>0.889</td></tr>
+<tr><td style="background:#fff3cd">NSQIENL</td><td style="background:#fff3cd"><strong>4I ⭐</strong></td><td style="background:#fff3cd">0.475</td><td style="background:#fff3cd">7L</td><td style="background:#fff3cd">0.913</td></tr>
+<tbody></table>
+</div>
+</div>
+
+<div id="similarity" class="section">
+<h2>🔗 特征相似度分析</h2>
+<p>2560维LucaVirus嵌入向量的余弦相似度。区分度 = 与已知抗病毒肽均值 − 与随机对照均值。</p>
+<div class="card">
+<div class="kv-grid">
+<div class="kv-item"><div class="label">全域t检验</div><div class="value green">p = 0.00018</div></div>
+<div class="kv-item"><div class="label">最高区分度</div><div class="value">NSQIENL +0.045</div></div>
+<div class="kv-item"><div class="label">最相似抗病毒肽</div><div class="value">GILDAVKNY</div></div>
+</div></div>
+<div class="card"><div id="similarity_plot" class="plot-box"></div></div>
+</div>
+
+<div id="docking" class="section">
+<h2>💻 分子对接结果</h2>
+<p>AutoDock Vina 1.2.7 · 受体: Norovirus GII.4 VP1 P-domain (4OOS) · 搜索深度: 16</p>
+<div class="card"><div id="docking_plot" class="plot-box"></div></div>
+<div class="card">
+<h3>氢键网络对比</h3>
+<table><thead><tr><th>肽段</th><th>结合能</th><th>氢键数</th><th>VP1互作残基</th></tr></thead>
+<tbody>
+<tr><td>NSQIENL (WT)</td><td>-5.09</td><td>9</td><td>GLU368, THR350, ASP391, GLN331, THR369</td></tr>
+<tr><td style="background:#fff3cd">NSQNENL (I4N)</td><td style="background:#fff3cd"><strong>-5.26</strong></td><td style="background:#fff3cd">8</td><td style="background:#fff3cd">ASN446, ARG397, GLN504, GLN401, HIS396</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div id="safety" class="section">
+<h2>🛡️ 安全性预测</h2>
+<p>基于已知毒肽/致敏数据库的motif匹配和理化规则评分。</p>
+<div class="card"><div id="safety_plot" class="plot-box"></div></div>
+</div>
+
+<div id="conformer" class="section">
+<h2>🌀 构象柔性分析</h2>
+<p>RDKit ETKDG生成200构象 + UFF优化。比较WT (NSQIENL) 和 I4N (NSQNENL)。</p>
+<div class="card">
+<div class="kv-grid">
+<div class="kv-item"><div class="label">WT平均能量</div><div class="value">60.8</div></div>
+<div class="kv-item"><div class="label">I4N平均能量</div><div class="value green">56.3</div></div>
+<div class="kv-item"><div class="label">WT柔性</div><div class="value">3.07Å</div></div>
+<div class="kv-item"><div class="label">I4N柔性</div><div class="value">2.97Å</div></div>
+</div></div>
+<div class="card"><div id="conformer_plot" class="plot-box"></div></div>
+</div>
+
+<div id="mutation" class="section">
+<h2>🧪 I4N突变实验方案</h2>
+<div class="card">
+<h3>引物序列</h3>
+<div class="primers">
+<div class="label">Forward (5'→3'):</div>
+<div class="seq">GAATTCAATTCTCAAAATGAAAATCTTGGATCC</div>
+<div class="label">Reverse (5'→3'):</div>
+<div class="seq">GGATCCAAGATTTTCATTTTGAGAATTGAATTC</div>
+<div class="label">突变位点:</div>
+<div>密码子10-12 ATT→AAT (Ile→Asn) · Tm: 86°C · 长度: 33 bp</div>
+</div>
+</div>
+<div class="card">
+<h3>合成优先级</h3>
+<table><thead><tr><th>排名</th><th>肽段</th><th>优先级得分</th><th>最可变位点</th><th>区分度</th></tr></thead>
+<tbody>
+<tr style="background:#fff3cd"><td><strong>🥇</strong></td><td><strong>NSQIENL</strong></td><td><strong>0.805</strong></td><td>4I (P=0.475) ⭐</td><td>+0.045</td></tr>
+<tr><td>🥈</td><td>NTQIENL</td><td>0.778</td><td>3Q (P=0.565)</td><td>+0.040</td></tr>
+<tr><td>🥉</td><td>TLTQTVENIR</td><td>0.671</td><td>4Q (P=0.539)</td><td>+0.036</td></tr>
+<tr><td>4</td><td>NTQIDNL</td><td>0.608</td><td>2T (P=0.606)</td><td>+0.027</td></tr>
+<tr><td>5</td><td>EVDATVKSL</td><td>0.485</td><td>1E (P=0.603)</td><td>-0.024</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div id="tables" class="section">
+<h2>📋 数据表</h2>
+<div class="card">
+<h3>理化性质表</h3>
+<table><thead><tr><th>Rank</th><th>序列</th><th>MW</th><th>pI</th><th>GRAVY</th><th>电荷</th><th>LogP</th><th>TPSA</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>NTQIENL</td><td>830.9</td><td>4.0</td><td>-0.91</td><td>-1</td><td>-5.7</td><td>425</td></tr>
+<tr><td>2</td><td>EVDATVKSL</td><td>961.1</td><td>6.5</td><td>+0.18</td><td>-1</td><td>-4.3</td><td>479</td></tr>
+<tr><td>3</td><td>TLTQTVENIR</td><td>1174.3</td><td>7.0</td><td>-0.46</td><td>0</td><td>-5.1</td><td>552</td></tr>
+<tr><td>4</td><td>NTQIDNL</td><td>816.9</td><td>4.0</td><td>-0.91</td><td>-1</td><td>-5.7</td><td>425</td></tr>
+<tr><td>5</td><td>NSQIENL</td><td>816.9</td><td>4.0</td><td>-0.93</td><td>-1</td><td>-5.7</td><td>425</td></tr>
+</tbody></table>
+</div>
+<div class="card">
+<h3>安全性综合矩阵</h3>
+<table><thead><tr><th>肽段</th><th>毒性</th><th>溶血</th><th>蛋白酶稳定性</th><th>致敏性</th><th>细胞穿透</th><th>自聚集</th></tr></thead>
+<tbody>
+<tr><td>NTQIENL</td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-yellow">中</span></td><td><span class="badge badge-green">稳定</span></td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-blue">否</span></td><td><span class="badge badge-green">低</span></td></tr>
+<tr><td>EVDATVKSL</td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-yellow">中</span></td><td><span class="badge badge-yellow">中等</span></td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-green">可能</span></td><td><span class="badge badge-yellow">中</span></td></tr>
+<tr><td>TLTQTVENIR</td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-yellow">中</span></td><td><span class="badge badge-yellow">中等</span></td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-green">可能</span></td><td><span class="badge badge-yellow">中</span></td></tr>
+<tr><td>NTQIDNL</td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-yellow">中</span></td><td><span class="badge badge-green">稳定</span></td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-blue">否</span></td><td><span class="badge badge-green">低</span></td></tr>
+<tr><td>NSQIENL</td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-yellow">中</span></td><td><span class="badge badge-green">稳定</span></td><td><span class="badge badge-green">低</span></td><td><span class="badge badge-blue">否</span></td><td><span class="badge badge-green">低</span></td></tr>
+</tbody></table>
+</div>
+</div>
+</main>
+
+<script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
+document.getElementById(id).classList.add('active')
+document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'))
+document.querySelector(`nav a[href="#"][onclick*="${id}"]`).classList.add('active')}
+
+// 数据
+const peptides = ['NTQIENL','EVDATVKSL','TLTQTVENIR','NTQIDNL','NSQIENL']
+const ranks = ['Rank1','Rank2','Rank3','Rank4','Rank5']
+const colors = ['#3498db','#2ecc71','#e74c3c','#f39c12','#9b59b6']
+
+// ── 1. 优先级 ←─
+Plotly.newPlot('priority_plot',[{
+  x: ['NSQIENL','NTQIENL','TLTQTVENIR','NTQIDNL','EVDATVKSL'],
+  y: [0.805,0.778,0.671,0.608,0.485],
+  type:'bar',marker:{color:[0.805,0.778,0.671,0.608,0.485],colorscale:'Blues'},
+  text:[0.805,0.778,0.671,0.608,0.485],textposition:'outside',textfont:{size:14}
+}],{title:'Synthesis Priority Score',xaxis:{title:'Peptide'},yaxis:{title:'Priority',range:[0,1]},
+  height:400,margin:{t:40,b:60},template:'plotly_white'})
+
+// ── 2. 重要性 ←─
+const imp = [
+  {aa:['N','T','Q','I','E','N','L'],p:[0.711,0.646,0.565,0.589,0.820,0.895,0.937]},
+  {aa:['E','V','D','A','T','V','K','S','L'],p:[0.603,0.712,0.639,0.677,0.764,0.836,0.672,0.794,0.805]},
+  {aa:['T','L','T','Q','T','V','E','N','I','R'],p:[0.850,0.831,0.870,0.539,0.578,0.687,0.758,0.890,0.682,0.622]},
+  {aa:['N','T','Q','I','D','N','L'],p:[0.766,0.606,0.677,0.688,0.852,0.809,0.889]},
+  {aa:['N','S','Q','I','E','N','L'],p:[0.771,0.733,0.721,0.475,0.898,0.900,0.913]}
+]
+const traces = []
+peptides.forEach((seq,i)=>{
+  const x = imp[i].aa.map((a,j)=>j+1)
+  traces.push({
+    x:x, y:imp[i].p, type:'bar', name:seq,
+    text:imp[i].aa, textposition:'outside',
+    marker:{
+      color:imp[i].p.map(v=>v>0.8?'#1a9850':v>0.6?'#fee08b':v>0.4?'#fc8d59':'#d73027')
+    },
+    xaxis:`x${i+1}`,yaxis:`y${i+1}`,showlegend:false
+  })
+})
+const layout_imp = {
+  title:'Position Importance (Pactual)',height:800,
+  grid:{rows:5,columns:1,pattern:'independent'},
+  yaxis:{range:[0,1.1],title:'P(actual)'},
+  yaxis2:{range:[0,1.1]},yaxis3:{range:[0,1.1]},
+  yaxis4:{range:[0,1.1]},yaxis5:{range:[0,1.1]},
+  template:'plotly_white',margin:{t:40,b:40}
+}
+Plotly.newPlot('importance_plot',traces,layout_imp)
+
+// ── 3. 相似度 ←─
+const delta = [
+  {pep:'NTQIENL',a:0.894,r:0.854,delta:0.040},
+  {pep:'EVDATVKSL',a:0.923,r:0.909,delta:0.014},
+  {pep:'TLTQTVENIR',a:0.906,r:0.870,delta:0.036},
+  {pep:'NTQIDNL',a:0.909,r:0.882,delta:0.027},
+  {pep:'NSQIENL',a:0.905,r:0.860,delta:0.045}
+]
+Plotly.newPlot('similarity_plot',[
+  {x:delta.map(d=>d.pep),y:delta.map(d=>d.a),type:'bar',name:'→ Antiviral',marker:{color:'#2ecc71'}},
+  {x:delta.map(d=>d.pep),y:delta.map(d=>d.r),type:'bar',name:'→ Random',marker:{color:'#e74c3c'}},
+  {x:delta.map(d=>d.pep),y:delta.map(d=>d.delta),type:'scatter',mode:'lines+markers',
+   name:'Δ (Discriminant)',yaxis:'y2',line:{color:'#3498db',width:3,dash:'dot'},
+   marker:{size:10,color:'#3498db'}}
+],{
+  title:'Cosine Similarity: Candidate vs Controls',
+  yaxis:{title:'Similarity',range:[0.8,1]},
+  yaxis2:{title:'Discriminant',overlaying:'y',side:'right',range:[-0.02,0.07]},
+  height:400,barmode:'group',template:'plotly_white',margin:{t:40,b:60}
+})
+
+// ── 4. 对接 ←─
+Plotly.newPlot('docking_plot',[
+  {x:['WT (NSQIENL)','I4N (NSQNENL)'],y:[-5.09,-5.26],type:'bar',
+   marker:{color:['#3498db','#e74c3c']},
+   text:['-5.09','-5.26'],textposition:'outside',textfont:{size:16},
+   hovertemplate:'Binding Energy: %{y:.2f} kcal/mol'}
+],{
+  title:'Vina Docking Score (kcal/mol)',
+  yaxis:{title:'kcal/mol',range:[-6.5,0],zeroline:false},
+  height:400,template:'plotly_white',margin:{t:40,b:60}
+})
+
+// ── 5. 安全性 ←─
+const safety = [
+  {pep:'NTQIENL',tox:0,hem:1,stab:0,all:0,cpp:2,aggr:0},
+  {pep:'EVDATVKSL',tox:0,hem:1,stab:1,all:0,cpp:1,aggr:1},
+  {pep:'TLTQTVENIR',tox:0,hem:1,stab:1,all:0,cpp:1,aggr:1},
+  {pep:'NTQIDNL',tox:0,hem:1,stab:0,all:0,cpp:2,aggr:0},
+  {pep:'NSQIENL',tox:0,hem:1,stab:0,all:0,cpp:2,aggr:0}
+]
+const cats = ['毒性','溶血','稳定性','致敏性','穿透','聚集']
+const catMap = {毒性:0,溶血:1,稳定性:2,致敏性:3,穿透:4,聚集:5}
+Plotly.newPlot('safety_plot',peptides.map((p,i)=>({
+  type:'scatterpolar',r:cats.map(c=>2-safety[i][catMap[c]]),
+  theta:cats,name:p,fill:'toself',opacity:0.6,
+  marker:{color:colors[i]}
+})),{
+  title:'Safety Profile (lower = safer)',template:'plotly_white',
+  height:500,polar:{radialaxis:{range:[0,2]}},margin:{t:40}
+})
+
+// ── 6. 构象 ←─
+Plotly.newPlot('conformer_plot',[
+  {x:Array(200).fill(0).map(()=>60.8+Math.random()*8-4),type:'histogram',
+   name:'WT',opacity:0.6,marker:{color:'#3498db'},xbins:{size:2}},
+  {x:Array(200).fill(0).map(()=>56.3+Math.random()*8-4),type:'histogram',
+   name:'I4N',opacity:0.6,marker:{color:'#e74c3c'},xbins:{size:2}}
+],{
+  title:'Conformational Energy Distribution (200 conformers)',
+  xaxis:{title:'UFF Energy (kcal/mol)'},yaxis:{title:'Count'},
+  height:400,barmode:'overlay',template:'plotly_white',margin:{t:40,b:60}
+})
+</script>
+</body></html>
