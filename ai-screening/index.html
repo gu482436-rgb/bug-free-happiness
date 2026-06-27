@@ -17,6 +17,8 @@
     .docking-figure-card{border:1px solid rgba(0,0,0,.08);border-radius:30px;background:#fff;padding:22px;margin:28px 0;box-shadow:var(--soft-shadow)}.docking-figure-card h3{margin-top:0}.docking-figure-card figure{margin:12px 0 16px}.read-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.read-card{background:#f5f5f7;border:1px solid rgba(0,0,0,.06);border-radius:22px;padding:16px}.read-card strong{display:block;color:#1d1d1f;margin-bottom:6px}.read-card p{margin:0;color:#424245;font-size:14px}
     .top5-cards{display:grid;grid-template-columns:1fr;gap:14px;margin:14px 0}.top5-card{border:1px solid rgba(0,0,0,.08);border-radius:28px;background:linear-gradient(180deg,#fff,#fbfbfd);padding:20px;box-shadow:var(--soft-shadow)}.top5-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.top5-rank{width:32px;height:32px;border-radius:50%;background:#1d1d1f;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:760}.top5-head code{font-size:20px;font-weight:760}.top5-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.top5-grid div{background:#f5f5f7;border-radius:16px;padding:10px}.top5-grid span,.top5-species span,.top5-reason span{display:block;color:var(--muted);font-size:12px}.top5-grid strong{display:block;font-size:13px;color:#1d1d1f}.top5-species,.top5-reason{margin-top:10px;font-size:13px;color:#424245}
     .missing{background:#fff8ef;border:1px solid #fed7aa;border-radius:18px;padding:14px}.statement{background:linear-gradient(180deg,#fff,#f5f5f7);border:1px solid var(--line);border-radius:28px;padding:24px;margin-top:36px;box-shadow:var(--soft-shadow)} a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+    .reveal-on-scroll{opacity:0;transform:translateY(34px) scale(.985);filter:blur(6px);transition:opacity .78s cubic-bezier(.16,1,.3,1),transform .78s cubic-bezier(.16,1,.3,1),filter .78s cubic-bezier(.16,1,.3,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform,filter}.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.topic-card,.reveal-on-scroll{transition:none!important;animation:none!important}.topic-card:hover{transform:none}.reveal-on-scroll{opacity:1;transform:none;filter:none}}
     @media(max-width:850px){.page{padding:44px 18px 56px}.grid,.grid2,.figure-grid,.read-grid,.topic-entry,.luca-hero{grid-template-columns:1fr}.luca-metrics{grid-template-columns:repeat(2,1fr)}figure svg{min-width:680px}.top5-grid{grid-template-columns:repeat(2,1fr)}.image-figure.wide{grid-column:auto}.topic-card{min-height:190px}.topic-panel{padding:20px}.topic-panel-header{align-items:flex-start;flex-direction:column}h1{text-align:left}.subtitle{text-align:left;margin-left:0}}
     </style></head>
 <body><main class="page">
@@ -362,5 +364,37 @@
   if (initial && panels.some(panel => panel.id === initial)) {
     setPanel(initial);
   }
+  function setupScrollReveal() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const selectors = [
+      '.page > section:not(.topic-panel)',
+      '.topic-entry',
+      '.topic-card',
+      '.metric',
+      '.top5-card',
+      '.docking-figure-card',
+      '.image-figure',
+      '.read-card'
+    ];
+    const items = Array.from(document.querySelectorAll(selectors.join(',')))
+      .filter((item, index, array) => array.indexOf(item) === index);
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      items.forEach(item => item.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {threshold: 0.12, rootMargin: '0px 0px -8% 0px'});
+    items.forEach((item, index) => {
+      item.classList.add('reveal-on-scroll');
+      item.style.setProperty('--reveal-delay', `${Math.min((index % 4) * 70, 210)}ms`);
+      observer.observe(item);
+    });
+  }
+  setupScrollReveal();
 })();
 </script></body></html>
