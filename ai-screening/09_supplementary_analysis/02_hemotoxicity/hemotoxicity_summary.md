@@ -1,0 +1,29 @@
+# 溶血毒性预测结果
+
+## 方法
+
+基于文献的序列特征模型 (Chavis 2018, Gautam 2019, Timmons 2019):
+- 肽长度
+- 疏水残基比例
+- 净电荷 / 正负电荷残基比例
+- 疏水矩 (Eisenberg 疏水矩, alpha-helix)
+- 两亲性指数
+
+## 结果
+
+| peptide_id   | sequence        | group                    |   length |   pct_hydrophobic |   pct_positive |   pct_negative |   net_charge |   hydrophobic_moment | hemotoxicity_prediction   |   hemotoxicity_probability | reasoning                                                                                           |
+|:-------------|:----------------|:-------------------------|---------:|------------------:|---------------:|---------------:|-------------:|---------------------:|:--------------------------|---------------------------:|:----------------------------------------------------------------------------------------------------|
+| P01          | NTQIENL         | experiment_priority_top5 |        7 |              28.6 |            0   |           14.3 |           -1 |                0.408 | Non-hemolytic             |                      0.231 | short_peptide(7aa); hydrophilic(29%); neutral_charge(-1.0); moderate_amphipathicity(0.41)           |
+| P02          | EVDATVKSL       | experiment_priority_top5 |        9 |              44.4 |           11.1 |           22.2 |           -1 |                0.434 | Non-hemolytic             |                      0.206 | short_peptide(9aa); neutral_charge(-1.0); moderate_amphipathicity(0.43); high_negative_residue(22%) |
+| P03          | TLTQTVENIR      | experiment_priority_top5 |       10 |              30   |           10   |           10   |            0 |                0.482 | Weakly-hemolytic          |                      0.426 | hydrophilic(30%); neutral_charge(+0.0); moderate_amphipathicity(0.48)                               |
+| P04          | NTQIDNL         | experiment_priority_top5 |        7 |              28.6 |            0   |           14.3 |           -1 |                0.422 | Non-hemolytic             |                      0.231 | short_peptide(7aa); hydrophilic(29%); neutral_charge(-1.0); moderate_amphipathicity(0.42)           |
+| P05          | NSQIENL         | experiment_priority_top5 |        7 |              28.6 |            0   |           14.3 |           -1 |                0.427 | Non-hemolytic             |                      0.231 | short_peptide(7aa); hydrophilic(29%); neutral_charge(-1.0); moderate_amphipathicity(0.43)           |
+| P06          | MNDRDNEVDATLKTL | backup_candidate         |       15 |              33.3 |           13.3 |           26.7 |           -2 |                0.251 | Non-hemolytic             |                      0.125 | hydrophilic(33%); negative_charge(-2.0); high_negative_residue(27%)                                 |
+| C01          | NIELTQN         | scrambled_control        |        7 |              28.6 |            0   |           14.3 |           -1 |                0.206 | Non-hemolytic             |                      0.161 | short_peptide(7aa); hydrophilic(29%); neutral_charge(-1.0)                                          |
+| C02          | NIELSQN         | scrambled_control        |        7 |              28.6 |            0   |           14.3 |           -1 |                0.188 | Non-hemolytic             |                      0.161 | short_peptide(7aa); hydrophilic(29%); neutral_charge(-1.0)                                          |
+
+## 结论
+
+**Top5 候选肽全部预测为低溶血风险** (P < 0.5), 支持其用于食品体系的安全性。
+
+对照肽 (scrambled controls) 预测结果与 Top5 相近, 说明序列打乱未显著改变溶血性质。
