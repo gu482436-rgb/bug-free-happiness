@@ -52,10 +52,11 @@
     .docking-figure-card{border:1px solid var(--line);border-radius:28px;background:var(--bg-card-solid);padding:22px;margin:28px 0;box-shadow:var(--shadow)}.docking-figure-card h3{margin-top:0}.docking-figure-card figure{margin:12px 0 16px}.read-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.read-card{background:var(--bg-elevated);border:1px solid var(--line);border-radius:18px;padding:16px}.read-card strong{display:block;color:var(--text);margin-bottom:6px}.read-card p{margin:0;color:var(--muted);font-size:14px}
     .top5-cards{display:grid;grid-template-columns:1fr;gap:14px;margin:14px 0}.top5-card{border:1px solid var(--line);border-radius:24px;background:var(--bg-card-solid);padding:20px;box-shadow:var(--shadow)}.top5-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.top5-rank{width:32px;height:32px;border-radius:50%;background:var(--text);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-weight:700}.top5-head code{font-size:20px;font-weight:700}.top5-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.top5-grid div{background:var(--bg-elevated);border:1px solid var(--line);border-radius:14px;padding:10px}.top5-grid span,.top5-species span,.top5-reason span{display:block;color:var(--muted);font-size:12px}.top5-grid strong{display:block;font-size:13px;color:var(--text)}.top5-species,.top5-reason{margin-top:10px;font-size:13px;color:var(--muted)}
     .missing{background:color-mix(in srgb,var(--amber) 10%,var(--bg-card-solid));border:1px solid color-mix(in srgb,var(--amber) 32%,var(--line));border-radius:16px;padding:14px}.statement{background:linear-gradient(180deg,var(--bg-card-solid),var(--bg-elevated));border:1px solid var(--line);border-radius:28px;padding:24px;margin-top:22px;box-shadow:var(--shadow)}
+    .analysis-dashboard{background:linear-gradient(145deg,color-mix(in srgb,#0b6b83 10%,var(--bg-card-solid)),color-mix(in srgb,#7b2ff7 6%,var(--bg-card-solid)));border-color:color-mix(in srgb,#0b6b83 22%,var(--line))}.analysis-dashboard>p{max-width:850px}.analysis-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:22px 0}.analysis-kpi{background:var(--bg-card-solid);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}.analysis-kpi strong{display:block;font-size:26px;letter-spacing:-.035em;line-height:1.1;font-variant-numeric:tabular-nums}.analysis-kpi span{display:block;color:var(--muted);font-size:12px;line-height:1.35;margin-top:7px}.analysis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}.analysis-card{position:relative;background:var(--bg-card-solid);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow);overflow:hidden}.analysis-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#0b6b83,#7b2ff7,#34c759)}.analysis-card h3{margin-top:4px}.analysis-card p{font-size:14px;color:var(--muted);margin-bottom:12px}.analysis-card ul{padding-left:20px;margin:10px 0 0}.analysis-card li{font-size:14px;color:var(--text);margin:.35em 0}.analysis-card code{font-size:13px}.analysis-status{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;background:color-mix(in srgb,var(--green) 13%,var(--bg-card-solid));border:1px solid color-mix(in srgb,var(--green) 28%,var(--line));color:var(--text);font-size:12px;font-weight:700}.analysis-status:before{content:"✓";color:var(--green)}.analysis-boundary{margin-top:18px;padding:16px 18px;border-radius:16px;background:color-mix(in srgb,var(--amber) 10%,var(--bg-card-solid));border:1px solid color-mix(in srgb,var(--amber) 30%,var(--line));font-size:14px}.analysis-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.analysis-links a{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--bg-elevated);border-radius:999px;padding:6px 11px;font-size:12px}.analysis-footnote{color:var(--muted);font-size:13px;margin:16px 0 0}.analysis-module-list{margin-top:20px;border:1px solid var(--line);border-radius:18px;background:var(--bg-card-solid);overflow:hidden}.analysis-module-list summary{cursor:pointer;padding:14px 16px;font-weight:700;color:var(--text);list-style:none}.analysis-module-list summary::-webkit-details-marker{display:none}.analysis-module-list summary:after{content:"＋";float:right;color:var(--muted)}.analysis-module-list[open] summary:after{content:"−"}.analysis-module-list .table-wrap{margin:0;border:0;border-radius:0;box-shadow:none;max-height:420px}.analysis-module-list table{min-width:620px}.analysis-module-list th,.analysis-module-list td{padding:9px 12px;font-size:13px}
     .reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .66s cubic-bezier(.16,1,.3,1),transform .66s cubic-bezier(.16,1,.3,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform}.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.topic-card,.card,.metric,.reveal-on-scroll,.topic-panel{transition:none!important;animation:none!important}.topic-card:hover,.card:hover,.metric:hover{transform:none}.reveal-on-scroll{opacity:1;transform:none}}
-    @media(max-width:980px){.site-links{display:none}.page{padding:92px 22px 56px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2,.figure-grid,.read-grid,.topic-entry,.luca-hero{grid-template-columns:1fr}.luca-metrics{grid-template-columns:repeat(2,1fr)}.top5-grid{grid-template-columns:repeat(2,1fr)}figure svg{min-width:680px}.image-figure.wide{grid-column:auto}h1{text-align:left}.subtitle{text-align:left;margin-left:0}.hero{padding:36px 24px}.topic-panel{padding-left:20px;padding-right:20px}.topic-panel.active{padding:20px}.topic-panel-header{align-items:flex-start;flex-direction:column}}
-    @media(max-width:560px){body{font-size:16px}.grid{grid-template-columns:1fr}.metric{min-height:108px}.metric .num{font-size:42px}.page{padding-left:16px;padding-right:16px}.site-nav{justify-content:space-between}.top5-grid{grid-template-columns:1fr}}
+    @media(max-width:980px){.site-links{display:none}.page{padding:92px 22px 56px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2,.figure-grid,.read-grid,.topic-entry,.luca-hero,.analysis-grid{grid-template-columns:1fr}.analysis-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.luca-metrics{grid-template-columns:repeat(2,1fr)}.top5-grid{grid-template-columns:repeat(2,1fr)}figure svg{min-width:680px}.image-figure.wide{grid-column:auto}h1{text-align:left}.subtitle{text-align:left;margin-left:0}.hero{padding:36px 24px}.topic-panel{padding-left:20px;padding-right:20px}.topic-panel.active{padding:20px}.topic-panel-header{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){body{font-size:16px}.grid{grid-template-columns:1fr}.analysis-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{min-height:108px}.metric .num{font-size:42px}.page{padding-left:16px;padding-right:16px}.site-nav{justify-content:space-between}.top5-grid{grid-template-columns:1fr}}
     </style></head>
 <body><main class="page">
 <h1>鱼骨源预测抗病毒肽候选序列 AI 筛选汇报</h1>
@@ -93,6 +94,75 @@
 <div class="metric"><div class="num">未完成</div><div>真实实验验证</div></div>
 </div>
 <div class="card limit"><strong>结果边界：</strong>当前结果为计算筛选得到的候选肽序列，不代表已经证明其具有真实抗诺如病毒活性。尚未制备出真实抗病毒肽实物，尚未完成真实抗诺如病毒实验验证。</div>
+</section>
+
+<section id="latest-results" class="card analysis-dashboard">
+<span class="section-badge">最新成果 · M42–M62</span>
+<h2>最新计算研究成果</h2>
+<p>这里汇总目前已经完成、通过质量检查并且有明确结果的计算模块。外部验证准备、数据源候选筛选和等待人工提供锁定包的模块不计入“已完成成果”，避免把准备工作误读成外部验证。</p>
+<div class="analysis-kpis">
+<div class="analysis-kpi"><strong>2,350</strong><span>训练样本</span></div>
+<div class="analysis-kpi"><strong>1,976</strong><span>0.85 分组数</span></div>
+<div class="analysis-kpi"><strong>0.9272</strong><span>Nested late fusion ROC-AUC</span></div>
+<div class="analysis-kpi"><strong>0.1056</strong><span>Nested late fusion Brier</span></div>
+<div class="analysis-kpi"><strong>11,750</strong><span>每模型 OOF 预测</span></div>
+<div class="analysis-kpi"><strong>5 档</strong><span>相似性阈值敏感性</span></div>
+</div>
+<div class="analysis-grid">
+<article class="analysis-card">
+<span class="analysis-status">已完成 · 表征与混杂</span>
+<h3>M42–M46：模型表征和标签混杂</h3>
+<p>比较手工 433 维、ESM-C 960 维、early fusion 和 nested late fusion，并在长度/AAC 匹配队列中检查性能变化。</p>
+<ul>
+<li>Nested late fusion：ROC-AUC <strong>0.9272 ± 0.0134</strong></li>
+<li>25/25 个 outer folds 选择 <code>w_hc=0.50</code></li>
+<li>匹配后 handcrafted Δ ROC-AUC：<strong>−0.0437</strong></li>
+<li>ESM-C 匹配后 Δ ROC-AUC：<strong>−0.0431</strong></li>
+</ul>
+</article>
+<article class="analysis-card">
+<span class="analysis-status">已完成 · 稳健性与解释</span>
+<h3>M54–M56、M60–M61：稳健性分析</h3>
+<p>新增文献方法盘点、特征消融、类别权重敏感性、标签置换负对照、SHAP 和相似性阈值敏感性。</p>
+<ul>
+<li>标签置换：ROC-AUC <strong>0.5014</strong>，MCC <strong>0.0022</strong></li>
+<li>AAC_20：ROC-AUC <strong>0.9077</strong></li>
+<li>特征组去除后变化不超过约 <strong>0.005</strong></li>
+<li>0.70→0.90 五档阈值，train/test group overlap 均为 <strong>0</strong></li>
+</ul>
+</article>
+<article class="analysis-card">
+<span class="analysis-status">已完成 · OOF 与论文交付</span>
+<h3>M57–M59、M62：完整指标和候选稳定性</h3>
+<p>复现逐折 OOF 预测，补齐 PR-AUC、敏感度、特异度、PPV/NPV、校准和候选肽跨模型稳定性。</p>
+<ul>
+<li>Late fusion sensitivity <strong>0.8578</strong>，specificity <strong>0.8514</strong></li>
+<li>Late fusion calibration slope <strong>0.9496</strong></li>
+<li>六肽跨模型 Spearman 排序相关均值 <strong>0.8800</strong></li>
+<li>候选支持等级与预测稳定性分开记录，未改变原有优先级</li>
+</ul>
+</article>
+</div>
+<div class="analysis-boundary"><strong>当前边界：</strong>上述均为内部 grouped/nested cross-validation、匹配敏感性分析或计算优先级结果。它们不能替代真实外部验证、病毒实验、机制验证或临床适用性评估。五个候选仍保留 <code>out_of_support_caution</code>，<code>NTQIDNL</code> 为 <code>intermediate_support</code>；模型稳定不等于训练空间支持。</div>
+<div class="analysis-links" aria-label="成果入口">
+<a href="#latest-results">本页成果总览</a>
+<a href="https://github.com/gu482436-rgb/bug-free-happiness/tree/main/fish-bone-avp" target="_blank" rel="noopener">GitHub 项目目录</a>
+</div>
+<details class="analysis-module-list"><summary>展开查看已完成成果模块清单（仅列有结果的模块）</summary><div class="table-wrap"><table><thead><tr><th>模块</th><th>成果</th><th>状态</th></tr></thead><tbody>
+<tr><td>M42</td><td>ESM-C 表征基准与 nested late fusion</td><td>完成</td></tr>
+<tr><td>M43</td><td>长度/AAC 匹配的标签混杂敏感性</td><td>完成</td></tr>
+<tr><td>M45</td><td>ESM-C 匹配队列复核</td><td>完成</td></tr>
+<tr><td>M46</td><td>表征、混杂与论文证据整合</td><td>完成</td></tr>
+<tr><td>M47–M48</td><td>发表级图件、图注与最终声明审计</td><td>完成</td></tr>
+<tr><td>M49–M53</td><td>发布候选包、论文插入稿、逐句溯源与作者交付冻结</td><td>完成</td></tr>
+<tr><td>M54</td><td>文献方法盘点与 Tier A 指标扩展</td><td>完成</td></tr>
+<tr><td>M55–M56</td><td>Permutation importance、learning curve、SHAP、五档阈值敏感性</td><td>完成</td></tr>
+<tr><td>M57</td><td>Grouped OOF、PR-AUC、校准、敏感度/特异度等完整指标</td><td>完成</td></tr>
+<tr><td>M58–M59</td><td>Nested late fusion OOF 与完整论文指标整合</td><td>完成</td></tr>
+<tr><td>M60–M61</td><td>特征消融、类别平衡、标签置换与补充材料整合</td><td>完成</td></tr>
+<tr><td>M62</td><td>六肽预测稳定性、排序稳定性与训练空间支持</td><td>完成</td></tr>
+</tbody></table></div></details>
+<p class="analysis-footnote">成果包还包括图件、论文插入稿、逐句溯源、声明审计和 SHA256 清单；可在项目目录对应模块中查看。</p>
 </section>
 
 <section><h2>当前完成情况</h2><div class="table-wrap"><table><thead><tr><th>任务</th><th>是否完成</th><th>结果</th><th>备注</th></tr></thead><tbody><tr><td>V1蛋白序列整理</td><td>完成</td><td>3种鱼6条蛋白</td><td>用于V1虚拟酶解。</td></tr><tr><td>V1虚拟酶解</td><td>完成</td><td>1408条非重复肽</td><td>Trypsin、Chymotrypsin、Pepsin。</td></tr><tr><td>V1机器学习预测</td><td>完成</td><td>RF/XGBoost</td><td>训练后用于V1候选肽初筛。</td></tr><tr><td>V1外部验证</td><td>完成</td><td>AI4AVP/ToxinPred/AllerCatPro</td><td>Top100外部验证。</td></tr><tr><td>V1最终候选肽</td><td>完成</td><td>Top5</td><td>用于V1阶段建议。</td></tr><tr><td>V2蛋白序列整理</td><td>完成</td><td>8种鱼15条蛋白</td><td>扩大鱼种和蛋白覆盖范围。</td></tr><tr><td>V2虚拟酶解</td><td>完成</td><td>4515条非重复肽</td><td>8种规则明确或简化筛选酶。</td></tr><tr><td>V2新增肽段</td><td>完成</td><td>3107条</td><td>V1所有肽段被V2覆盖。</td></tr><tr><td>V2 prediction-only预测</td><td>完成</td><td>RF/XGBoost模型复用</td><td>未重新训练模型。</td></tr><tr><td>V2外部验证</td><td>完成</td><td>AI4AVP/ToxinPred/AllerCatPro</td><td>Top100外部验证。</td></tr><tr><td>V2算法Top5</td><td>完成</td><td>5条</td><td>面向后续合成和涂层实验。</td></tr><tr><td>真实肽粉合成</td><td>未完成</td><td>-</td><td>需后续委托合成或实验制备。</td></tr><tr><td>鱼骨真实酶解制备</td><td>未完成</td><td>-</td><td>需后续实验开展。</td></tr><tr><td>NoV-VLP或MNV验证</td><td>未完成</td><td>-</td><td>需后续病毒替代模型实验。</td></tr><tr><td>海藻酸钠涂层实验</td><td>未完成</td><td>-</td><td>需后续食品体系验证。</td></tr><tr><td>三文鱼品质评价</td><td>未完成</td><td>-</td><td>需结合色差、质构等指标。</td></tr></tbody></table></div></section>
@@ -439,6 +509,7 @@
       <a href="#top" class="site-brand">AI Screening Report</a>
       <div class="site-links">
         <a href="#summary">核心结论</a>
+        <a href="#latest-results">最新成果</a>
         <a href="#workflow">研究思路</a>
         <a href="#top5">算法Top5</a>
         <a href="#vp1-docking">VP1 docking</a>
@@ -458,6 +529,7 @@
   function assignAnchors() {
     const pairs = [
       ['核心结论', 'summary'],
+      ['最新计算研究成果', 'latest-results'],
       ['整体研究思路', 'workflow'],
       ['V2 algorithmic Top5 / V2算法Top5', 'top5'],
       ['诺如病毒 VP1 P domain docking 深度解析', 'vp1-docking'],
