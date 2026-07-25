@@ -1,0 +1,56 @@
+{
+  "package": "final_master_evidence_handoff_package",
+  "status": "COMPLETE_FINAL_HANDOFF_READY",
+  "internal": {
+    "handcrafted_433_xgboost": {
+      "roc_auc": 0.9189,
+      "mcc": 0.692,
+      "brier": 0.1124
+    },
+    "nested_late_fusion": {
+      "roc_auc": 0.9272,
+      "mcc": 0.7087,
+      "brier": 0.1056
+    }
+  },
+  "external": {
+    "plan_a": {
+      "n": 695,
+      "roc_auc": 0.593751987281399,
+      "roc_auc_ci": "[0.5484-0.6402]",
+      "mcc": 0.0596533863904191,
+      "brier": 0.2474603847840231
+    },
+    "plan_b": {
+      "n": 200,
+      "roc_auc": 0.5453999999999999,
+      "roc_auc_ci": "[0.4626-0.6265]"
+    },
+    "plan_c": {
+      "n": 160,
+      "roc_auc": 0.5518749999999999,
+      "roc_auc_ci": "[0.4633-0.6430]"
+    }
+  },
+  "threshold": {
+    "primary": 0.5,
+    "exploratory_range": "0.10-0.90"
+  },
+  "calibration": {
+    "plan_a_intercept": 0.7458908065579585,
+    "plan_a_slope": 0.1596334564078519
+  },
+  "similarity_strata": {
+    "lt_070_n": 457,
+    "ge_085_n": 116
+  },
+  "internal_external_gap": {
+    "roc_auc_delta": -0.3251
+  },
+  "supersedes": [
+    "M71 (old 692, CI errors)",
+    "M72 (DUPLICATE_MODULE_ID)"
+  ],
+  "claim_scope": "Computational screening signal. Not clinical validation.",
+  "raw_data_not_published": true
+}
