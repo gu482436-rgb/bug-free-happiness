@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>最终计算证据交付包｜鱼骨源抗病毒肽筛选</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#5d6b82;--line:#dfe6f0;--blue:#2457d6;--green:#0f8a5f;--amber:#a65d00;--red:#a83a45;--shadow:0 14px 42px rgba(30,52,91,.10)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eef4ff 0,#f7f9fc 360px,var(--bg) 100%);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif}main{max-width:1120px;margin:0 auto;padding:34px 20px 70px}.hero{background:linear-gradient(135deg,#102b63,#2457d6 62%,#3b8fd8);color:#fff;border-radius:28px;padding:42px 38px;box-shadow:var(--shadow);margin-bottom:24px}.eyebrow{font-size:13px;letter-spacing:.12em;opacity:.8}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.08;margin:12px 0}.hero p{max-width:780px;margin:0;color:#e7efff}.status{display:inline-flex;margin-top:22px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.16);font-weight:700}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);margin:18px 0}.kpi{min-height:120px}.kpi strong{display:block;font-size:34px;line-height:1.1;color:var(--blue)}.kpi span{display:block;margin-top:10px;color:var(--muted);font-size:14px}h2{font-size:28px;margin:34px 0 14px}h3{font-size:20px;margin:4px 0 10px}p{max-width:850px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px}table{border-collapse:collapse;width:100%;min-width:680px;background:#fff}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left}th{background:#f0f4fa;color:var(--muted);font-weight:700}td.num{font-variant-numeric:tabular-nums;text-align:right}.ok{border-left:5px solid var(--green)}.warn{border-left:5px solid var(--amber)}.limit{border-left:5px solid var(--red)}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{display:inline-block;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--blue);text-decoration:none;background:#fff}.links a:hover{background:#eef4ff}.small{color:var(--muted);font-size:14px}.pill{display:inline-block;padding:3px 9px;border-radius:999px;background:#eaf8f1;color:var(--green);font-size:13px;font-weight:700}@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}main{padding:20px 14px 48px}.hero{padding:30px 24px}}@media(max-width:500px){.grid{grid-template-columns:1fr}.hero h1{font-size:35px}.card{padding:18px}}
+</style></head>
+<body><main>
+<header class="hero"><div class="eyebrow">FINAL MASTER EVIDENCE HANDOFF · 2026</div><h1>鱼骨源候选抗病毒肽<br>最终计算证据</h1><p>这是 M42–M76 及最终补充包的可读摘要。结果用于计算筛选和方法透明性，不替代肽合成、病毒实验或临床验证。</p><div class="status">✓ COMPLETE_FINAL_HANDOFF_READY · QA 42/42 PASS</div></header>
+
+<section><h2>核心结果</h2><div class="grid">
+<div class="card kpi"><strong>0.9189</strong><span>内部 Handcrafted 433 XGBoost<br>mean ± SD: 0.0152</span></div>
+<div class="card kpi"><strong>0.9272</strong><span>内部 Nested Late Fusion<br>mean ± SD: 0.0134</span></div>
+<div class="card kpi"><strong>0.5938</strong><span>外部 Plan A ROC-AUC<br>n=695 · 95% CI [0.5484, 0.6402]</span></div>
+<div class="card kpi"><strong>0.16</strong><span>Plan A 外部校准 slope<br>Brier = 0.2475</span></div>
+</div></section>
+
+<section class="card"><h2>内部与外部评估</h2><p class="small">内部结果报告 mean ± SD；外部结果报告分层 bootstrap 95% CI。两种摘要方式不可混称为同一种置信区间。</p><div class="table-wrap"><table><thead><tr><th>方案</th><th>数据性质</th><th>n</th><th>ROC-AUC</th><th>区间/摘要</th><th>MCC</th><th>Brier</th></tr></thead><tbody>
+<tr><td>Handcrafted 433</td><td>内部 grouped CV</td><td class="num">—</td><td class="num">0.9189</td><td>±0.0152 SD</td><td class="num">0.6920</td><td class="num">0.1124</td></tr>
+<tr><td>Nested Late Fusion</td><td>内部 grouped CV</td><td class="num">—</td><td class="num">0.9272</td><td>±0.0134 SD</td><td class="num">0.7087</td><td class="num">0.1056</td></tr>
+<tr><td>Plan A（主分析）</td><td>DBAASP 冻结外部评估</td><td class="num">695</td><td class="num">0.5938</td><td>[0.5484, 0.6402]</td><td class="num">0.0597</td><td class="num">0.2475</td></tr>
+<tr><td>Plan B（敏感性）</td><td>平衡外部评估</td><td class="num">200</td><td class="num">0.5454</td><td>[0.4626, 0.6265]</td><td class="num">0.0273</td><td class="num">0.3806</td></tr>
+<tr><td>Plan C（敏感性）</td><td>分层外部评估</td><td class="num">160</td><td class="num">0.5519</td><td>[0.4633, 0.6430]</td><td class="num">0.0987</td><td class="num">0.3752</td></tr>
+</tbody></table></div></section>
+
+<section class="card"><h2>阈值与校准</h2><div class="grid"><div><h3>主阈值</h3><p><span class="pill">0.50 PRIMARY</span> 其余 0.10–0.90 仅为探索性敏感性分析，未据此选择“最优阈值”。</p></div><div><h3>Plan A 校准</h3><p>intercept = 0.7459<br>slope = 0.1596<br>Brier = 0.2475</p></div><div><h3>相似性分层</h3><p>&lt;0.70：ROC-AUC 0.6235（n=457）<br>≥0.85：ROC-AUC 0.6410（n=116）</p></div><div><h3>内外差距</h3><p>内部 0.9189 → 外部 Plan A 0.5938。该差异为数值比较，未进行预注册显著性检验。</p></div></div></section>
+
+<section class="card ok"><h2>证据范围</h2><p>支持：内部 grouped CV 表征比较、标签混杂敏感性、特征消融、标签置换负对照、冻结 DBAASP 外部评估、阈值敏感性和外部校准审计。</p><p>外部数据中的 ROC-AUC 高于随机基线属于描述性观察，未进行预注册显著性检验。</p></section>
+<section class="card limit"><h2>不能这样解读</h2><ul><li>不等于已证明真实抗病毒活性。</li><li>不等于临床效用、治疗建议或普适泛化能力。</li><li>不构成因果机制证据。</li><li>高相似性分层不等于完全独立外部验证。</li><li>M71 的 692 条旧数据和旧版 Module 72 结果已排除。</li></ul></section>
+
+<section class="card"><h2>公开交付材料</h2><div class="links">
+<a href="final_website_data.json">最终数据 JSON</a><a href="FINAL_RESULTS_ZH.md">中文最终结果</a><a href="FINAL_RESULTS_EN.md">English results</a><a href="FINAL_CLAIM_BOUNDARY.md">声明边界</a><a href="FINAL_README.md">交付说明</a><a href="mobile_summary/final_summary_zh.txt">手机摘要</a><a href="final_master_metrics.csv">总指标表</a><a href="final_module_dependency_graph.csv">模块依赖图</a>
+</div><p class="small">DBAASP 原始序列、实验记录和原始导出未发布；公开内容仅包含可追溯的派生结果和限制说明。</p></section>
+<footer class="small">最终交付包：final_master_evidence_handoff_package · M71/M72 legacy excluded · 仅供科研参考</footer>
+</main></body></html>
