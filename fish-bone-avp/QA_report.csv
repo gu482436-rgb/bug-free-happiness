@@ -1,0 +1,10 @@
+item,status,detail
+Plan A count=695,PASS,
+Plan B count=200,PASS,
+Plan C count=160,PASS,
+All CI satisfy lower ≤ estimate ≤ upper,PASS,
+No M71 legacy numbers (692) used as active results,PASS,
+FINAL_RESULTS_EN has Plan A ROC-AUC,PASS,
+FINAL_RESULTS_ZH has Plan A ROC-AUC,PASS,
+No raw DBAASP sequences in outputs,PASS,
+Claim audit: no prohibited phrases outside negation,PASS,
