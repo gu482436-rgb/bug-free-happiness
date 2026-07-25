@@ -1,0 +1,15 @@
+source,type,n_folds,n,pos_prop,ROC_AUC,ROC_AUC_sd,PR_AUC,PR_AUC_sd,MCC,MCC_sd,Brier,Brier_sd,Sensitivity,Specificity,PPV,NPV,Balanced_Accuracy,ROC_AUC_lower,ROC_AUC_upper,MCC_lower,MCC_upper,Brier_lower,Brier_upper
+M57: Handcrafted 433 XGBoost (25-fold grouped CV),internal_grouped_cv,25,2350,N/A,0.9189,0.0152,0.9159,0.0211,0.6920,0.0353,0.1124,0.0113,0.8448,0.8477,0.8457,0.8457,0.8463,,,,,,
+M58: Nested Late Fusion (25-fold grouped CV),internal_grouped_cv,25,2350,N/A,0.9272,0.0134,0.9280,0.0185,0.7087,0.0424,0.1056,0.0109,0.8578,0.8514,0.8511,0.8570,0.8546,,,,,,
+M73/M74: External DBAASP Plan A,external_locked,N/A,695,0.7338,0.5938,N/A,0.8198,N/A,0.0597,N/A,0.2475,N/A,0.8451,0.2054,0.7457,0.3248,0.5253,0.5484,0.6402,-0.0215,0.1414,0.2286,0.2662
+M73/M74: External DBAASP Plan B,external_locked,N/A,200,0.5000,0.5454,N/A,0.5769,N/A,0.0273,N/A,0.3806,N/A,0.8500,0.1700,0.5060,0.5312,0.5100,0.4626,0.6265,-0.1121,0.1674,0.3449,0.4164
+M73/M74: External DBAASP Plan C,external_locked,N/A,160,0.5000,0.5519,N/A,0.5795,N/A,0.0987,N/A,0.3752,N/A,0.8625,0.2125,0.5227,0.6071,0.5375,0.4633,0.6430,-0.0534,0.2570,0.3314,0.4202
+Baseline: Plan A prevalence,baseline_exploratory,N/A,695,0.7338,0.5000,N/A,0.7338,N/A,0.0000,N/A,0.1953,N/A,1.0000,0.0000,0.7338,0.0000,0.5000,,,,,,
+Baseline: Plan A constant_05,baseline_exploratory,N/A,695,0.7338,0.5000,N/A,0.7338,N/A,0.0000,N/A,0.2500,N/A,1.0000,0.0000,0.7338,0.0000,0.5000,,,,,,
+Baseline: Plan A random,baseline_exploratory,N/A,695,0.7338,0.5087,N/A,0.7527,N/A,0.0467,N/A,0.3369,N/A,0.5176,0.5351,0.7543,0.2870,0.5264,,,,,,
+Baseline: Plan B prevalence,baseline_exploratory,N/A,200,0.5000,0.5000,N/A,0.5000,N/A,0.0000,N/A,0.2500,N/A,1.0000,0.0000,0.5000,0.0000,0.5000,,,,,,
+Baseline: Plan B constant_05,baseline_exploratory,N/A,200,0.5000,0.5000,N/A,0.5000,N/A,0.0000,N/A,0.2500,N/A,1.0000,0.0000,0.5000,0.0000,0.5000,,,,,,
+Baseline: Plan B random,baseline_exploratory,N/A,200,0.5000,0.4982,N/A,0.5105,N/A,0.0200,N/A,0.3326,N/A,0.5100,0.5100,0.5100,0.5100,0.5100,,,,,,
+Baseline: Plan C prevalence,baseline_exploratory,N/A,160,0.5000,0.5000,N/A,0.5000,N/A,0.0000,N/A,0.2500,N/A,1.0000,0.0000,0.5000,0.0000,0.5000,,,,,,
+Baseline: Plan C constant_05,baseline_exploratory,N/A,160,0.5000,0.5000,N/A,0.5000,N/A,0.0000,N/A,0.2500,N/A,1.0000,0.0000,0.5000,0.0000,0.5000,,,,,,
+Baseline: Plan C random,baseline_exploratory,N/A,160,0.5000,0.4223,N/A,0.4435,N/A,-0.1125,N/A,0.3783,N/A,0.4500,0.4375,0.4444,0.4430,0.4437,,,,,,
